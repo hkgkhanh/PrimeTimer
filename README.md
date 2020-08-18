@@ -3,7 +3,7 @@ Professional Cubing Timer
 
 ## Version
 
-* Current version: https://khanhfromvn.github.io/myprojects/PrimeTimer/re-primetimer.html
+* Main version: https://khanhfromvn.github.io/myprojects/PrimeTimer/re-primetimer.html
 * Latest version: https://khanhfromvn.github.io/myprojects/PrimeTimer%20latest%20version/re-primetimer.html
 	
 ## Copyright & Credits
