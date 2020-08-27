@@ -5,9 +5,9 @@ function getSettings() {
 
 		if (localStorage.isptType) {
 			var jsonIsptTypeText = localStorage.getItem("isptType");
-			document.getElementById("inspect_type").selectedIndex = JSON.parse(jsonIsptTypeText) - 1;
+			document.getElementById("inspect_type").checked = JSON.parse(jsonIsptTypeText);
 		} else {
-			document.getElementById("inspect_type").selectedIndex = 0;
+			document.getElementById("inspect_type").checked = true;
 		}
 		if (localStorage.enterType) {
 			var jsonEnterTypeText = localStorage.getItem("enterType");
@@ -15,17 +15,23 @@ function getSettings() {
 		} else {
 			document.getElementById("enter_time_type").selectedIndex = 0;
 		}
+		if (localStorage.enterFormat) {
+			var jsonEnterFormatText = localStorage.getItem("enterFormat");
+			document.getElementById("enter_format_type").selectedIndex = JSON.parse(jsonEnterFormatText) - 1;
+		} else {
+			document.getElementById("enter_format_type").selectedIndex = 0;
+		}
 		if (localStorage.hideType) {
 			var jsonHideTypeText = localStorage.getItem("hideType");
-			document.getElementById("hide_type").selectedIndex = JSON.parse(jsonHideTypeText) - 1;
+			document.getElementById("hide_type").checked = JSON.parse(jsonHideTypeText);
 		} else {
-			document.getElementById("hide_type").selectedIndex = 0;
+			document.getElementById("hide_type").checked = false;
 		}
 		if (localStorage.drawType) {
 			var jsonDrawTypeText = localStorage.getItem("drawType");
-			document.getElementById("draw_type").selectedIndex = JSON.parse(jsonDrawTypeText) - 1;
+			document.getElementById("draw_type").checked = JSON.parse(jsonDrawTypeText);
 		} else {
-			document.getElementById("draw_type").selectedIndex = 0;
+			document.getElementById("draw_type").checked = true;
 		}
 		if (localStorage.hideAllType) {
 			var jsonHideAllText = localStorage.getItem("hideAllType");
@@ -34,10 +40,16 @@ function getSettings() {
 			document.getElementById("hide_all").checked = false;
 		}
 		if (localStorage.wideMovesType) {
-			var	jsonWideMovesText = localStorage.getItem("wideMovesType");
+			var jsonWideMovesText = localStorage.getItem("wideMovesType");
 			document.getElementById("wide_moves").checked = JSON.parse(jsonWideMovesText);
 		} else {
 			document.getElementById("wide_moves").checked = false;
+		}
+		if (localStorage.timeSplit) {
+			var jsonTimeSplitText = localStorage.getItem("timeSplit");
+			document.getElementById("time_split").value = JSON.parse(jsonTimeSplitText);
+		} else {
+			document.getElementById("time_split").value = 1;
 		}
 	};
 };
@@ -45,25 +57,31 @@ function getSettings() {
 function saveSettings() {
 	var jsonIsptType;
 	var jsonEnterType;
+	var jsonFormatType;
 	var jsonHideType;
 	var jsonDrawType;
 	var jsonHideAll;
 	var jsonWideMoves;
+	var jsonTimeSplit;
 
 	if (window.localStorage !== undefined) {
 
-   		jsonIsptType = JSON.stringify(inspectType_value);
-   		jsonEnterType = JSON.stringify(enterTimeType_value);
-   		jsonHideType = JSON.stringify(hideType_value);
-   		jsonDrawType = JSON.stringify(drawType_value);
-   		jsonHideAll = JSON.stringify(hideAll);
-   		jsonWideMoves = JSON.stringify(wideMoves);
+   	jsonIsptType = JSON.stringify(inspectType_value);
+   	jsonEnterType = JSON.stringify(enterTimeType_value);
+   	jsonFormatType = JSON.stringify(enterFormatType_value);
+   	jsonHideType = JSON.stringify(hideType_value);
+   	jsonDrawType = JSON.stringify(drawType_value);
+   	jsonHideAll = JSON.stringify(hideAll);
+   	jsonWideMoves = JSON.stringify(wideMoves);
+   	jsonTimeSplit = JSON.stringify(timeSplit_value);
 	  	localStorage.setItem("isptType", jsonIsptType);
-   		localStorage.setItem("enterType", jsonEnterType);
+   	localStorage.setItem("enterType", jsonEnterType);
+   	localStorage.setItem("enterFormat", jsonFormatType);
   		localStorage.setItem("hideType", jsonHideType);
   		localStorage.setItem("drawType", jsonDrawType);
   		localStorage.setItem("hideAllType", jsonHideAll);
   		localStorage.setItem("wideMovesType", jsonWideMoves);
+  		localStorage.setItem("timeSplit", jsonTimeSplit);
   		return;
  	};
 };
@@ -101,7 +119,7 @@ function getColor() {
 			var jsonBoardColorText = localStorage.getItem("boardColor");
 			document.getElementById("board_color").value = JSON.parse(jsonBoardColorText);
 		} else {
-			document.getElementById("board_color").value = '#D3AB9E';
+			document.getElementById("board_color").value = '#F4FA58';
 		}
 		if (localStorage.fontColor) {
 			var jsonFontColorText = localStorage.getItem("fontColor");
@@ -122,27 +140,22 @@ function saveSession() {
 	var jsonArr = [];
 
 	if (window.localStorage !== undefined) {
-		var value = "";
-		for (var ii = 0; ii < sessions.length; ii++) {
-
-			jsonArr[ii] = JSON.stringify(sessions[ii]);
-			localStorage.setItem("session" + ii, jsonArr[ii]);
-		};
+		var jsonSes = JSON.stringify(sessions);
+		localStorage.setItem("sessions", jsonSes);
 		return;
 	};
 };
 
 function getSession() {
 	if (window.localStorage !== undefined) {
-		for (var ii = 0; ii < sessions.length; ii++) {
-
-			if (localStorage.getItem("session" + ii) !== null) {
-				var jsonText = localStorage.getItem("session" + ii);
-	    		sessions[ii] = JSON.parse(jsonText);
+			if (localStorage.sessions) {
+				var jsonText = localStorage.getItem("sessions");
+	    		sessions = JSON.parse(jsonText);
 	    	} else {
-	    		sessions[ii] = [];
+	    		for (var i = 0 ; i < 10; i++) {
+	    			sessions.push({arr: []});
+	    		}
 	    	}
-		};
 	}
 };
 

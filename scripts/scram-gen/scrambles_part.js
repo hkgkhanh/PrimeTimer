@@ -535,12 +535,9 @@ function generateScram(){
 
 				} else if (scramType_value == "easy_cross") {
 					scramble = scramble_333.getF2LScramble();
-					var m1 = getPossibleMove(scramble);
-					scramble = scramble + " " + m1;
-					var m2 = getPossibleMove(scramble);
-					scramble = scramble + " " + m2;
-					var m3 = getPossibleMove(scramble);
-					scramble = scramble + " " + m3;
+					for (let i = 0; i < 3; i++) {
+						scramble = scramble + getPossibleMove(scramble) + " ";
+					}
 					drawCube3(scramble);
 					document.getElementById("draw_other_wca").style.display = "none";
 					document.getElementById("222_draw_div").style.display = "none";
@@ -985,7 +982,7 @@ function getPossibleMove(s) {
 		m = getMove(["U", "U'", "U2", "L", "L'", "L2", "B", "B'", "B2", "D", "D'", "D2", "F", "F'", "F2"]);
 
 	} else if (last2 == "BF") {
-		m = getMove(["R", "R'", "R2", "L", "L'", "L2", "D", "D'", "D2", "B", "B'", "B2"]);
+		m = getMove(["R", "R'", "R2", "L", "L'", "L2", "D", "D'", "D2", "U", "U'", "U2"]);
 
 	} else if (last2 == "BU") {
 		m = getMove(["R", "R'", "R2", "L", "L'", "L2", "B", "B'", "B2", "D", "D'", "D2", "F", "F'", "F2"]);
@@ -1041,6 +1038,22 @@ function getScramNotationSeq(s) {
 	return scramArr;
 }
 ////////////////////
+
+///// GET SCRAM TYPE VALUE (FOR SHORTCUT KEYBOARD) /////
+function getScramTypeIndex(val) {
+	var chooseScramType = document.getElementById("scram_type");
+	var valIndex = 0;
+
+	for (let i = 0; i < chooseScramType.options.length; i++) {
+
+		if (chooseScramType.options[i].value == val) {
+			valIndex = i;
+			break;
+		}
+	}
+	return valIndex;
+}
+/////////////////
 
 function drawScram() {
 	document.getElementById("draw_other_wca").innerHTML = "";

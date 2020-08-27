@@ -54,11 +54,68 @@ function importTime() {
 	if (enterVal != "") {
 		var enterTimeVal = parseFloat(enterVal);
 
-		sec = Math.floor((enterTimeVal % 60) * 100) / 100;
-		mnt = Math.floor(enterTimeVal / 60);
+		/*sec = Math.round((enterTimeVal % 60) * 100) / 100;
+		mnt = Math.floor(enterTimeVal / 60);*/
+
+		if (enterFormatType_value == 1) {
+
+			if (!contain(enterVal, ":") && !contain(enterVal, ".")) {
+
+				if (enterVal.length <= 4) {
+					sec = Math.round(((enterTimeVal / 100) % 60) * 100) / 100;
+					mnt = 0;
+				} else {
+					var secVal = parseFloat(enterVal.substr(-4));
+					sec = Math.round(((secVal / 100) % 60) * 100) / 100;
+
+					var mntVal = parseInt(enterVal.substr(0, enterVal.length - 4));
+					mnt = Math.floor(secVal / 6000) + mntVal;
+				}
+
+			} else if (contain(enterVal, ":")) {
+
+				var twoDotIndex = enterVal.indexOf(":");
+				var dotIndex = enterVal.indexOf(".");
+
+				var secVal = parseFloat(enterVal.substr(twoDotIndex + 1));
+				sec = Math.round((secVal % 60) * 100) / 100;
+
+				var mntVal = parseInt(enterVal.substr(0, twoDotIndex));
+				mnt = mntVal + Math.floor(secVal / 60);
+
+			} else if (!contain(enterVal, ":") && contain(enterVal, ".")) {
+
+				sec = Math.round((enterTimeVal % 60) * 100) / 100;
+				mnt = Math.floor(enterTimeVal / 60);
+			}
+
+		} else if (enterFormatType_value == 2) {
+
+			if (!contain(enterVal, ".")) {
+
+				sec = Math.round(((enterTimeVal / 100) % 60) * 100) / 100;
+				mnt = Math.floor(enterTimeVal / 6000);
+
+			} else {
+
+				sec = Math.round((enterTimeVal % 60) * 100) / 100;
+				mnt = Math.floor(enterTimeVal / 60);
+			}
+		}
 
 		addSolve();
 		document.getElementById("import_plhd").value = "";
 		generateScram();
 	};
 };
+
+function contain(str, char) {
+	var have = false;
+	for (let i = 0; i < str.length; i++) {
+		if (str[i] == char) {
+			have = true;
+			break;
+		}
+	}
+	return have;
+}

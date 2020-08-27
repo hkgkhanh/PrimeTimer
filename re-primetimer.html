@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta name="keywords" content="prtimer, primetimer, timer, cube timer, rubiks cube, online timer, web timer">
 		<meta name="author" content="Nông Quốc Khánh">
@@ -28,13 +28,13 @@
 
 	</head>
 
-	<body onload="getSettings(); getColor(); getScramType(); changeSetting(); generateScram(); displaySession();">
+	<body onload="getSettings(); getColor(); getScramType(); changeSetting(); generateScram(); displayChooseSession(); displaySession();">
 
 		<!--##### HTML PART #####-->
 	 <header>
 	 	<!-- this is for loading screen -->
-	 	<div class="se-pre-con">
-	 		<img src="img-audio\Preloader_3.gif" alt="loading...">
+	 	<div class="se-pre-con" id="loading_div">
+	 		<img id="loading_img" src="img-audio\Preloader_3.gif" alt="loading...">
 	 	</div>
 
 		<div id="buts" style="width: 6vw; text-align: center; top: 5;">
@@ -62,7 +62,7 @@
 
 			<div id="time_imported"  style="text-align: center;">
 
-				<input id="import_plhd" type="number"></input>
+				<input id="import_plhd"></input>
 
 			</div>
 		</div>
@@ -111,38 +111,38 @@
 					<option value="111111">11x11x11</option>
 					<option>===SUBSETS===</option>
 					<option>---------2x2---------</option>
-					<option value="2223">3-gen R U F</option>
-					<option value="2226">6-gen</option>
-					<option value="222so">random moves</option>
-					<option value="222o">optimal</option>
-					<option value="222eg">EG</option>
-					<option value="222eg0">EG0/CLL</option>
-					<option value="222eg1">EG1</option>
-					<option value="222eg2">EG2</option>
+					<option value="2223">2x2 - 3-gen RUF</option>
+					<option value="2226">2x2 - 6-gen</option>
+					<option value="222so">2x2 - random moves</option>
+					<option value="222o">2x2 - optimal</option>
+					<option value="222eg">2x2 - EG</option>
+					<option value="222eg0">2x2 - EG0/CLL</option>
+					<option value="222eg1">2x2 - EG1</option>
+					<option value="222eg2">2x2 - EG2</option>
 					<option>---------3x3---------</option>
-					<option value="333r">random moves</option>
-					<option value="2gen">2-gen R U</option>
-					<option value="2genl">2-gen L U</option>
-					<option value="roux">2-gen M U (L6E)</option>
-					<option value="3gen_L">3-gen R U L</option>
-					<option value="3gen_F">3-gen R U F</option>
-					<option value="half">half turns only</option>
-					<option value="RrU">R r U</option>
-					<option value="RrUu">R r U u</option>
-					<option value="lsll">last slot + LL</option>
-					<option value="333e">edges only</option>
-					<option value="333c">corners only</option>
-					<option value="f2l">cross solved</option>
-					<option value="easy_cross">easy cross</option>
-					<option value="333ll">last layer</option>
-					<option value="zbll">ZBLL</option>
-					<option value="zbls">ZBLS</option>
-					<option value="zzll">ZZLL</option>
-					<option value="l6e">L6E (color neutral)</option>
-					<option value="cmll">CMLL</option>
-					<option value="coll">COLL</option>
-					<option value="ell">ELL</option>
-					<option value="eoline">EOLine</option>
+					<option value="333r">3x3 - random moves</option>
+					<option value="2gen">3x3 - 2-gen RU</option>
+					<option value="2genl">3x3 - 2-gen LU</option>
+					<option value="roux">3x3 - 2-gen MU (L6E)</option>
+					<option value="3gen_L">3x3 - 3-gen RUL</option>
+					<option value="3gen_F">3x3 - 3-gen RUF</option>
+					<option value="half">3x3 - half turns only</option>
+					<option value="RrU">3x3 - RrU</option>
+					<option value="RrUu">3x3 - RrUu</option>
+					<option value="lsll">3x3 - LSLL</option>
+					<option value="333e">3x3 - edges only</option>
+					<option value="333c">3x3 - corners only</option>
+					<option value="f2l">3x3 - cross solved</option>
+					<option value="easy_cross">3x3 - easy cross</option>
+					<option value="333ll">3x3 - last layer</option>
+					<option value="zbll">3x3 - ZBLL</option>
+					<option value="zbls">3x3 - ZBLS</option>
+					<option value="zzll">3x3 - ZZLL</option>
+					<option value="l6e">3x3 - L6E (color neutral)</option>
+					<option value="cmll">3x3 - CMLL</option>
+					<option value="coll">3x3 - COLL</option>
+					<option value="ell">3x3 - ELL</option>
+					<option value="eoline">3x3 - EOLine</option>
 					<option>---------4567---------</option>
 					<option value="444si">4x4x4 SiGN</option>
 					<option value="444yj">4x4x4 YJ</option>
@@ -158,22 +158,22 @@
 					<option value="777si">7x7x7 SiGN</option>
 					<option value="7edge">7x7x7 edges</option>
 					<option>-----MEGAMINX-----</option>
-					<option value="mgmo">old style</option>
-					<option value="mgmp">Pochmann</option>
-					<option value="mgmc">Carrot</option>
-					<option value="minx2g">2-gen R U</option>
-					<option value="mlsll">last slot + LL</option>
+					<option value="mgmo">Megaminx - old style</option>
+					<option value="mgmp">Megaminx - Pochmann</option>
+					<option value="mgmc">Megaminx - Carrot</option>
+					<option value="minx2g">Megaminx - 2-gen RU</option>
+					<option value="mlsll">Megaminx - LSLL</option>
 					<option>-----PYRAMINX-----</option>
-					<option value="pyro">optimal</option>
+					<option value="pyro">Pyramix - optimal</option>
 					<option>--------SKEWB--------</option>
-					<option value="skbo">optimal</option>
+					<option value="skbo">Skewb - optimal</option>
 					<option>-----SQUARE-1-----</option>
-					<option value="sq1h">turn metric</option>
-					<option value="sq1t">twist metric</option>
+					<option value="sq1h">Sq1 - turn metric</option>
+					<option value="sq1t">Sq1 - twist metric</option>
 					<option>-------CLOCK-------</option>
-					<option value="clkj">Jaap order</option>
-					<option value="clkc">concise</option>
-					<option value="clke">effiencet order</option>
+					<option value="clkj">Clock - Jaap order</option>
+					<option value="clkc">Clock - concise</option>
+					<option value="clke">Clock - effiencet order</option>
 					<option>====OTHERS====</option>
 					<option value="15p">15 puzzle</option>
 					<option value="sq2">Square-2</option>
@@ -202,86 +202,68 @@
 
 		<div id="stat_td">
 
-			<div class="statTd_td">
+			<div id="statTd_td" class="statTd_td">
 
 				<div id="div_ses_choose" style="text-align: center; width: 100%;">
 					<text>session</text>
-					<select id="choose_session" style="border: none" onchange="document.getElementById('choose_session').blur(); displaySession();" class="sel">
-						<option value="1" selected="selected">&ensp; 1 &ensp;</option>
-						<option value="2">&ensp; 2 &ensp;</option>
-						<option value="3">&ensp; 3 &ensp;</option>
-						<option value="4">&ensp; 4 &ensp;</option>
-						<option value="5">&ensp; 5 &ensp;</option>
-						<option value="6">&ensp; 6 &ensp;</option>
-						<option value="7">&ensp; 7 &ensp;</option>
-						<option value="8">&ensp; 8 &ensp;</option>
-						<option value="9">&ensp; 9 &ensp;</option>
-						<option value="10">&ensp; 10 &ensp;</option>
-						<option value="11">&ensp; 11 &ensp;</option>
-						<option value="12">&ensp; 12 &ensp;</option>
-						<option value="13">&ensp; 13 &ensp;</option>
-						<option value="14">&ensp; 14 &ensp;</option>
-						<option value="15">&ensp; 15 &ensp;</option>
-						<option value="16">&ensp; 16 &ensp;</option>
-						<option value="17">&ensp; 17 &ensp;</option>
-						<option value="18">&ensp; 18 &ensp;</option>
-						<option value="19">&ensp; 19 &ensp;</option>
-						<option value="20">&ensp; 20 &ensp;</option>
+					<select id="choose_session" style="border: none;width: 40px; padding-left: 7px; padding-right: 7px;;" onchange="document.getElementById('choose_session').blur(); displaySession();" class="sel">
 					</select>
-					<button id="reset_ses" onclick="resetSes()" title="Clear session">X</button></br>
+					<button id="reset_ses" onclick="resetSes()" title="Clear session">X</button>
+					<button id="add_ses" onclick="addSes()" title="Add session">+</button>
+					<button id="del_ses" onclick="if (confirm('Delete this session?')) {delSes()}" title="Delete session">-</button><br>
 
 				</div>
 
 				</br>
 
-				<div>
+				<div id="avg_table_div">
 
 					<table id="avg_table" style="width: 100%; border: dashed; border-width: 1px; line-height: 1.5;" cellpadding="4px">
 
-						<tr>
+						<tr class="table_cell">
 
-							<td style="width: 30%; text-align: center;">
+							<td class="table_cell" style="width: 30%; text-align: center;">
 
 								</br>
-								<text>single</text></br>
-								<text id="word_mo3">mo3</text></br>
-								<text id="word_ao5">ao5</text></br>
-								<text id="word_ao12">ao12</text></br>
-								<text id="word_ao50">ao50</text></br>
-								<text id="word_ao100">ao100</text></br>
-								<text id="word_ao200">ao200</text></br>
-								<text id="word_ao500">ao500</text></br>
-								<text id="word_ao1000">ao1000</text></br>
+								<text class="table_cell">single</text></br>
+								<text class="table_cell" id="word_mo3">mo3</text></br>
+								<text class="table_cell" id="word_ao5">ao5</text></br>
+								<text class="table_cell" id="word_ao12">ao12</text></br>
+								<text class="table_cell" id="word_ao50">ao50</text></br>
+								<text class="table_cell" id="word_ao100">ao100</text></br>
+								<text class="table_cell" id="word_ao200">ao200</text></br>
+								<text class="table_cell" id="word_ao500">ao500</text></br>
+								<text class="table_cell" id="word_ao1000">ao1000</text></br>
 
 							</td>
 
-							<td style="width: 35%; text-align: center;">
+							<td class="table_cell" style="width: 35%; text-align: center;">
 
-								<text>current</text></br>
-								<text id="cur_single" onclick="showStat(1)">-</text></br>
-								<text id="cur_mo3" onclick="showStat(3)">-</text></br>
-								<text id="cur_ao5" onclick="showStat(5)">-</text></br>
-								<text id="cur_ao12" onclick="showStat(12)">-</text></br>
-								<text id="cur_ao50" onclick="showStat(50)">-</text></br>
-								<text id="cur_ao100" onclick="showStat(100)">-</text></br>
-								<text id="cur_ao200" onclick="showStat(200)">-</text></br>
-								<text id="cur_ao500" onclick="showStat(500)">-</text></br>
-								<text id="cur_ao1000" onclick="showStat(1000)">-</text></br>
+								<text class="table_cell">current</text></br>
+								<text class="table_cell" id="cur_single" onclick="showStat(1)">-</text></br>
+								<text class="table_cell" id="cur_mo3" onclick="showStat(3)">-</text></br>
+								<text class="table_cell" id="cur_ao5" onclick="showStat(5)">-</text></br>
+								<text class="table_cell" id="cur_ao12" onclick="showStat(12)">-</text></br>
+								<text class="table_cell" id="cur_ao50" onclick="showStat(50)">-</text></br>
+								<text class="table_cell" id="cur_ao100" onclick="showStat(100)">-</text></br>
+								<text class="table_cell" id="cur_ao200" onclick="showStat(200)">-</text></br>
+								<text class="table_cell" id="cur_ao500" onclick="showStat(500)">-</text></br>
+								<text class="table_cell" id="cur_ao1000" onclick="showStat(1000)">-</text></br>
 
 							</td>
 
-							<td style="width: 35%; text-align: center;">
+							<td class="table_cell" style="width: 35%; text-align: center;">
 
-								<text>best</text></br>
-								<text id="best_single" onclick="showStat(1.5)">-</text></br>
-								<text id="best_mo3" onclick="showStat(3.5)">-</text></br>
-								<text id="best_ao5" onclick="showStat(5.5)">-</text></br>
-								<text id="best_ao12" onclick="showStat(12.5)">-</text></br>
-								<text id="best_ao50" onclick="showStat(50.5)">-</text></br>
-								<text id="best_ao100" onclick="showStat(100.5)">-</text></br>
-								<text id="best_ao200" onclick="showStat(200.5)">-</text></br>
-								<text id="best_ao500" onclick="showStat(500.5)">-</text></br>
-								<text id="best_ao1000" onclick="showStat(1000.5)">-</text></br>
+								<text class="table_cell">best</text></br>
+								<text class="table_cell" id="best_single" onclick="showStat(1.5)">-</text></br>
+								<text class="table_cell" id="best_mo3" onclick="showStat(3.5)">-</text></br>
+								<text class="table_cell" id="best_ao5" onclick="showStat(5.5)">-</text></br>
+								<text class="table_cell" id="best_ao12" onclick="showStat(12.5)">-</text></br>
+								<text class="table_cell" id="best_ao50" onclick="showStat(50.5)">-</text></br>
+								<text class="table_cell" id="best_ao100" onclick="showStat(100.5)">-</text></br>
+								<text class="table_cell" id="best_ao200" onclick="showStat(200.5)">-</text></br>
+								<text class="table_cell" id="best_ao500" onclick="showStat(500.5)">-</text></br>
+								<text class="table_cell" id="best_ao1000" onclick="showStat(1000.5)">-</text></br>
 
 							</td>
 
@@ -296,11 +278,11 @@
 			<div id="solve_table" class="statTd_td">
 
 				<table id="del_table" style="border-bottom: solid; border-width: 1px; width: 100%;">
-					<tr>
-						<td colspan="2" style="text-align: center">
-							<div style="text-align: center; width: 100%;" id="mean_stat" onclick="showStat(0)">
-								<text>mean: </text><text id="ses_mean">0.00</text>
-								(<text id="ses_not_dnf">0</text>/<text id="ses_length">0</text>)
+					<tr class="table_cell">
+						<td class="table_cell" colspan="2" style="text-align: center">
+							<div class="table_cell" style="text-align: center; width: 100%;" id="mean_stat" onclick="showStat(0)">
+								<text class="table_cell">mean: </text><text class="table_cell" id="ses_mean">0.00</text>
+								(<text class="table_cell" id="ses_not_dnf">0</text>/<text class="table_cell" id="ses_length">0</text>)
 							</div>
 						</td>
 					</tr>
@@ -345,8 +327,8 @@
 				</g>
 			</svg>
 		</div>
-		<div style="width:180px; height:160px;" id="skb_draw_div">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -4 244 220" style="stroke-linejoin:round;">
+		<div style="width:200px; height:160px;" id="skb_draw_div">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -4 270 220" style="stroke-linejoin:round;">
 				<g>
 					<polygon points="116,2 86,20 146,20" stroke="black" id="skb_U1"/>
 					<polygon points="86,20 56,38 86,56" stroke="black" id="skb_U2"/>
@@ -487,52 +469,57 @@
 
 		<dialog id="option_dialog">
 			<br>
-			<div align="center" style="font-size: 7vh"><b>Options</b></div>
+			<div align="center" style="font-size: 40px"><b>Options</b></div>
 			<br>
-			<div style="overflow-y: scroll; height: 65%; border-style: solid; border-width: 1px; padding-left: 5px; line-height: 1.5; font-size: 15px;">
-				<p style="padding-left: 5px; font-size: 3vh; text-align: center;"><b>Settings</b></p>
+			<div style="overflow-y: scroll; height: 65%; border: none; padding-left: 5px; line-height: 1.5; font-size: 15px;">
+				<p style="padding-left: 5px; font-size: 25px; text-align: center;"><b>Settings</b></p>
+				<ul>
 
-					<label>
-						<input id="hide_all" type="checkbox" onchange="changeSetting()">
-						<text>hide all elements when solving</text>
-					</label>
-					<br>
-
-					<text>use WCA inspection</text>
-					<select id="inspect_type" class="sel" onchange="changeSetting()">
-						<option value="1" selected="selected">yes &ensp;</option>
-						<option value="2">no &ensp;</option>
-					</select>
-					</br>
-
-					<text>enter time with</text>
+					<li><text>enter time with</text>
 					<select id="enter_time_type" class="sel" onchange="changeSetting()">
 						<option value="1" selected="selected">timer &ensp;</option>
 						<option value="2">typing &ensp;</option>
-					</select>
-					</br>
+					</select></li>
 
-					<text>hide timer when solving</text>
-					<select id="hide_type" class="sel" onchange="changeSetting()">
-						<option value="1" selected="selected">no &ensp;</option>
-						<option value="2">yes &ensp;</option>
-					</select>
-					</br>
+					<li><label>
+						<input id="inspect_type" type="checkbox" onchange="changeSetting()">
+						<text>use WCA inspection</text>
+					</label></li>
 
-					<text>draw scramble</text>
-					<select id="draw_type" class="sel" onchange="changeSetting()">
-						<option value="1" selected="selected">yes &ensp;</option>
-						<option value="2">no &ensp;</option>
-					</select>
-					</br>
+					<li><label>
+						<input id="hide_all" type="checkbox" onchange="changeSetting()">
+						<text>hide all elements when solving</text>
+					</label></li>
 
-					<label>
+					<li><label>
+						<input id="hide_type" type="checkbox" onchange="changeSetting()">
+						<text>hide timer when solving</text>
+					</label></li>
+
+					<li><text>enter time (by typing) format</text>
+					<select id="enter_format_type" class="sel" onchange="changeSetting()">
+						<option value="1" selected="selected">mm:ss.xx &ensp;</option>
+						<option value="2">ss.xx &ensp;</option>
+					</select></li>
+
+					<li><label>
+						<input id="draw_type" type="checkbox" onchange="changeSetting()">
+						<text>draw scramble</text>
+					</label></li>
+
+					<li><label>
 						<input id="wide_moves" type="checkbox" onchange="changeSetting()">
 						<text>use wide moves for 3bld scrambles</text>
-					</label>
-					<br>
+					</label></li>
 
-					<p style="padding-left: 5px; font-size: 3vh; text-align: center;"><b>Color</b></p>
+					<li><label>
+						<text>time split (1~99):</text>
+						<input id="time_split" type="number" maxlength="2" min="1" max="99" style="border: none; width: 30px;" oninput="changeSetting()">
+						<text>phase(s)</text>
+					</label></li>
+				</ul>
+
+					<p style="padding-left: 5px; font-size: 25px; text-align: center;"><b>Color</b></p>
 
 					<text>background color</text>
 					<input type="color" id="bg_color" onchange="changeSetting()">
@@ -548,9 +535,9 @@
 
 					<text>link color</text>
 					<input type="color" id="link_color" onchange="changeSetting()">
-					<br><br>
+					<br></li><br>
 
-					<text>Not sure which color theme you like? Try one of these:</text>
+					<text>Not sure what color theme you like? Try one of these:</text>
 					<ul>
 						<li class="theme" onclick="changeTheme('#FFFFFF', '#FFFFFF', '#000000', '#0000FF')">White</li>
 						<li class="theme" onclick="changeTheme('#000000', '#000000', '#FFFFFF', '#FFFF00')">Black</li>
@@ -566,47 +553,35 @@
 				</div>
 				<br>
 				<div align="center">
-					<button style="height: 4vh; width: 8vh; font-size: 3vh;" id="close_opt_but"> ok </button> 
+					<button style="font-size: 20px" id="close_opt_but"> ok </button> 
 				</div>
 		</dialog>
 
 		<dialog id="about_dialog">
 
 			<br>
-			<div align="center" style="font-size: 7vh"><b>About PrimeTimer</b></div>
+			<div align="center" style="font-size: 40px"><b>About PrimeTimer</b></div>
 			<br>
 
-			<div style="overflow-y: scroll; height: 65%; border-style: solid; border-width: 1px; padding-left: 5px; line-height: 1.5; font-size: 15px;">
+			<div style="overflow-y: scroll; height: 65%; border: none; padding-left: 5px; padding-right: 5px; line-height: 1.5; font-size: 15px;">
 				
-				<p style="text-align: center; padding-left: 5px; font-size: 3vh;"><b>Introduction</b></p>
-				<p>PrimeTimer is a web timer for Rubik's cube and twisty puzzles speedsolvers, it provides varieties of functions, such as:</p>
+				<p style="text-align: center; padding-left: 5px; font-size: 25px;"><b>Introduction</b></p>
+				<p>PrimeTimer is a web timer for Rubik's cube and twisty puzzles speedsolvers, it provides varieties of functions:</p>
 				<ul>
-					<li>Timer</li>
-					<li>Inspection time</li>
-					<li>Voice alert of 8 seconds and 12 seconds inspection</li>
-					<li>Import time by timer or typing</li>
-					<li>Hide or show time when solving</li>
-					<li>Scrambles for WCA events and 70+ puzzles & subsets</li>
-					<li>Get last scramble</li>
-					<li>Draw scramble function (only available for most WCA events)</li>
-					<li>Mutiple sessions</li>
-					<li>Set penalty of any solve</li>
-					<li>Calculate precise mean, average...</li>
-					<li>Keyboard shortcuts</li>
-					<li>Customizable color theme</li>
+					<li>Timer, inspection time + 8/12 seconds voice alert, import time by timer/typing</li>
+					<li>Scrambles for WCA events and 70+ puzzles & subsets, get last scramble, draw scramble</li>
+					<li>Mutiple sessions, set penalty of any solve, calculate mean, average...</li>
 				</ul>
-				<p><i class="fa fa-warning" style="color:red"></i> PLease be aware that PrimeTimer is currently only available for PC users, it won't work on mobile browsers. It is also recommended that you should use Chrome, Edge or Cốc Cốc to browse PrimeTimer as it has only been tested on these browsers.</p>
+				<p><i class="fa fa-warning" style="color:red"></i> PLease be aware that PrimeTimer is currently only available for PC users (mobile supports currently in developing). It is recommended that you should use Chrome, Edge or Cốc Cốc to browse PrimeTimer as it has only been tested on these browsers. For more information click <a class="link" href="https://khanhfromvn.github.io/primetimer_page.html" target="_blank">here</a>.</p>
 
-				<p style="text-align: center; padding-left: 5px; font-size: 3vh;"><b>Copyright</b></p>
-				<text>&#169; 2020 Nông Quốc Khánh</text>
-				<p>PrimeTimer is a product of Nông Quốc Khánh, a young cuber and developer who based in Viet Nam.</p>
-				<p>Written and UI designed by Nông Quốc Khánh: <a href="mailto:hkg11khanh@gmail.com" id="k_gmail">hkg11khanh@gmail.com</a></p>
-				<p>Logo designed by Nguyễn Lương Phúc: <a href="mailto:heliosqv98@gmail.com" id="p_gmail">heliosqv98@gmail.com</a></p>
+				<p style="text-align: center; padding-left: 5px; font-size: 25px;"><b>Copyright</b></p>
+				<p>Written and UI designed by Nông Quốc Khánh: <a href="mailto:hkg11khanh@gmail.com" class="link">hkg11khanh@gmail.com</a></p>
+				<p>Logo designed by Nguyễn Lương Phúc: <a href="mailto:heliosqv98@gmail.com" class="link">heliosqv98@gmail.com</a></p>
 
-				<p style="text-align: center; padding-left: 5px; font-size: 3vh;"><b>Keyboard shortcuts</b></p>
+				<p style="text-align: center; padding-left: 5px; font-size: 25px;"><b>Keyboard shortcut</b></p>
 				<table id="shortcut_table" style="margin: auto; border: solid; border-width: 1px; padding: 2px;">
 					<tr style="border-bottom: solid">
-						<td style="width: 200px; text-align: center;">Key</td>
+						<td style="width: 150px; text-align: center;">Key</td>
 						<td style="text-align: center">Function</td>
 					</tr>
 					<tr>
@@ -615,70 +590,90 @@
 					</tr>
 					<tr>
 						<td><b>Alt + " ' "</b></td>
-						<td>Reset session</td>
+						<td>Remove all solves in current session</td>
 					</tr>
 					<tr>
-						<td><b>Alt + " [ "</b></td>
-						<td>Get last scramble</td>
+						<td><b>Alt + [</b> / <b>]</b></td>
+						<td>Get last / next scramble</td>
 					</tr>
 					<tr>
-						<td><b>Alt + " ] "</b></td>
-						<td>Get next scramble</td>
+						<td><b>Alt + ,</b> / <b>.</b> / <b>/</b></td>
+						<td>Set last solve's penalty to OK / +2 / DNF</td>
 					</tr>
 					<tr>
-						<td><b>Alt + " , "</b></td>
-						<td>Set last solve's penalty to OK</td>
+						<td><b>Alt + " = "</b></td>
+						<td>Add new session</td>
 					</tr>
 					<tr>
-						<td><b>Alt + " . "</b></td>
-						<td>Set last solve's penalty to +2</td>
+						<td><b>Alt + " - "</b></td>
+						<td>Delete current session</td>
 					</tr>
 					<tr>
-						<td><b>Alt + " / "</b></td>
-						<td>Set last solve's penalty to DNF</td>
+						<td><b>Alt + 2 ~ 9</b></td>
+						<td>Scramble 2x2 ~ 9x9</td>
+					</tr>
+					<tr>
+						<td><b>Alt + Q</b> / <b>P</b> / <b>C</b> / <b>M</b> / <b>S</b></td>
+						<td>Scramble Sq1 / Pyra / Clock / Mega / Skewb</td>
+					</tr>
+					<tr>
+						<td><b>Alt + 0</b> / <b>1</b></td>
+						<td>Scramble 10x10 / 11x11</td>
 					</tr>
 				</table>
 			</div>
 			</br>
 
 			<div align="center">
-				<button style="height: 4vh; width: 8vh; font-size: 3vh;" id="close_about_but"> ok </button> 
+				<button style="font-size: 20px" id="close_about_but"> ok </button> 
 			</div>
 		</dialog>
 
 		<dialog id="stat_dialog">
 			<br>
-			<div align="center"><b><text style="font-size: 7vh;">Current statistics</text></b></div>
+			<div align="center"><b><text style="font-size: 40px;">Current statistics</text></b></div>
 			<br>
 
 			<div id="stats" style="height: 65%; overflow-y: scroll; line-height: 2;"></div>
 			<br>
 
 			<div align="center">
-				<button style="height: 4vh; width: 8vh; font-size: 3vh;" id="close_stat_but"> ok </button> 
+				<button style="font-size: 20px" id="close_stat_but"> ok </button> 
 			</div>
 		</dialog>
 
-		<dialog id="solve_dialog" style="width: 50vh; height: 50vh; top: 20vh;">
-			<div align="center" style="font-size: 3vh"><b>Solve no.<text id="solve_no" style="font-size: 3vh"></text></b></div>
+		<dialog id="solve_dialog">
+			<div align="center" style="font-size: 20px"><b>Solve no.<text id="solve_no" style="font-size: 20px"></text></b></div>
 			<br><br>
 
-			<div align="center"><b><text id="solve_strng" style="font-size: 7vh"></text></b></div>
+			<div align="center"><b><text id="solve_strng" style="font-size: 50px"></text></b></div>
 			<br>
-			<div align="center" style="font-size: 2.4vh">
-				<text onclick="setOK(solveIndex); document.getElementById('solve_strng').innerHTML = sessions[sesNum - 1][solveIndex].strng;" class="solve_pen">&ensp; ok &ensp;</text>
-				<text onclick="setP2(solveIndex); document.getElementById('solve_strng').innerHTML = sessions[sesNum - 1][solveIndex].strng;" class="solve_pen">&ensp; +2 &ensp;</text>
-				<text onclick="setDNF(solveIndex); document.getElementById('solve_strng').innerHTML = sessions[sesNum - 1][solveIndex].strng;" class="solve_pen">&ensp; DNF &ensp;</text>
+			<div align="center" style="font-size: 15px">
+				<text onclick="setOK(solveIndex); document.getElementById('solve_strng').innerHTML = sessions[sesNum - 1].arr[solveIndex].strng;" class="solve_pen">&ensp; ok &ensp;</text>
+				<text onclick="setP2(solveIndex); document.getElementById('solve_strng').innerHTML = sessions[sesNum - 1].arr[solveIndex].strng;" class="solve_pen">&ensp; +2 &ensp;</text>
+				<text onclick="setDNF(solveIndex); document.getElementById('solve_strng').innerHTML = sessions[sesNum - 1].arr[solveIndex].strng;" class="solve_pen">&ensp; DNF &ensp;</text>
 				<text onclick="delSolve(solveIndex)" class="solve_pen">&ensp; delete &ensp;</text>
 			</div>
 			<br>
 
 			<div align="center">
-				<table id="solve_scram_table" style="width: 70%; height: 30%;">
+				<table id="solve_scram_table" style="width: 70%">
 					<tr>
-						<td style="width: 30%; vertical-align: top; font-size: 2.4vh;"> Scramble: </td>
+						<td style="width: 30%; vertical-align: top; text-align: right; font-size: 15px;"> Comment: </td>
 						<td style="vertical-align: top">
-							<div style="overflow-y: scroll; height: 14vh; font-size: 2.4vh;" id="solve_scram"></div>
+							<input style=" font-size: 15px; border: none;" id="solve_comment" onchange="addComment(solveIndex)"></input>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 30%; vertical-align: top; text-align: right; font-size: 15px;"> Scramble: </td>
+						<td style="vertical-align: top">
+							<div style="overflow-y: scroll; max-height: 70px; font-size: 15px;" id="solve_scram"></div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 30%; vertical-align: top; text-align: right; font-size: 15px;"> Date: </td>
+						<td style="vertical-align: top">
+							<div style="font-size: 15px" id="solve_date"></div>
 						</td>
 					</tr>
 				</table>
@@ -686,7 +681,7 @@
 			<br>
 
 			<div align="center">
-				<button style="height: 4vh; width: 8vh; font-size: 3vh;" id="close_solve_but"> ok </button> 
+				<button style="font-size: 20px" id="close_solve_but"> ok </button> 
 			</div>
 		</dialog>
 
@@ -704,6 +699,7 @@
 		<script src="scripts\data_storage.js"></script>
 		<script src="scripts\timer.js"></script>
 		<script src="scripts\dialogs.js"></script>
+		<script src="scripts\Session.js"></script>
 		<script src="scripts\options.js"></script>
 		<script src="scripts\scram-gen\scrambles_part.js"></script>
 		<script src="scripts\key_events.js"></script>
@@ -748,15 +744,17 @@
 			var hideAll;
 			var wideMoves;
 			var enterTimeType_value;
+			var enterFormatType_value;
 			var scramType_value;
 			var hideType_value;
 			var drawType_value;
+			var timeSplit_value;
 			var randomScramble;
 			var scramble = "";
 			var lastScram = "";
 			var ind1 = 0;
 			var sesNum;
-			var sessions = [ses1 = [], ses2 = [], ses3 = [], ses4 = [], ses5 = [], ses6 = [], ses7 = [], ses8 = [], ses9 = [], ses10 = [], ses11 = [], ses12 = [], ses13 = [], ses14 = [], ses15 = [], ses16 = [], ses17 = [], ses18 = [], ses19 = [], ses20 = []];
+			var sessions = [];
 			var sesSum;
 			var mean;
 			var bestSingle;

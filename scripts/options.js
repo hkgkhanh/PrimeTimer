@@ -11,16 +11,25 @@ function changeSetting(){
 	var enterTimeType = document.getElementById("enter_time_type");
 	enterTimeType_value = enterTimeType.options[enterTimeType.selectedIndex].value;
 
+	//choose format for entering with typing
+	var enterFormatType = document.getElementById("enter_format_type");
+	enterFormatType_value = enterFormatType.options[enterFormatType.selectedIndex].value;
+
 	//choose inspect type
 	var inspectType = document.getElementById("inspect_type");
-	inspectType_value = inspectType.options[inspectType.selectedIndex].value;
+	inspectType_value = inspectType.checked;
 
 	//choose hide type
 	var hideType = document.getElementById("hide_type");
-	hideType_value = hideType.options[hideType.selectedIndex].value;
+	hideType_value = hideType.checked;
 
 	var drawType = document.getElementById("draw_type");
-	drawType_value = drawType.options[drawType.selectedIndex].value;
+	drawType_value = drawType.checked;
+
+	//time split
+	var timeSplit = document.getElementById("time_split");
+	timeSplit_value = parseInt(getTimeSplitVal());
+	document.getElementById("time_split").value = timeSplit_value;
 
 	//color
 	bgColor_value = document.getElementById("bg_color").value;
@@ -51,9 +60,10 @@ function changeSetting(){
 		document.getElementById("two_dot").style.display = "none";
 		document.getElementById("draw_scram_dialog").style.display = "block";
 	};
-	if (drawType_value == 1) {
+	if (drawType_value) {
 		document.getElementById("draw_scram_dialog").style.display = "block";
-	} else if (drawType_value == 2) {
+
+	} else {
 		document.getElementById("draw_scram_dialog").style.display = "none";
 	};
 				
@@ -85,7 +95,9 @@ function changeColor() {
 	document.getElementById("option_dialog").style.color = fontColor_value;
 	document.getElementById("inspect_type").style.color = fontColor_value;
 	document.getElementById("enter_time_type").style.color = fontColor_value;
+	document.getElementById("enter_format_type").style.color = fontColor_value;
 	document.getElementById("hide_type").style.color = fontColor_value;
+	document.getElementById("time_split").style.color = fontColor_value;
 	document.getElementById("draw_type").style.color = fontColor_value;
 	document.getElementById("shortcut_table").style.color = fontColor_value;
 	document.getElementById("stat_dialog").style.color = fontColor_value;
@@ -95,6 +107,7 @@ function changeColor() {
 	document.getElementById("import_plhd").style.color = fontColor_value;
 	document.getElementById("div_hide").style.color = fontColor_value;
 	document.getElementById("draw_scram_dialog").style.color = fontColor_value;
+	document.getElementById("solve_comment").style.color = fontColor_value;
 	//bg color
 	document.body.style.backgroundColor = bgColor_value;
 	document.getElementById("time").style.backgroundColor = bgColor_value;
@@ -105,7 +118,9 @@ function changeColor() {
 	document.getElementById("stat_dialog").style.backgroundColor = boardColor_value;
 	document.getElementById("solve_dialog").style.backgroundColor = boardColor_value;
 	document.getElementById("inspect_type").style.backgroundColor = boardColor_value;
+	document.getElementById("time_split").style.backgroundColor = boardColor_value;
 	document.getElementById("enter_time_type").style.backgroundColor = boardColor_value;
+	document.getElementById("enter_format_type").style.backgroundColor = boardColor_value;
 	document.getElementById("hide_type").style.backgroundColor = boardColor_value;
 	document.getElementById("draw_type").style.backgroundColor = boardColor_value;
 	document.getElementById("scram_td").style.backgroundColor = boardColor_value;
@@ -115,9 +130,11 @@ function changeColor() {
 	document.getElementById("choose_session").style.backgroundColor = boardColor_value;
 	document.getElementById("stat_td").style.backgroundColor = boardColor_value;
 	document.getElementById("draw_scram_dialog").style.backgroundColor = boardColor_value;
-	//link color, fixing it
-	document.getElementById("k_gmail").style.color = linkColor_value;
-	document.getElementById("p_gmail").style.color = linkColor_value;
+	document.getElementById("solve_comment").style.backgroundColor = boardColor_value;
+	//link color
+	for (i = 0; i < document.getElementsByClassName("link").length; i++) {
+  		document.getElementsByClassName("link")[i].style.color = linkColor_value;
+	}
 };
 
 function hideDiv() {
@@ -130,7 +147,16 @@ function hideDiv() {
 	document.getElementById("draw_scram_dialog").style.visibility = "visible";
 };
 
+function displayChooseSession() {
+	getSession();
+	for (let i = 1; i <= sessions.length; i++) {
+		addOpt(i);
+	}
+}
+
 function displaySession(){
+	
+	getSession();
 
 	var chooseSession = document.getElementById("choose_session");
 	var sesChosen = chooseSession.options[chooseSession.selectedIndex].value;
@@ -212,21 +238,19 @@ function displaySession(){
 	bestA1000strngArray = [];
 	bestA1000TraoArray = [];
 
-	getSession();
-
 	timeContain();
 
-	if (sessions[sesNum - 1].length != 0) {
+	if (sessions[sesNum - 1].arr.length != 0) {
 
-		for (var ind0 = 0; ind0 < sessions[sesNum - 1].length; ind0++) {
-			if (sessions[sesNum - 1][ind0].time < bestSingle && sessions[sesNum - 1][ind0].pen != "dnf") {
-				bestSingle = sessions[sesNum - 1][ind0].time;
-				bestSinglestrng = sessions[sesNum - 1][ind0].strng;
-				bestSingleTrao = sessions[sesNum - 1][ind0].trao;
+		for (var ind0 = 0; ind0 < sessions[sesNum - 1].arr.length; ind0++) {
+			if (sessions[sesNum - 1].arr[ind0].time < bestSingle && sessions[sesNum - 1].arr[ind0].pen != "dnf") {
+				bestSingle = sessions[sesNum - 1].arr[ind0].time;
+				bestSinglestrng = sessions[sesNum - 1].arr[ind0].strng;
+				bestSingleTrao = sessions[sesNum - 1].arr[ind0].trao;
 			};
 		};
 		document.getElementById("best_single").innerHTML = bestSinglestrng;
-		document.getElementById("cur_single").innerHTML = sessions[sesNum - 1][sessions[sesNum - 1].length - 1].strng;
+		document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
 				
 		document.getElementById("ses_mean").innerHTML = "0.00";
 		document.getElementById("ses_not_dnf").innerHTML = "0";
@@ -235,3 +259,13 @@ function displaySession(){
 		calc();
 	};
 };
+
+function getTimeSplitVal() {
+	var val = document.getElementById("time_split").value;
+	if (val === NaN || val < 1) {
+		val = 1;
+	} else if (val > 99) {
+		val = 99;
+	}
+	return val;
+}

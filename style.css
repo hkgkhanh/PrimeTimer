@@ -29,29 +29,34 @@
 				font-size: 20vh;
 				width: 75vh;
 			}
-			#time_td {
-				position: fixed;
-				width: 100%;
-				height: 100%;
-				font-size: 120px;
-				padding-top: 15vh;
-			}
 			#mnt, #scnd {
 				font-family: 'Segment7Standard';
    				font-weight: bold;
    				font-style: italic;
+   				-webkit-touch-callout: none;
+    			-webkit-user-select: none;
+     			-khtml-user-select: none;
+       			-moz-user-select: none;
+        		-ms-user-select: none;
+            	user-select: none;
 			}
 			#ispt_display {
 				color: #FF0000;
 				font-family: 'Segment7Standard';
    				font-weight: bold;
    				font-style: italic;
+   				-webkit-touch-callout: none;
+    			-webkit-user-select: none;
+     			-khtml-user-select: none;
+       			-moz-user-select: none;
+        		-ms-user-select: none;
+            	user-select: none;
 			}
 			
 			#stats {
 				padding: 5px;
 				font-family: monospace;
-				font-size: 2vh;
+				font-size: 12px;
 			}
 			#stat_td {
 				position: fixed;
@@ -234,9 +239,11 @@
 				text-decoration: underline;
 			}
 			#solve_dialog {
-				top: 20%;
 				padding-top: 1vh;
 				border-width: 2px;
+				width: 400px;
+				height: 370px;
+				top: 20vh;
 			}
 			.solve_pen:hover {
 				cursor: pointer;
@@ -259,8 +266,25 @@
 				-webkit-appearance:none;
 				appearance: none;
 			}
-
 			#reset_ses {
+				background-color: #222222;
+                border: none;
+                color: white;
+                padding: 2px 3px;
+                text-align: center;
+                font-size: 10px;
+                cursor: pointer;
+            }
+            #add_ses {
+				background-color: #222222;
+                border: none;
+                color: white;
+                padding: 2px 3px;
+                text-align: center;
+                font-size: 10px;
+                cursor: pointer;
+            }
+            #del_ses {
 				background-color: #222222;
                 border: none;
                 color: white;
@@ -325,31 +349,36 @@
 				}
 				#time_td {
 					position: fixed;
-					width: 100%;
-					height: 100%;
+					top: 0;
+					left: 0;
 					font-size: 90px;
-					padding-top: 15vh;
+					display: flex;
+  					justify-content: center;
+	  				align-items: center;
+  					width: 100vw;
+					height: 100vh;
+					z-index: -1;
 				}
 				#about_dialog {
 					top: 20%;
 					padding-top: 0px;
 					border-width: 2px;
 					width: 80vw;
-					height: 60vh;
+					height: 400px;
 				}
 				#option_dialog {
 					top: 20%;
 					padding-top: 0px;
 					border-width: 2px;
 					width: 80vw;
-					height: 60vh;
+					height: 400px;
 				}
 				#stat_dialog {
-					top: 20%;
+					top: 10%;
 					padding-top: 0px;
 					border-width: 2px;
 					width: 90vw;
-					height: 70vh;
+					height: 500px;
 					opacity: 0.99;
 				}
 			}
@@ -413,31 +442,36 @@
 				}
 				#time_td {
 					position: fixed;
-					width: 100%;
-					height: 100%;
+					top: 0;
+					left: 0;
 					font-size: 150px;
-					padding-top: 15vh;
+					display: flex;
+  					justify-content: center;
+	  				align-items: center;
+  					width: 100vw;
+					height: 100vh;
+					z-index: -1;
 				}
 				#about_dialog {
 					top: 20%;
 					padding-top: 0px;
 					border-width: 2px;
-					width: 80vh;
-					height: 60vh;
+					width: 40vw;
+					height: 400px;
 				}
 				#option_dialog {
 					top: 20%;
 					padding-top: 0px;
 					border-width: 2px;
-					width: 80vh;
-					height: 60vh;
+					width: 40vw;
+					height: 400px;
 				}
 				#stat_dialog {
-					top: 20%;
+					top: 10%;
 					padding-top: 0px;
 					border-width: 2px;
-					width: 90vh;
-					height: 70vh;
+					width: 60vw;
+					height: 500px;
 					opacity: 0.99;
 				}
 			}

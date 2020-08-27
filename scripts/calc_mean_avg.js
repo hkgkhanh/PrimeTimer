@@ -1,42 +1,59 @@
 //##### CALCULATE MEAN AND AVERAGE #####
 			function calc(){
-				if (sessions[sesNum - 1].length != 0) {
+				if (sessions[sesNum - 1].arr.length != 0) {
 					calc_mean();
+					calc_bestSingle();
 				};
-				if (sessions[sesNum - 1].length >= 3){
+				if (sessions[sesNum - 1].arr.length >= 3){
 					calc_mo3();
 				};
-				if (sessions[sesNum - 1].length >= 5){
+				if (sessions[sesNum - 1].arr.length >= 5){
 					calc_ao5();
 				};
-				if (sessions[sesNum - 1].length >= 12){
+				if (sessions[sesNum - 1].arr.length >= 12){
 					calc_ao12();
 				};
-				if (sessions[sesNum - 1].length >= 50){
+				if (sessions[sesNum - 1].arr.length >= 50){
 					calc_ao50();
 				};
-				if (sessions[sesNum - 1].length >= 100){
+				if (sessions[sesNum - 1].arr.length >= 100){
 					calc_ao100();
 				};
-				if (sessions[sesNum - 1].length >= 200){
+				if (sessions[sesNum - 1].arr.length >= 200){
 					calc_ao200();
 				};
-				if (sessions[sesNum - 1].length >= 500){
+				if (sessions[sesNum - 1].arr.length >= 500){
 					calc_ao500();
 				};
-				if (sessions[sesNum - 1].length >= 1000){
+				if (sessions[sesNum - 1].arr.length >= 1000){
 					calc_ao1000();
 				};
 			};
+
+			function calc_bestSingle() {
+				bestSingle = Math.pow(2, 53) - 1;
+				bestSinglestrng = "DNF";
+				bestSingleTrao = "";
+
+				for (var ind8 = 0; ind8 < sessions[sesNum - 1].arr.length; ind8++) {
+					if (sessions[sesNum - 1].arr[ind8].time <= bestSingle && sessions[sesNum - 1].arr[ind8].pen != "dnf") {
+						bestSingle = sessions[sesNum - 1].arr[ind8].time;
+						bestSinglestrng = sessions[sesNum - 1].arr[ind8].strng;
+						bestSingleTrao = sessions[sesNum - 1].arr[ind8].trao;
+					}
+				}
+				document.getElementById("best_single").innerHTML = bestSinglestrng;
+				document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
+			}
 
 			function calc_mean() {
 				sesSum = 0;
 				mean = 0;
 				var ind6 = 0;
 
-				for (var ind5 = 0; ind5 < sessions[sesNum - 1].length; ind5++) {
-					if (sessions[sesNum - 1][ind5].pen != "dnf") {
-						sesSum += sessions[sesNum - 1][ind5].time;
+				for (var ind5 = 0; ind5 < sessions[sesNum - 1].arr.length; ind5++) {
+					if (sessions[sesNum - 1].arr[ind5].pen != "dnf") {
+						sesSum += sessions[sesNum - 1].arr[ind5].time;
 						ind6++;
 					};
 				};
@@ -57,15 +74,15 @@
 
 				document.getElementById("ses_mean").innerHTML = meanstrng;
 				document.getElementById("ses_not_dnf").innerHTML = ind6;
-				document.getElementById("ses_length").innerHTML = sessions[sesNum - 1].length;
+				document.getElementById("ses_length").innerHTML = sessions[sesNum - 1].arr.length;
 			};
 
 			function calc_mo3() {
-				for (var ind9 = 0; ind9 < sessions[sesNum - 1].length - 2; ind9++) {
+				for (var ind9 = 0; ind9 < sessions[sesNum - 1].arr.length - 2; ind9++) {
 
-					if (sessions[sesNum - 1][ind9].pen != "dnf" && sessions[sesNum - 1][ind9 + 1].pen != "dnf" && sessions[sesNum - 1][ind9 + 2].pen != "dnf") {
+					if (sessions[sesNum - 1].arr[ind9].pen != "dnf" && sessions[sesNum - 1].arr[ind9 + 1].pen != "dnf" && sessions[sesNum - 1].arr[ind9 + 2].pen != "dnf") {
 
-						var mean3 = (sessions[sesNum - 1][ind9].time + sessions[sesNum - 1][ind9 + 1].time + sessions[sesNum - 1][ind9 + 2].time) / 3;
+						var mean3 = (sessions[sesNum - 1].arr[ind9].time + sessions[sesNum - 1].arr[ind9 + 1].time + sessions[sesNum - 1].arr[ind9 + 2].time) / 3;
 
 						mean3Array.push(mean3);
 
@@ -86,8 +103,8 @@
 						if (mean3 < bestMean3) {
 							bestMean3 = mean3;
 							bestMean3strng = mean3strng;
-							bestM3strngArray = [sessions[sesNum - 1][ind9].strng, sessions[sesNum - 1][ind9 + 1].strng, sessions[sesNum - 1][ind9 + 2].strng];
-							bestM3TraoArray = [sessions[sesNum - 1][ind9].trao, sessions[sesNum - 1][ind9 + 1].trao, sessions[sesNum - 1][ind9 + 2].trao];
+							bestM3strngArray = [sessions[sesNum - 1].arr[ind9].strng, sessions[sesNum - 1].arr[ind9 + 1].strng, sessions[sesNum - 1].arr[ind9 + 2].strng];
+							bestM3TraoArray = [sessions[sesNum - 1].arr[ind9].trao, sessions[sesNum - 1].arr[ind9 + 1].trao, sessions[sesNum - 1].arr[ind9 + 2].trao];
 						};
 
 					} else {
@@ -102,14 +119,14 @@
 			};
 
 			function calc_ao5() {
-				for (var ind19 = 0; ind19 < sessions[sesNum - 1].length - 4; ind19++) {
+				for (var ind19 = 0; ind19 < sessions[sesNum - 1].arr.length - 4; ind19++) {
 					var ind20 = 0;
 					var array5 = [];
 					var array5Time = [];
 
 					for (var ind21 = 0; ind21 < 5; ind21++) {
-						array5.push(sessions[sesNum - 1][ind19 + ind21]);
-						array5Time.push(sessions[sesNum - 1][ind19 + ind21].time);
+						array5.push(sessions[sesNum - 1].arr[ind19 + ind21]);
+						array5Time.push(sessions[sesNum - 1].arr[ind19 + ind21].time);
 					};
 					for (var ind22 = 0; ind22 < 5; ind22++) {
 						if (array5[ind22].pen == "dnf") {
@@ -145,8 +162,8 @@
 							bestAvg5 = avg5;
 							bestAvg5strng = avg5strng;
 							for (var ind23 = 0; ind23 < 5; ind23++) {
-								bestA5strngArray.push(sessions[sesNum - 1][ind19 + ind23].strng);
-								bestA5TraoArray.push(sessions[sesNum - 1][ind19 + ind23].trao);
+								bestA5strngArray.push(sessions[sesNum - 1].arr[ind19 + ind23].strng);
+								bestA5TraoArray.push(sessions[sesNum - 1].arr[ind19 + ind23].trao);
 							};
 						};
 
@@ -162,14 +179,14 @@
 			};
 
 			function calc_ao12() {
-				for (var ind19 = 0; ind19 < sessions[sesNum - 1].length - 11; ind19++) {
+				for (var ind19 = 0; ind19 < sessions[sesNum - 1].arr.length - 11; ind19++) {
 					var ind20 = 0;
 					var array12 = [];
 					var array12Time = [];
 
 					for (var ind21 = 0; ind21 < 12; ind21++) {
-						array12.push(sessions[sesNum - 1][ind19 + ind21]);
-						array12Time.push(sessions[sesNum - 1][ind19 + ind21].time);
+						array12.push(sessions[sesNum - 1].arr[ind19 + ind21]);
+						array12Time.push(sessions[sesNum - 1].arr[ind19 + ind21].time);
 					};
 					for (var ind22 = 0; ind22 < 12; ind22++) {
 						if (array12[ind22].pen == "dnf") {
@@ -205,8 +222,8 @@
 							bestAvg12 = avg12;
 							bestAvg12strng = avg12strng;
 							for (var ind23 = 0; ind23 < 12; ind23++) {
-								bestA12strngArray.push(sessions[sesNum - 1][ind19 + ind23].strng);
-								bestA12TraoArray.push(sessions[sesNum - 1][ind19 + ind23].trao);
+								bestA12strngArray.push(sessions[sesNum - 1].arr[ind19 + ind23].strng);
+								bestA12TraoArray.push(sessions[sesNum - 1].arr[ind19 + ind23].trao);
 							};
 						};
 
@@ -222,14 +239,14 @@
 			};
 
 			function calc_ao50() {
-				for (var ind26 = 0; ind26 < sessions[sesNum - 1].length - 49; ind26++) {
+				for (var ind26 = 0; ind26 < sessions[sesNum - 1].arr.length - 49; ind26++) {
 					var ind27 = 0;
 					var array50 = [];
 					var array50Time = [];
 
 					for (var ind28 = 0; ind28 < 50; ind28++) {
-						array50.push(sessions[sesNum - 1][ind26 + ind28]);
-						array50Time.push(sessions[sesNum - 1][ind26 + ind28].time);
+						array50.push(sessions[sesNum - 1].arr[ind26 + ind28]);
+						array50Time.push(sessions[sesNum - 1].arr[ind26 + ind28].time);
 					};
 					for (var ind29 = 0; ind29 < 50; ind29++) {
 						if (array50[ind29].pen == "dnf") {
@@ -269,8 +286,8 @@
 							bestAvg50 = avg50;
 							bestAvg50strng = avg50strng;
 							for (var ind31 = 0; ind31 < 50; ind31++) {
-								bestA50strngArray.push(sessions[sesNum - 1][ind26 + ind31].strng);
-								bestA50TraoArray.push(sessions[sesNum - 1][ind26 + ind31].trao);
+								bestA50strngArray.push(sessions[sesNum - 1].arr[ind26 + ind31].strng);
+								bestA50TraoArray.push(sessions[sesNum - 1].arr[ind26 + ind31].trao);
 							};
 						};
 
@@ -286,14 +303,14 @@
 			};
 
 			function calc_ao100() {
-				for (var ind34 = 0; ind34 < sessions[sesNum - 1].length - 99; ind34++) {
+				for (var ind34 = 0; ind34 < sessions[sesNum - 1].arr.length - 99; ind34++) {
 					var ind35 = 0;
 					var array100 = [];
 					var array100Time = [];
 
 					for (var ind36 = 0; ind36 < 100; ind36++) {
-						array100.push(sessions[sesNum - 1][ind34 + ind36]);
-						array100Time.push(sessions[sesNum - 1][ind34 + ind36].time);
+						array100.push(sessions[sesNum - 1].arr[ind34 + ind36]);
+						array100Time.push(sessions[sesNum - 1].arr[ind34 + ind36].time);
 					};
 					for (var ind37 = 0; ind37 < 100; ind37++) {
 						if (array100[ind37].pen == "dnf") {
@@ -333,8 +350,8 @@
 							bestAvg100 = avg100;
 							bestAvg100strng = avg100strng;
 							for (var ind39 = 0; ind39 < 100; ind39++) {
-								bestA100strngArray.push(sessions[sesNum - 1][ind34 + ind39].strng);
-								bestA100TraoArray.push(sessions[sesNum - 1][ind34 + ind39].trao);
+								bestA100strngArray.push(sessions[sesNum - 1].arr[ind34 + ind39].strng);
+								bestA100TraoArray.push(sessions[sesNum - 1].arr[ind34 + ind39].trao);
 							};
 						};
 
@@ -350,14 +367,14 @@
 			};
 
 			function calc_ao200() {
-				for (var ind42 = 0; ind42 < sessions[sesNum - 1].length - 199; ind42++) {
+				for (var ind42 = 0; ind42 < sessions[sesNum - 1].arr.length - 199; ind42++) {
 					var ind43 = 0;
 					var array200 = [];
 					var array200Time = [];
 
 					for (var ind44 = 0; ind44 < 200; ind44++) {
-						array200.push(sessions[sesNum - 1][ind42 + ind44]);
-						array200Time.push(sessions[sesNum - 1][ind42 + ind44].time);
+						array200.push(sessions[sesNum - 1].arr[ind42 + ind44]);
+						array200Time.push(sessions[sesNum - 1].arr[ind42 + ind44].time);
 					};
 					for (var ind45 = 0; ind45 < 100; ind45++) {
 						if (array200[ind45].pen == "dnf") {
@@ -397,8 +414,8 @@
 							bestAvg200 = avg200;
 							bestAvg200strng = avg200strng;
 							for (var ind47 = 0; ind47 < 100; ind47++) {
-								bestA200strngArray.push(sessions[sesNum - 1][ind42 + ind47].strng);
-								bestA200TraoArray.push(sessions[sesNum - 1][ind42 + ind47].trao);
+								bestA200strngArray.push(sessions[sesNum - 1].arr[ind42 + ind47].strng);
+								bestA200TraoArray.push(sessions[sesNum - 1].arr[ind42 + ind47].trao);
 							};
 						};
 
@@ -414,14 +431,14 @@
 			};
 
 			function calc_ao500() {
-				for (var ind48 = 0; ind48 < sessions[sesNum - 1].length - 499; ind48++) {
+				for (var ind48 = 0; ind48 < sessions[sesNum - 1].arr.length - 499; ind48++) {
 					var ind49 = 0;
 					var array500 = [];
 					var array500Time = [];
 
 					for (var ind50 = 0; ind50 < 500; ind50++) {
-						array500.push(sessions[sesNum - 1][ind48 + ind50]);
-						array500Time.push(sessions[sesNum - 1][ind48 + ind50].time);
+						array500.push(sessions[sesNum - 1].arr[ind48 + ind50]);
+						array500Time.push(sessions[sesNum - 1].arr[ind48 + ind50].time);
 					};
 					for (var ind51 = 0; ind51 < 500; ind51++) {
 						if (array500[ind51].pen == "dnf") {
@@ -461,8 +478,8 @@
 							bestAvg500 = avg500;
 							bestAvg500strng = avg500strng;
 							for (var ind53 = 0; ind53 < 500; ind53++) {
-								bestA500strngArray.push(sessions[sesNum - 1][ind48 + ind53].strng);
-								bestA500TraoArray.push(sessions[sesNum - 1][ind48 + ind53].trao);
+								bestA500strngArray.push(sessions[sesNum - 1].arr[ind48 + ind53].strng);
+								bestA500TraoArray.push(sessions[sesNum - 1].arr[ind48 + ind53].trao);
 							};
 						};
 
@@ -478,14 +495,14 @@
 			};
 
 			function calc_ao1000() {
-				for (var ind54 = 0; ind54 < sessions[sesNum - 1].length - 999; ind54++) {
+				for (var ind54 = 0; ind54 < sessions[sesNum - 1].arr.length - 999; ind54++) {
 					var ind55 = 0;
 					var array1000 = [];
 					var array1000Time = [];
 
 					for (var ind56 = 0; ind56 < 1000; ind56++) {
-						array1000.push(sessions[sesNum - 1][ind54 + ind56]);
-						array1000Time.push(sessions[sesNum - 1][ind54 + ind56].time);
+						array1000.push(sessions[sesNum - 1].arr[ind54 + ind56]);
+						array1000Time.push(sessions[sesNum - 1].arr[ind54 + ind56].time);
 					};
 					for (var ind57 = 0; ind57 < 1000; ind57++) {
 						if (array1000[ind57].pen == "dnf") {
@@ -525,8 +542,8 @@
 							bestAvg1000 = avg1000;
 							bestAvg1000strng = avg1000strng;
 							for (var ind59 = 0; ind59 < 100; ind59++) {
-								bestA1000strngArray.push(sessions[sesNum - 1][ind54 + ind59].strng);
-								bestA1000TraoArray.push(sessions[sesNum - 1][ind54 + ind59].trao);
+								bestA1000strngArray.push(sessions[sesNum - 1].arr[ind54 + ind59].strng);
+								bestA1000TraoArray.push(sessions[sesNum - 1].arr[ind54 + ind59].trao);
 							};
 						};
 
@@ -548,10 +565,10 @@
 			function calc_dlc() {  // calculate standard devitation
 				dlc = 0;
 				var temp_sum = 0;
-				for (let i = 0; i < sessions[sesNum - 1].length; i++) {
-					temp_sum += Math.pow(sessions[sesNum - 1][i].time - mean, 2);
+				for (let i = 0; i < sessions[sesNum - 1].arr.length; i++) {
+					temp_sum += Math.pow(sessions[sesNum - 1].arr[i].time - mean, 2);
 				};
-				temp_sum /= sessions[sesNum - 1].length;
+				temp_sum /= sessions[sesNum - 1].arr.length;
 				dlc = Math.sqrt(temp_sum);
 				var roundDLC = parseFloat(dlc); dlc = Math.round(roundDLC * 100)/100;
 			}

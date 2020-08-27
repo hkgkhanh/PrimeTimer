@@ -1,0 +1,3 @@
+function Session() {
+	this.arr = [];
+}
