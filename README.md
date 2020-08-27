@@ -13,5 +13,5 @@ Designed and written by me
 Logo designed by Nguyễn Lương Phúc (heliosqv98@gmail.com)
 
 Scramble generator source code:
-* [JSSS](https://github.com/cubing/jsss)
+* [JSSS-v1](https://github.com/cubing/jsss/tree/jsss-v1)
 * [pyTwistyScrambler](https://github.com/euphwes/pyTwistyScrambler)
