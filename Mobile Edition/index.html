@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="prtimer, primetimer, timer, cube timer, rubiks cube, online timer, web timer">
+  <meta name="author" content="Nông Quốc Khánh">
+  <link rel="shortcut icon" type="image/png" href="img-audio\prtimer_icon.png"/>
+  <title>Cube Training/Practising Timer for mobile/touch devices</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Average+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/segment7" type="text/css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="prTimerMobile.css" rel="stylesheet">
+  <!-- this is for loading screen -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    // this is for loading screen
+    // Wait for window load
+    $(window).load(function() {
+      // Animate loader off screen
+      $(".se-pre-con").fadeOut("fast");;
+    });
+  </script>
+
+</head>
+
+<body onload="initTabs(); getSettings(); getColor(); getScramType(); displayChooseSession(); displaySession(); changeSetting(); generateScram();">
+
+  <div class="se-pre-con" id="loading_div">
+    <img id="loading_img" src="img-audio\Preloader_3.gif" alt="loading...">
+  </div>
+
+  <div id="tabs">
+    <button class="tab" id="timer_tab" onclick="openTab('timer_div')"><sub><i class="material-icons">timer</i></sub> <span class="tab_description">Timer</span></button>
+    <button class="tab" id="stats_tab" onclick="openTab('stats_div')"><i class="glyphicon glyphicon-stats"></i> <span class="tab_description">Stats</span></button>
+    <button class="tab" id="options_tab" onclick="openTab('options_div')"><i class="fa fa-cog"></i> <span class="tab_description">Options</span></button>
+    <button class="tab" id="about_tab" onclick="openTab('about_div')"><sub><i class="material-icons">info_outline</i></sub> <span class="tab_description">About</span></button>
+  </div>
+  
+  <div id="timer_div">
+
+    <div id="scram_div">
+      <div align="center" id="div_scram_type" style="padding-top: 0">
+
+        <select id="scram_type" onchange="generateScram(); document.getElementById('scram_type').blur(); saveScramType();" class="sel">
+          <option>===========WCA===========</option>
+          <option value="333" selected="selected">3x3</option>
+          <option value="222">2x2</option>
+          <option value="444">4x4</option>
+          <option value="555">5x5</option>
+          <option value="666">6x6</option>
+          <option value="777">7x7</option>
+          <option value="333oh">3x3 oh</option>
+          <option value="333bf">3x3 bld</option>
+          <option value="333fm">3x3 fm</option>
+          <option value="pyram">Pyraminx</option>
+          <option value="skewb">Skewb</option>
+          <option value="minx">Megaminx</option>
+          <option value="sq1">Square-1</option>
+          <option value="clock">Clock</option>
+          <option value="444bf">4x4 bld</option>
+          <option value="555bf">5x5 bld</option>
+          <option value="333mbf">3x3 mbld</option>
+          <option>==========RELAY==========</option>
+          <option value="relay25">Relay 2-5</option>
+          <option value="relay27">Relay 2-7</option>
+          <option value="mini_guildfold">Mini Guildfold</option>
+          <option value="guildfold">Guildfold</option>
+          <option>==========LxMxN==========</option>
+          <option value="112">1x1x2</option>
+          <option value="133">1x3x3</option>
+          <option value="223">2x2x3</option>
+          <option value="233">2x3x3</option>
+          <option value="334">3x3x4</option>
+          <option value="336">3x3x6</option>
+          <option value="888">8x8x8</option>
+          <option value="999">9x9x9</option>
+          <option value="101010">10x10x10</option>
+          <option value="111111">11x11x11</option>
+          <option>=========SUBSETS=========</option>
+          <option>-----------2x2-----------</option>
+          <option value="2223">2x2 - 3-gen RUF</option>
+          <option value="2226">2x2 - 6-gen</option>
+          <option value="222so">2x2 - random moves</option>
+          <option value="222o">2x2 - optimal</option>
+          <option value="222eg">2x2 - EG</option>
+          <option value="222eg0">2x2 - EG0/CLL</option>
+          <option value="222eg1">2x2 - EG1</option>
+          <option value="222eg2">2x2 - EG2</option>
+          <option>-----------3x3-----------</option>
+          <option value="333r">3x3 - random moves</option>
+          <option value="2gen">3x3 - 2-gen RU</option>
+          <option value="2genl">3x3 - 2-gen LU</option>
+          <option value="roux">3x3 - 2-gen MU (L6E)</option>
+          <option value="3gen_L">3x3 - 3-gen RUL</option>
+          <option value="3gen_F">3x3 - 3-gen RUF</option>
+          <option value="half">3x3 - half turns only</option>
+          <option value="RrU">3x3 - RrU</option>
+          <option value="RrUu">3x3 - RrUu</option>
+          <option value="lsll">3x3 - LSLL</option>
+          <option value="333e">3x3 - edges only</option>
+          <option value="333c">3x3 - corners only</option>
+          <option value="f2l">3x3 - cross solved</option>
+          <option value="easy_cross">3x3 - easy cross</option>
+          <option value="333ll">3x3 - last layer</option>
+          <option value="zbll">3x3 - ZBLL</option>
+          <option value="zbls">3x3 - ZBLS</option>
+          <option value="zzll">3x3 - ZZLL</option>
+          <option value="l6e">3x3 - L6E (color neutral)</option>
+          <option value="cmll">3x3 - CMLL</option>
+          <option value="coll">3x3 - COLL</option>
+          <option value="ell">3x3 - ELL</option>
+          <option value="eoline">3x3 - EOLine</option>
+          <option>----------4567-----------</option>
+          <option value="444si">4x4x4 SiGN</option>
+          <option value="444yj">4x4x4 YJ</option>
+          <option value="4edge">4x4x4 edges</option>
+          <option value="555si">5x5x5 SiGN</option>
+          <option value="5edge">5x5x5 edges</option>
+          <option value="666p">6x6x6 prefix</option>
+          <option value="666s">6x6x6 suffix</option>
+          <option value="666si">6x6x6 SiGN</option>
+          <option value="6edge">6x6x6 edges</option>
+          <option value="777p">7x7x7 prefix</option>
+          <option value="777s">7x7x7 suffix</option>
+          <option value="777si">7x7x7 SiGN</option>
+          <option value="7edge">7x7x7 edges</option>
+          <option>--------MEGAMINX---------</option>
+          <option value="mgmo">Megaminx - old style</option>
+          <option value="mgmp">Megaminx - Pochmann</option>
+          <option value="mgmc">Megaminx - Carrot</option>
+          <option value="minx2g">Megaminx - 2-gen RU</option>
+          <option value="mlsll">Megaminx - LSLL</option>
+          <option>--------PYRAMINX---------</option>
+          <option value="pyro">Pyramix - optimal</option>
+          <option>----------SKEWB----------</option>
+          <option value="skbo">Skewb - optimal</option>
+          <option>--------SQUARE-1---------</option>
+          <option value="sq1h">Sq1 - turn metric</option>
+          <option value="sq1t">Sq1 - twist metric</option>
+          <option>----------CLOCK----------</option>
+          <option value="clkj">Clock - Jaap order</option>
+          <option value="clkc">Clock - concise</option>
+          <option value="clke">Clock - effiencet order</option>
+          <option>=========OTHERS==========</option>
+          <option value="15p">15 puzzle</option>
+          <option value="sq2">Square-2</option>
+          <option value="ssq1t">Super Square-1</option>
+          <option value="bsq">Bandaged Square-1</option>
+          <option value="bic">Bicube</option>
+          <option value="heli">Helicopter Cube</option>
+          <option value="cm3">Cmetrick</option>
+          <option value="cm2">Cmetrick Mini</option>
+          <option value="fto">Face-Turning Octa</option>
+          <option value="gear">Gear Cube</option>
+          <option value="sfl">Super Floppy Cube</option>
+          <option value="ufo">UFO</option>
+          <option value="prco">Pyraminx Crystal</option>
+        </select>
+      </div>
+      <br>
+      <div id="scram_con">
+        <text id="scram"></text>
+      </div>
+    </div>
+
+    <div id="time" style="text-align: center">
+      <b>
+        <text id="mnt">0</text><text id="two_dot">:</text>
+        <text id="scnd">0.00</text>
+        <text id="ispt_display">15</text>
+      </b>
+    </div>
+    <div id="div_hide">
+      <b><text>solve</text></b>
+    </div>
+
+    <div id="draw_scram_div">
+      <div id="draw_other_wca"></div>
+      <div style="width:200px; height:155px;" id="222_draw_div">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -7 178 136" style="stroke-linejoin:round;">
+          <g>
+            <rect x="44" y="2" width="20" height="20" stroke="black" id="222_U1"></rect>
+            <rect x="64" y="2" width="20" height="20" stroke="black" id="222_U2"></rect>
+            <rect x="44" y="22" width="20" height="20" stroke="black" id="222_U3"></rect>
+            <rect x="64" y="22" width="20" height="20" stroke="black" id="222_U4"></rect>
+            <rect x="86" y="44" width="20" height="20" stroke="black" id="222_R1"></rect>
+            <rect x="106" y="44" width="20" height="20" stroke="black" id="222_R2"></rect>
+            <rect x="86" y="64" width="20" height="20" stroke="black" id="222_R3"></rect>
+            <rect x="106" y="64" width="20" height="20" stroke="black" id="222_R4"></rect>
+            <rect x="44" y="44" width="20" height="20" stroke="black" id="222_F1"></rect>
+            <rect x="64" y="44" width="20" height="20" stroke="black" id="222_F2"></rect>
+            <rect x="44" y="64" width="20" height="20" stroke="black" id="222_F3"></rect>
+            <rect x="64" y="64" width="20" height="20" stroke="black" id="222_F4"></rect>
+            <rect x="44" y="86" width="20" height="20" stroke="black" id="222_D1"></rect>
+            <rect x="64" y="86" width="20" height="20" stroke="black" id="222_D2"></rect>
+            <rect x="44" y="106" width="20" height="20" stroke="black" id="222_D3"></rect>
+            <rect x="64" y="106" width="20" height="20" stroke="black" id="222_D4"></rect>
+            <rect x="2" y="44" width="20" height="20" stroke="black" id="222_L1"></rect>
+            <rect x="22" y="44" width="20" height="20" stroke="black" id="222_L2"></rect>
+            <rect x="2" y="64" width="20" height="20" stroke="black" id="222_L3"></rect>
+            <rect x="22" y="64" width="20" height="20" stroke="black" id="222_L4"></rect>
+            <rect x="128" y="44" width="20" height="20" stroke="black" id="222_B1"></rect>
+            <rect x="148" y="44" width="20" height="20" stroke="black" id="222_B2"></rect>
+            <rect x="128" y="64" width="20" height="20" stroke="black" id="222_B3"></rect>
+            <rect x="148" y="64" width="20" height="20" stroke="black" id="222_B4"></rect>
+          </g>
+        </svg>
+      </div>
+      <div style="width:200px; height:160px;" id="skb_draw_div">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -4 270 220" style="stroke-linejoin:round;">
+          <g>
+            <polygon points="116,2 86,20 146,20" stroke="black" id="skb_U1"/>
+            <polygon points="86,20 56,38 86,56" stroke="black" id="skb_U2"/>
+            <polygon points="86,20 146,20 146,56 86,56" stroke="black" id="skb_U3"/>
+            <polygon points="146,20 176,38 146,56" stroke="black" id="skb_U4"/>
+            <polygon points="86,56 146,56 116,74" stroke="black" id="skb_U5"/>
+            <polygon points="56,38 86,56 56,74" stroke="black" id="skb_F1"/>
+            <polygon points="86,56 116,74 116,110" stroke="black" id="skb_F2"/>
+            <polygon points="86,56 116,110 86,128 56,74" stroke="black" id="skb_F3"/>
+            <polygon points="56,74 86,128 56,110" stroke="black" id="skb_F4"/>
+            <polygon points="116,110 116,146 86,128" stroke="black" id="skb_F5"/>
+            <polygon points="116,74 146,56 116,110" stroke="black" id="skb_R1"/>
+            <polygon points="146,56 176,38 176,74" stroke="black" id="skb_R2"/>
+            <polygon points="146,56 176,74 146,128 116,110" stroke="black" id="skb_R3"/>
+            <polygon points="116,110 146,128 116,146" stroke="black" id="skb_R4"/>
+            <polygon points="176,74 176,110 146,128" stroke="black" id="skb_R5"/>
+            <polygon points="-6,2 26,20 -6,38" stroke="black" id="skb_L1"/>
+            <polygon points="26,20 56,38 56,74" stroke="black" id="skb_L2"/>
+            <polygon points="26,20 56,74 26,92 -6,38" stroke="black" id="skb_L3"/>
+            <polygon points="-6,38 26,92 -6,74" stroke="black" id="skb_L4"/>
+            <polygon points="56,74 56,110 26,92" stroke="black" id="skb_L5"/>
+            <polygon points="176,38 206,20 176,74" stroke="black" id="skb_B1"/>
+            <polygon points="206,20 236,2 236,38" stroke="black" id="skb_B2"/>
+            <polygon points="206,20 236,38 206,92 176,74" stroke="black" id="skb_B3"/>
+            <polygon points="176,74 206,92 176,110" stroke="black" id="skb_B4"/>
+            <polygon points="236,38 236,74 206,92" stroke="black" id="skb_B5"/>
+            <polygon points="56,110 86,128 56,146" stroke="black" id="skb_D2"/>
+            <polygon points="86,128 116,146 116,182" stroke="black" id="skb_D1"/>
+            <polygon points="86,128 116,182 86,200 56,146" stroke="black" id="skb_D3"/>
+            <polygon points="56,146 86,200 56,182" stroke="black" id="skb_D5"/>
+            <polygon points="116,182 116,218 86,200" stroke="black" id="skb_D4"/>
+          </g>
+        </svg>
+      </div>
+      <div style="width:200px; height:155px;" id="333_draw_div">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -4 250 190" style="stroke-linejoin:round;">
+          <g>
+            <rect x="64" y="2" width="20" height="20" stroke="black" id="333_U1"></rect>
+            <rect x="84" y="2" width="20" height="20" stroke="black" id="333_U2"></rect>
+            <rect x="104" y="2" width="20" height="20" stroke="black" id="333_U3"></rect>
+            <rect x="64" y="22" width="20" height="20" stroke="black" id="333_U4"></rect>
+            <rect x="84" y="22" width="20" height="20" stroke="black" id="333_U5"></rect>
+            <rect x="104" y="22" width="20" height="20" stroke="black" id="333_U6"></rect>
+            <rect x="64" y="42" width="20" height="20" stroke="black" id="333_U7"></rect>
+            <rect x="84" y="42" width="20" height="20" stroke="black" id="333_U8"></rect>
+            <rect x="104" y="42" width="20" height="20" stroke="black" id="333_U9"></rect>
+            <rect x="126" y="64" width="20" height="20" stroke="black" id="333_R1"></rect>
+            <rect x="146" y="64" width="20" height="20" stroke="black" id="333_R2"></rect>
+            <rect x="166" y="64" width="20" height="20" stroke="black" id="333_R3"></rect>
+            <rect x="126" y="84" width="20" height="20" stroke="black" id="333_R4"></rect>
+            <rect x="146" y="84" width="20" height="20" stroke="black" id="333_R5"></rect>
+            <rect x="166" y="84" width="20" height="20" stroke="black" id="333_R6"></rect>
+            <rect x="126" y="104" width="20" height="20" stroke="black" id="333_R7"></rect>
+            <rect x="146" y="104" width="20" height="20" stroke="black" id="333_R8"></rect>
+            <rect x="166" y="104" width="20" height="20" stroke="black" id="333_R9"></rect>
+            <rect x="64" y="64" width="20" height="20" stroke="black" id="333_F1"></rect>
+            <rect x="84" y="64" width="20" height="20" stroke="black" id="333_F2"></rect>
+            <rect x="104" y="64" width="20" height="20" stroke="black" id="333_F3"></rect>
+            <rect x="64" y="84" width="20" height="20" stroke="black" id="333_F4"></rect>
+            <rect x="84" y="84" width="20" height="20" stroke="black" id="333_F5"></rect>
+            <rect x="104" y="84" width="20" height="20" stroke="black" id="333_F6"></rect>
+            <rect x="64" y="104" width="20" height="20" stroke="black" id="333_F7"></rect>
+            <rect x="84" y="104" width="20" height="20" stroke="black" id="333_F8"></rect>
+            <rect x="104" y="104" width="20" height="20" stroke="black" id="333_F9"></rect>
+            <rect x="64" y="126" width="20" height="20" stroke="black" id="333_D1"></rect>
+            <rect x="84" y="126" width="20" height="20" stroke="black" id="333_D2"></rect>
+            <rect x="104" y="126" width="20" height="20" stroke="black" id="333_D3"></rect>
+            <rect x="64" y="146" width="20" height="20" stroke="black" id="333_D4"></rect>
+            <rect x="84" y="146" width="20" height="20" stroke="black" id="333_D5"></rect>
+            <rect x="104" y="146" width="20" height="20" stroke="black" id="333_D6"></rect>
+            <rect x="64" y="166" width="20" height="20" stroke="black" id="333_D7"></rect>
+            <rect x="84" y="166" width="20" height="20" stroke="black" id="333_D8"></rect>
+            <rect x="104" y="166" width="20" height="20" stroke="black" id="333_D9"></rect>
+            <rect x="2" y="64" width="20" height="20" stroke="black" id="333_L1"></rect>
+            <rect x="22" y="64" width="20" height="20" stroke="black" id="333_L2"></rect>
+            <rect x="42" y="64" width="20" height="20" stroke="black" id="333_L3"></rect>
+            <rect x="2" y="84" width="20" height="20" stroke="black" id="333_L4"></rect>
+            <rect x="22" y="84" width="20" height="20" stroke="black" id="333_L5"></rect>
+            <rect x="42" y="84" width="20" height="20" stroke="black" id="333_L6"></rect>
+            <rect x="2" y="104" width="20" height="20" stroke="black" id="333_L7"></rect>
+            <rect x="22" y="104" width="20" height="20" stroke="black" id="333_L8"></rect>
+            <rect x="42" y="104" width="20" height="20" stroke="black" id="333_L9"></rect>
+            <rect x="188" y="64" width="20" height="20" stroke="black" id="333_B1"></rect>
+            <rect x="208" y="64" width="20" height="20" stroke="black" id="333_B2"></rect>
+            <rect x="228" y="64" width="20" height="20" stroke="black" id="333_B3"></rect>
+            <rect x="188" y="84" width="20" height="20" stroke="black" id="333_B4"></rect>
+            <rect x="208" y="84" width="20" height="20" stroke="black" id="333_B5"></rect>
+            <rect x="228" y="84" width="20" height="20" stroke="black" id="333_B6"></rect>
+            <rect x="188" y="104" width="20" height="20" stroke="black" id="333_B7"></rect>
+            <rect x="208" y="104" width="20" height="20" stroke="black" id="333_B8"></rect>
+            <rect x="228" y="104" width="20" height="20" stroke="black" id="333_B9"></rect>
+          </g>
+        </svg>
+      </div>
+      <div style="width:200px; height:175px;" id="pyram_draw_div">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 138 119" style="stroke-linejoin:round;">
+          <g>
+            <polygon points="0 2, 10 19.32050807568877, 20 2" stroke="black" id="pyram_L1"></polygon>
+            <polygon points="10 19.32050807568877, 20 2, 30 19.32050807568877" stroke="black" id="pyram_L2"></polygon>
+            <polygon points="20 2, 30 19.32050807568877, 40 2" stroke="black" id="pyram_L3"></polygon>
+            <polygon points="30 19.32050807568877, 40 2, 50 19.32050807568877" stroke="black" id="pyram_L4"></polygon>
+            <polygon points="40 2, 50 19.32050807568877, 60 2" stroke="black" id="pyram_L5"></polygon>
+            <polygon points="52 19.32050807568877, 62 2, 72 19.32050807568877" stroke="black" id="pyram_F1"></polygon>
+            <polygon points="64 2, 74 19.32050807568877, 84 2" stroke="black" id="pyram_R1"></polygon>
+            <polygon points="74 19.32050807568877, 84 2, 94 19.32050807568877" stroke="black" id="pyram_R2"></polygon>
+            <polygon points="84 2, 94 19.32050807568877, 104 2" stroke="black" id="pyram_R3"></polygon>
+            <polygon points="94 19.32050807568877, 104 2, 114 19.32050807568877" stroke="black" id="pyram_R4"></polygon>
+            <polygon points="104 2, 114 19.32050807568877, 124 2" stroke="black" id="pyram_R5"></polygon>
+            <polygon points="10 19.32050807568877, 20 36.64101615137754, 30 19.32050807568877" stroke="black" id="pyram_L6"></polygon>
+            <polygon points="20 36.64101615137754, 30 19.32050807568877, 40 36.64101615137754" stroke="black" id="pyram_L7"></polygon>
+            <polygon points="30 19.32050807568877, 40 36.64101615137754, 50 19.32050807568877" stroke="black" id="pyram_L8"></polygon>
+            <polygon points="42 36.64101615137754, 52 19.32050807568877, 62 36.64101615137754" stroke="black" id="pyram_F2"></polygon>
+            <polygon points="52 19.32050807568877, 62 36.64101615137754, 72 19.32050807568877" stroke="black" id="pyram_F3"></polygon>
+            <polygon points="62 36.64101615137754, 72 19.32050807568877, 82 36.64101615137754" stroke="black" id="pyram_F4"></polygon>
+            <polygon points="74 19.32050807568877, 84 36.64101615137754, 94 19.32050807568877" stroke="black" id="pyram_R6"></polygon>
+            <polygon points="84 36.64101615137754, 94 19.32050807568877, 104 36.64101615137754" stroke="black" id="pyram_R7"></polygon>
+            <polygon points="94 19.32050807568877, 104 36.64101615137754, 114 19.32050807568877" stroke="black" id="pyram_R8"></polygon>
+            <polygon points="20 36.64101615137754, 30 53.96152422706631, 40 36.64101615137754" stroke="black" id="pyram_L9"></polygon>
+            <polygon points="32 53.96152422706631, 42 36.64101615137754, 52 53.96152422706631" stroke="black" id="pyram_F5"></polygon>
+            <polygon points="42 36.64101615137754, 52 53.96152422706631, 62 36.64101615137754" stroke="black" id="pyram_F6"></polygon>
+            <polygon points="52 53.96152422706631, 62 36.64101615137754, 72 53.96152422706631" stroke="black" id="pyram_F7"></polygon>
+            <polygon points="62 36.64101615137754, 72 53.96152422706631, 82 36.64101615137754" stroke="black" id="pyram_F8"></polygon>
+            <polygon points="72 53.96152422706631, 82 36.64101615137754, 92 53.96152422706631" stroke="black" id="pyram_F9"></polygon>
+            <polygon points="84 36.64101615137754, 94 53.96152422706631, 104 36.64101615137754" stroke="black" id="pyram_R9"></polygon>
+            <polygon points="32 55.96152422706631, 42 73.28203230275508, 52 55.96152422706631" stroke="black" id="pyram_D1"></polygon>
+            <polygon points="42 73.28203230275508, 52 55.96152422706631, 62 73.28203230275508" stroke="black" id="pyram_D2"></polygon>
+            <polygon points="52 55.96152422706631, 62 73.28203230275508, 72 55.96152422706631" stroke="black" id="pyram_D3"></polygon>
+            <polygon points="62 73.28203230275508, 72 55.96152422706631, 82 73.28203230275508" stroke="black" id="pyram_D4"></polygon>
+            <polygon points="72 55.96152422706631, 82 73.28203230275508, 92 55.96152422706631" stroke="black" id="pyram_D5"></polygon>
+            <polygon points="42 73.28203230275508, 52 90.60254037844385, 62 73.28203230275508" stroke="black" id="pyram_D6"></polygon>
+            <polygon points="52 90.60254037844385, 62 73.28203230275508, 72 90.60254037844385" stroke="black" id="pyram_D7"></polygon>
+            <polygon points="62 73.28203230275508, 72 90.60254037844385, 82 73.28203230275508" stroke="black" id="pyram_D8"></polygon>
+            <polygon points="52 90.60254037844385, 62 107.92304845413263, 72 90.60254037844385" stroke="black" id="pyram_D9"></polygon>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div id="quick_avg_table">
+      <table>
+        <tr>
+          <th style="max-width: 30%"></th>
+          <th style="min-width: 35%; width: fit-content; width: -moz-fit-content; text-align: center;">current</th>
+          <th style="min-width: 35%; width: fit-content; width: -moz-fit-content; text-align: center;">best</th>
+        </tr>
+        <tr>
+          <td style="text-align: center">single</td>
+          <td style="text-align: center" id="q_cur_single">-</td>
+          <td style="text-align: center" id="q_best_single">-</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">ao5</td>
+          <td style="text-align: center" id="q_cur_ao5">-</td>
+          <td style="text-align: center" id="q_best_ao5">-</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">ao12</td>
+          <td style="text-align: center" id="q_cur_ao12">-</td>
+          <td style="text-align: center" id="q_best_ao12">-</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div id="stats_div">
+    <div id="stats_div_div"><div id="div_ses_choose" style="text-align: center; width: 100%; margin: 1ch;">
+      <text>session</text>
+      <select id="choose_session" style="border: none; padding-left: 7px; padding-right: 7px;;" onchange="document.getElementById('choose_session').blur(); displaySession();" class="sel">
+      </select>
+      <button id="reset_ses" onclick="resetSes()" title="Clear session">X</button>
+      <button id="add_ses" onclick="addSes()" title="Add session">+</button>
+      <button id="del_ses" onclick="if (confirm('Delete this session?')) {delSes()}" title="Delete session">-</button><br>
+    </div>
+
+    <div style="text-align: center; width: 100%; padding: 1ch;" id="mean_stat" onclick="showStat(0)">
+      <text>mean: </text><text id="ses_mean">0.00</text>
+      (<text id="ses_not_dnf">0</text>/<text id="ses_length">0</text>)
+    </div>
+
+    <div class="flex_display">
+
+      <div id="avg_table_div">
+        <table id="avg_table">
+          <tr>
+            <th style="width: 30%"></th>
+            <th style="width: 35%; text-align: center;">current</th>
+            <th style="width: 35%; text-align: center;">best</th>
+          </tr>
+          <tr>
+            <td style="width: 30%; text-align: center">single</td>
+            <td style="width: 35%; text-align: center;" id="cur_single" onclick="showStat(1)">-</td>
+            <td style="width: 35%; text-align: center;" id="best_single" onclick="showStat(1.5)">-</td>
+          </tr>
+          <tr>
+            <td style="text-align: center">mo3</td>
+            <td style="text-align: center" id="cur_mo3" onclick="showStat(3)">-</td>
+            <td style="text-align: center" id="best_mo3" onclick="showStat(3.5)">-</td>
+          </tr>
+          <tr>
+            <td style="text-align: center">ao5</td>
+            <td style="text-align: center" id="cur_ao5" onclick="showStat(5)">-</td>
+            <td style="text-align: center" id="best_ao5" onclick="showStat(5.5)">-</td>
+          </tr>
+          <tr>
+            <td style="text-align: center">ao12</td>
+            <td style="text-align: center" id="cur_ao12" onclick="showStat(12)">-</td>
+            <td style="text-align: center" id="best_ao12" onclick="showStat(12.5)">-</td>
+          </tr>
+          <tr>
+            <td style="text-align: center">ao50</td>
+            <td style="text-align: center" id="cur_ao50" onclick="showStat(50)">-</td>
+            <td style="text-align: center" id="best_ao50" onclick="showStat(50.5)">-</td>
+          </tr>
+          <tr>
+            <td style="text-align: center">ao100</td>
+            <td style="text-align: center" id="cur_ao100" onclick="showStat(100)">-</td>
+            <td style="text-align: center" id="best_ao100" onclick="showStat(100.5)">-</td>
+          </tr>
+          <tr>
+            <td style="text-align: center">ao200</td>
+            <td style="text-align: center" id="cur_ao200" onclick="showStat(200)">-</td>
+            <td style="text-align: center" id="best_ao200" onclick="showStat(200.5)">-</td>
+          </tr>
+          <tr>
+            <td style="text-align: center">ao500</td>
+            <td style="text-align: center" id="cur_ao500" onclick="showStat(500)">-</td>
+            <td style="text-align: center" id="best_ao500" onclick="showStat(500.5)">-</td>
+          </tr>
+          <tr>
+            <td style="text-align: center">ao1000</td>
+            <td style="text-align: center" id="cur_ao1000" onclick="showStat(1000)">-</td>
+            <td style="text-align: center" id="best_ao1000" onclick="showStat(1000.5)">-</td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="times_container"></div>
+
+    </div></div>
+
+    <div id="stat_dialog" style="display: none">
+      <br>
+      <div align="center"><b><text style="font-size: 40px;">Current statistics</text></b></div>
+      <br>
+
+      <div id="stats" style="height: calc(100% - 24ch); overflow-y: scroll; line-height: 2; font-family: monospace, monospace; font-size: 12px;"></div>
+      <br>
+
+      <div align="center">
+        <button style="font-size: 20px; color: #000000;" id="close_stat_but"> ok </button> 
+      </div>
+    </div>
+
+    <div id="solve_dialog">
+      <div align="center" style="font-size: 20px"><b>Solve no.<text id="solve_no" style="font-size: 20px"></text></b></div>
+      <br><br>
+
+      <div align="center"><b><text id="solve_strng" style="font-size: 50px"></text></b></div>
+      <br>
+      <div align="center" style="font-size: 15px">
+        <text onclick="setOK(solveIndex); document.getElementById('solve_strng').innerHTML = sessions[sesNum - 1].arr[solveIndex].strng;" class="solve_pen">&ensp; ok &ensp;</text>
+        <text onclick="setP2(solveIndex); document.getElementById('solve_strng').innerHTML = sessions[sesNum - 1].arr[solveIndex].strng;" class="solve_pen">&ensp; +2 &ensp;</text>
+        <text onclick="setDNF(solveIndex); document.getElementById('solve_strng').innerHTML = sessions[sesNum - 1].arr[solveIndex].strng;" class="solve_pen">&ensp; DNF &ensp;</text>
+        <text onclick="delSolve(solveIndex)" class="solve_pen">&ensp; delete &ensp;</text>
+      </div>
+      <br>
+
+      <div align="center">
+        <table id="solve_scram_table" style="width: 70%">
+          <tr>
+            <td style="width: 30%; vertical-align: top; text-align: right; font-size: 15px;"> Comment: </td>
+            <td style="vertical-align: top; text-align: left;">
+              <input style=" font-size: 15px; border: none;" id="solve_comment" onchange="addComment(solveIndex)"></input>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 30%; vertical-align: top; text-align: right; font-size: 15px;"> Scramble: </td>
+            <td style="vertical-align: top; text-align: left;">
+              <div style="overflow-y: scroll; max-height: 70px; font-size: 15px;" id="solve_scram"></div>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 30%; vertical-align: top; text-align: right; font-size: 15px;"> Date: </td>
+            <td style="vertical-align: top; text-align: left;">
+              <div style="font-size: 15px" id="solve_date"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br>
+
+      <div align="center">
+        <button style="font-size: 20px; color: #000000;" id="close_solve_but"> ok </button> 
+      </div>
+    </div>
+  </div>
+  
+  <div id="options_div">
+
+    <div id="options_div_div"><p style="padding-left: 5px; font-size: 25px; text-align: center;"><b>Settings</b></p>
+
+    <ul>
+      <li>
+        <input id="inspect_type" type="checkbox" onchange="changeSetting()">
+        <text>use WCA inspection</text>
+      </li>
+
+      <li>
+        <input id="hide_all" type="checkbox" onchange="changeSetting()">
+        <text>hide all elements when solving</text>
+      </li>
+
+      <li>
+        <input id="hide_type" type="checkbox" onchange="changeSetting()">
+        <text>hide timer when solving</text>
+      </li>
+
+      <li><text>enter time (by typing) format</text>
+      <select id="enter_format_type" class="sel" onchange="changeSetting()">
+        <option value="1" selected="selected">mm:ss.xx &ensp;</option>
+        <option value="2">ss.xx &ensp;</option>
+      </select></li>
+
+      <li>
+        <input id="draw_type" type="checkbox" onchange="changeSetting()">
+        <text>draw scramble</text>
+      </li>
+
+      <li>
+        <input id="wide_moves" type="checkbox" onchange="changeSetting()">
+        <text>use wide moves for 3bld scrambles</text>
+      </li>
+
+      <li>
+        <text>time split (1~99):</text>
+        <input id="time_split" type="number" maxlength="2" min="1" max="99" style="border: none; width: 30px;" onchange="changeSetting()">
+        <text>phase(s)</text>
+      </li>
+    </ul>
+
+    <p style="padding-left: 5px; font-size: 25px; text-align: center;"><b>Color theme</b></p>
+
+    <ul>
+      <li><text>background color</text>
+      <input type="color" id="bg_color" onchange="changeSetting()">
+      </li>
+
+      <li><text>board color</text>
+      <input type="color" id="board_color" onchange="changeSetting()">
+      </li>
+
+      <li><text>font color</text>
+      <input type="color" id="font_color" onchange="changeSetting()">
+      </li>
+
+      <li><text>link color</text>
+      <input type="color" id="link_color" onchange="changeSetting()">
+      </li>
+    </ul>
+
+    <text>Not sure what color theme you like? Try one of these:</text>
+    <ul>
+      <li class="theme" onclick="changeTheme('#FFFFFF', '#BDBDBD', '#000000', '#0000FF')">White</li>
+      <li class="theme" onclick="changeTheme('#000000', '#585858', '#FFFFFF', '#FFFF00')">Black</li>
+      <li class="theme" onclick="changeTheme('#1F2833', '#0B0C10', '#C5C6C7', '#C5C6C7')">Dark</li>
+      <li class="theme" onclick="changeTheme('#E3AFBC', '#EE4C7C', '#5D001E', '#5D001E')">Pinky</li>
+      <li class="theme" onclick="changeTheme('#3FEEE6', '#A7CCED', '#000000', '#0000FF')">Light Blue</li>
+      <li class="theme" onclick="changeTheme('#A7CCED', '#63ADF2', '#000000', '#0000FF')">Blue</li>
+      <li class="theme" onclick="changeTheme('#96E8BC', '#7DD181', '#000000', '#0000FF')">Green</li>
+      <li class="theme" onclick="changeTheme('#F3E2A9', '#DBA901', '#000000', '#0000FF')">No Name (default)</li>
+    </ul></div>
+  </div>
+  
+  <div id="about_div">
+    <div id="about_div_div">
+    <p style="text-align: center; padding-left: 5px; font-size: 25px;"><b>Introduction</b></p>
+    <p>PrimeTimer Mobile Edition is a web timer for Rubik's cube and twisty puzzles speedsolvers, it provides varieties of functions:</p>
+    <ul>
+      <li>Timer (supports touch devices and physical keyboard), inspection time + 8/12 seconds voice alert, import time by timer/typing</li>
+      <li>Scrambles for WCA events and 70+ puzzles & subsets, get last scramble, draw scramble</li>
+      <li>Mutiple sessions, set penalty of any solve, calculate mean, average...</li>
+    </ul>
+    <p><i class="fa fa-warning" style="color:red"></i> It is recommended that you should use Chrome, Edge or Cốc Cốc to browse PrimeTimer as it has only been tested on these browsers. For more information click <a class="link" href="https://khanhfromvn.github.io/primetimer_page.html" target="_blank">here</a>.</p>
+
+    <p style="text-align: center; padding-left: 5px; font-size: 25px;"><b>Copyright</b></p>
+    <p>Written and UI designed by Nông Quốc Khánh: <a href="mailto:hkg11khanh@gmail.com" class="link">hkg11khanh@gmail.com</a></p>
+    <p>Logo designed by Nguyễn Lương Phúc: <a href="mailto:heliosqv98@gmail.com" class="link">heliosqv98@gmail.com</a></p>
+
+    <p style="text-align: center; padding-left: 5px; font-size: 25px;"><b>Touch event & Keyboard shortcut</b></p>
+    <table id="shortcut_table" style="margin: auto; border: solid; border-width: 1px; padding: 2px;">
+      <tr style="border-bottom: solid">
+        <td style="width: 150px; text-align: center;">Event</td>
+        <td style="text-align: center">Function</td>
+      </tr>
+      <tr>
+        <td><b>Touch (not move)</b></td>
+        <td>Timer</td>
+      </tr>
+      <tr>
+        <td><b>Swipe up</b></td>
+        <td>Import time by typing</td>
+      </tr>
+      <tr>
+        <td><b>Swipe left</b> / <b>right</b></td>
+        <td>Get last / next scramble</td>
+      </tr>
+    </table>
+    <table id="shortcut_table" style="margin: auto; border: solid; border-width: 1px; padding: 2px;">
+      <tr style="border-bottom: solid">
+        <td style="width: 150px; text-align: center;">Key</td>
+        <td style="text-align: center">Function</td>
+      </tr>
+      <tr>
+        <td><b>Alt + " ; "</b></td>
+        <td>Delete current solve</td>
+      </tr>
+      <tr>
+        <td><b>Alt + " ' "</b></td>
+        <td>Remove all solves in current session</td>
+      </tr>
+      <tr>
+        <td><b>Alt + [</b> / <b>]</b></td>
+        <td>Get last / next scramble</td>
+      </tr>
+      <tr>
+        <td><b>Alt + ,</b> / <b>.</b> / <b>/</b></td>
+        <td>Set last solve's penalty to OK / +2 / DNF</td>
+      </tr>
+      <tr>
+        <td><b>Alt + " = "</b></td>
+        <td>Add new session</td>
+      </tr>
+      <tr>
+        <td><b>Alt + " - "</b></td>
+        <td>Delete current session</td>
+      </tr>
+      <tr>
+        <td><b>Alt + 2 ~ 9</b></td>
+        <td>Scramble 2x2 ~ 9x9</td>
+      </tr>
+      <tr>
+        <td><b>Alt + Q</b> / <b>P</b> / <b>C</b> / <b>M</b> / <b>S</b></td>
+        <td>Scramble Sq1 / Pyra / Clock / Mega / Skewb</td>
+      </tr>
+      <tr>
+        <td><b>Alt + 0</b> / <b>1</b></td>
+        <td>Scramble 10x10 / 11x11</td>
+      </tr>
+    </table>
+  </div>
+  </div>
+
+  <audio id="eight_sec">
+    <source src="8sec.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="twelve_sec">
+    <source src="12sec.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="scripts/tabs.js"></script>
+  <script src="scripts/libraries/tocca.js"></script>
+  <script src="scripts/timer.js"></script>
+  <script src="scripts\data_storage.js"></script>
+  <script src="scripts\dialogs.js"></script>
+  <script src="scripts\Session.js"></script>
+  <script src="scripts\options.js"></script>
+  <script src="scripts\scram-gen\scrambles_part.js"></script>
+  <script src="scripts\key_events.js"></script>
+  <script src="scripts\solve_related.js"></script>
+  <script src="scripts\calc_mean_avg.js"></script>
+
+  <script src="scripts\scram-gen\scramble_222.js"></script>
+  <script src="scripts\scram-gen\scramble_333.js"></script>
+  <script src="scripts\scram-gen\scramble_clock.js"></script>
+  <script src="scripts\scram-gen\scramble_minx.js"></script>
+  <script src="scripts\scram-gen\scramble_NNN.js"></script>
+  <script src="scripts\scram-gen\scramble_pyram.js"></script>
+  <script src="scripts\scram-gen\scramble_sq1.js"></script>
+  <script src="scripts\libraries\raphael-min.js"></script>
+
+  <script src="scripts\scram-gen\mathlib.js"></script>
+  <script src="scripts\scram-gen\scramble.js"></script>
+  <script src="scripts\scram-gen\pyraminx.js"></script>
+  <script src="scripts\scram-gen\skewb.js"></script>
+  <script src="scripts\scram-gen\1x3x3.js"></script>
+  <script src="scripts\scram-gen\2x2x2.js"></script>
+  <script src="scripts\scram-gen\scramble_333_edit.js"></script>
+  <script src="scripts\scram-gen\cross.js"></script>
+
+  <script src="scripts\scram-draw\scramSeq.js"></script>
+  <script src="scripts\scram-draw\drawSkewb.js"></script>
+  <script src="scripts\scram-draw\draw222.js"></script>
+  <script src="scripts\scram-draw\draw333.js"></script>
+  <script src="scripts\scram-draw\drawPyraminx.js"></script>
+  <script>
+    //##### VARRIBLES AND CONSTS #####
+    var mnt = 0;
+    var sec = 0;
+    var ispt = 0;
+    var timerStatus = 0;
+    var inspectType_value = 1;
+    var importFocus = 0; // 0 means import by timer, 1 means by typing
+    var keyPressed;
+    var inspectBegin;
+    var timeBegin;
+    var hideAll;
+    var wideMoves;
+    var enterTimeType_value;
+    var enterFormatType_value;
+    var scramType_value;
+    var hideType_value;
+    var drawType_value;
+    var timeSplit_value;
+    var randomScramble;
+    var scramble = "";
+    var lastScram = "";
+    var ind1 = 0;
+    var sesNum;
+    var sessions = [];
+    var sesSum;
+    var mean;
+    var bestSingle;
+    var bestSinglestrng;
+    var bestSingleTrao;
+    var mean3Array = [];
+    var mean3strngArray = [];
+    var bestMean3 = 99999;
+    var bestMean3strng = "DNF";
+    var bestM3strngArray = [];
+    var bestM3TraoArray = [];
+    var avg5Array = [];
+    var avg5strngArray = [];
+    var bestAvg5 = 99999;
+    var bestAvg5strng = "DNF";
+    var bestA5strngArray = [];
+    var bestA5TraoArray = [];
+    var avg12Array = [];
+    var avg12strngArray = [];
+    var bestAvg12 = 99999;
+    var bestAvg12strng = "DNF";
+    var bestA12strngArray = [];
+    var bestA12TraoArray = [];
+    var avg50Array = [];
+    var avg50strngArray = [];
+    var bestAvg50 = 99999;
+    var bestAvg50strng = "DNF";
+    var bestA50strngArray = [];
+    var bestA50TraoArray = [];
+    var avg100Array = [];
+    var avg100strngArray = [];
+    var bestAvg100 = 99999;
+    var bestAvg100strng = "DNF";
+    var bestA100strngArray = [];
+    var bestA100TraoArray = [];
+    var avg200Array = [];
+    var avg100strngArray = [];
+    var bestAvg200 = 99999;
+    var bestAvg200strng = "DNF";
+    var bestA200strngArray = [];
+    var bestA200TraoArray = [];
+    var avg500Array = [];
+    var avg500strngArray = [];
+    var bestAvg500 = 99999;
+    var bestAvg500strng = "DNF";
+    var bestA500strngArray = [];
+    var bestA500TraoArray = [];
+    var avg1000Array = [];
+    var avg1000strngArray = [];
+    var bestAvg1000 = 99999;
+    var bestAvg1000strng = "DNF";
+    var bestA1000strngArray = [];
+    var bestA1000TraoArray = [];
+    var timeCon = document.getElementById("times_container");
+    var solveIndex;
+    var dlc = 0; // standard devitation
+    var bgColor_value = "#FFFBFF";
+    var boardColor_value = "#D3AB9E";
+    var fontColor_value = "#000000";
+    var linkColor_value = "#0000FF";
+
+    //default settings & stuff
+    document.getElementById("bg_color").value = "#FFFBFF";
+    document.getElementById("board_color").value = "#F3E2A9";
+    document.getElementById("font_color").value = "#000000";
+    document.getElementById("link_color").value = "#0000FF";
+
+    document.getElementById("mnt").style.display = "none";
+    document.getElementById("two_dot").style.display = "none";
+    document.getElementById("ispt_display").style.display = "none";
+    document.getElementById("div_hide").style.display = "none";
+  </script>
+</body>
+
+</html>

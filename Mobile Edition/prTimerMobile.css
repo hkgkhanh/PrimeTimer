@@ -1,0 +1,224 @@
+body {
+  margin: 0;
+  font-family: 'Calibri';
+}
+::-webkit-scrollbar {
+  width: 1px;
+}
+::-webkit-scrollbar-track {
+  background: none; 
+}
+::-webkit-scrollbar-thumb {
+  background: none;
+}
+#tabs {
+  margin-top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.tab {
+  width: 25%;
+  height: 10ch;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  text-align: center;
+  line-height: 99%;
+  font-size: 20px;
+  font-weight: bolder;
+}
+#timer_div, #options_div, #stats_div, #about_div {
+  height: calc(100% - 15ch);
+  width: 100%;
+}
+#options_div_div, #about_div_div, #stats_div_div {
+  height: calc(100vh - 15ch);
+  overflow-y: auto;
+  padding-left: 2ch;
+  padding-right: 2ch;
+}
+#time, #div_hide {
+  position: fixed;
+  top: 10ch;
+  height: calc(100vh - 10ch - 30vh);
+  width: 100%;
+  text-align: center;
+  z-index: -1;
+
+  margin: 0;
+  position: absolute;
+  font-size: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#scnd, #mnt, #two_dot {
+  font-family: 'Segment7Standard';
+}
+#scram_div {
+  position: fixed;
+  top: 15ch;
+  width: calc(100% - 2ch);
+  left: 1ch;
+  background: none;
+  max-height: 13em;
+  overflow-y: auto;
+  text-align: center;
+  font-family: Monospace;
+}
+#draw_scram_div {
+  position: fixed;
+  border: none;
+  bottom: 0;
+  left: 0;
+  width: 50vw;
+  height: 180px;
+}
+#quick_avg_table {
+  position: fixed;
+  border: 1px dashed black;
+  bottom: 0;
+  right: 0;
+  padding: 1ch;
+}
+#avg_table_div {
+  margin-bottom: 1ch;
+}
+#avg_table_div table {
+  border: 1px dashed black;
+  padding: 1ch;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+}
+th, td {
+  min-width: 35%;
+  width: fit-content;
+  width: -moz-fit-content;
+  text-align: center;
+  vertical-align: center;
+  padding: 0.5ch;
+}
+#times_container {
+  border: none;
+}
+.flex_display {
+  display: flex;
+}
+.solve_dp {
+  width: 100%;
+  font-size: 10ch;
+  border: 1px solid;
+  padding: 0.4ch;
+}
+.solve_dp table {
+  width: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+  .tab_description {
+    display: none;
+  }
+  .flex_display {
+    flex-direction: column;
+    align-items: center;
+  }
+  #avg_table_div {
+    width: 100%;
+  }
+  #avg_table_div table {
+    width: 100%;
+    border: 1px dashed black;
+    padding: 1ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #times_container {
+    width: 100%;
+    max-height: fit-content;
+    max-height: -moz-fit-content;
+  }
+  #stat_dialog {
+    position: fixed;
+    width: calc(100vw - 8ch);
+    height: calc(100vh - 8ch);
+    padding: 2ch;
+    top: 2ch;
+    left: 4ch;
+  }
+  #solve_dialog {
+    position: fixed;
+    width: calc(100vw - 8ch);
+    height: 52ch;
+    padding: 2ch;
+    top: calc(50vh - 24ch);
+    left: 2ch;
+  }
+}
+@media only screen and (min-width: 800.1px) {
+  .tab_description {
+    display: inline-block;
+  }
+  .flex_display {
+    flex-direction: row;
+  }
+  #avg_table_div {
+    max-width: fit-content;
+    max-width: -moz-fit-content;
+  }
+  #avg_table_div table {
+    border: 1px dashed black;
+    padding: 1ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #times_container {
+    margin-left: 1ch;
+    width: 100%;
+    max-height: fit-content;
+    max-height: -moz-fit-content;
+  }
+  #stat_dialog {
+    position: fixed;
+    width: calc(100vw - 30ch);
+    height: calc(100vh - 16ch);
+    padding: 2ch;
+    top: 6ch;
+    left: 13ch;
+  }
+  #solve_dialog {
+    position: fixed;
+    width: calc(100vw - 60ch);
+    height: 52ch;
+    padding: 2ch;
+    top: calc(50vh - 24ch);
+    left: 28ch;
+  }
+}
+
+/* this is for loading screen */
+.no-js #loader {
+  display: none;
+}
+.js #loader {
+  display: block;
+  position: absolute;
+  left: 100px;
+  top: 0;
+}
+.se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
