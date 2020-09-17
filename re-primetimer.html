@@ -277,7 +277,7 @@
 
 			<div id="solve_table" class="statTd_td">
 
-				<table id="del_table" style="border-bottom: solid; border-width: 1px; width: 100%;">
+				<table id="del_table" style="border: none; width: 100%;">
 					<tr class="table_cell">
 						<td class="table_cell" colspan="2" style="text-align: center">
 							<div class="table_cell" style="text-align: center; width: 100%;" id="mean_stat" onclick="showStat(0)">
@@ -287,8 +287,6 @@
 						</td>
 					</tr>
 				</table>
-
-				<br>
 
 				<div id="times_container" style="overflow-y: scroll"></div>
 
@@ -542,10 +540,7 @@
 						<li class="theme" onclick="changeTheme('#FFFFFF', '#FFFFFF', '#000000', '#0000FF')">White</li>
 						<li class="theme" onclick="changeTheme('#000000', '#000000', '#FFFFFF', '#FFFF00')">Black</li>
 						<li class="theme" onclick="changeTheme('#659DBD', '#BC986A', '#FBEEC1', '#FFFFFF')">"Earthy"</li>
-						<li class="theme" onclick="changeTheme('#5CDB95', '#05386B', '#EDF5E1', '#EDF5E1')">Green and Blue</li>
-						<li class="theme" onclick="changeTheme('#3FEEE6', '#FC4445', '#000000', '#0000FF')">Light Blue and Red</li>
 						<li class="theme" onclick="changeTheme('#1F2833', '#0B0C10', '#C5C6C7', '#C5C6C7')">Dark</li>
-						<li class="theme" onclick="changeTheme('#E3AFBC', '#EE4C7C', '#5D001E', '#5D001E')">Pinky</li>
 						<li class="theme" onclick="changeTheme('#A7CCED', '#63ADF2', '#000000', '#FFFFFF')">Blue</li>
 						<li class="theme" onclick="changeTheme('#96E8BC', '#7DD181', '#000000', '#0000FF')">Green</li>
 						<li class="theme" onclick="changeTheme('#FFFBFF', '#F3E2A9', '#000000', '#0000FF')">No Name (default)</li>
@@ -696,40 +691,6 @@
 	 </header>
 
 		<!--##### JS PART #####-->
-		<script src="scripts\data_storage.js"></script>
-		<script src="scripts\timer.js"></script>
-		<script src="scripts\dialogs.js"></script>
-		<script src="scripts\Session.js"></script>
-		<script src="scripts\options.js"></script>
-		<script src="scripts\scram-gen\scrambles_part.js"></script>
-		<script src="scripts\key_events.js"></script>
-		<script src="scripts\solve_related.js"></script>
-		<script src="scripts\calc_mean_avg.js"></script>
-
-		<script src="scripts\scram-gen\scramble_222.js"></script>
-		<script src="scripts\scram-gen\scramble_333.js"></script>
-		<script src="scripts\scram-gen\scramble_clock.js"></script>
-		<script src="scripts\scram-gen\scramble_minx.js"></script>
-		<script src="scripts\scram-gen\scramble_NNN.js"></script>
-		<script src="scripts\scram-gen\scramble_pyram.js"></script>
-		<script src="scripts\scram-gen\scramble_sq1.js"></script>
-		<script src="scripts\libraries\raphael-min.js"></script>
-
-		<script src="scripts\scram-gen\mathlib.js"></script>
-		<script src="scripts\scram-gen\scramble.js"></script>
-		<script src="scripts\scram-gen\pyraminx.js"></script>
-		<script src="scripts\scram-gen\skewb.js"></script>
-		<script src="scripts\scram-gen\1x3x3.js"></script>
-		<script src="scripts\scram-gen\2x2x2.js"></script>
-		<script src="scripts\scram-gen\scramble_333_edit.js"></script>
-		<script src="scripts\scram-gen\cross.js"></script>
-
-		<script src="scripts\scram-draw\scramSeq.js"></script>
-		<script src="scripts\scram-draw\drawSkewb.js"></script>
-		<script src="scripts\scram-draw\draw222.js"></script>
-		<script src="scripts\scram-draw\draw333.js"></script>
-		<script src="scripts\scram-draw\drawPyraminx.js"></script>
-
 		<script>
 			//##### VARRIBLES AND CONSTS #####
 			var mnt = 0;
@@ -755,8 +716,8 @@
 			var ind1 = 0;
 			var sesNum;
 			var sessions = [];
-			var sesSum;
-			var mean;
+			var sesSum = 0;
+			var mean = 0;
 			var bestSingle;
 			var bestSinglestrng;
 			var bestSingleTrao;
@@ -828,5 +789,39 @@
 			document.getElementById("ispt_display").style.display = "none";
 			document.getElementById("div_hide").style.display = "none";
 		</script>
+		
+		<script src="scripts\data_storage.js"></script>
+		<script src="scripts\timer.js"></script>
+		<script src="scripts\dialogs.js"></script>
+		<script src="scripts\Session.js"></script>
+		<script src="scripts\options.js"></script>
+		<script src="scripts\scram-gen\scrambles_part.js"></script>
+		<script src="scripts\key_events.js"></script>
+		<script src="scripts\calc_mean_avg.js"></script>
+		<script src="scripts\solve_related.js"></script>
+
+		<script src="scripts\scram-gen\scramble_222.js"></script>
+		<script src="scripts\scram-gen\scramble_333.js"></script>
+		<script src="scripts\scram-gen\scramble_clock.js"></script>
+		<script src="scripts\scram-gen\scramble_minx.js"></script>
+		<script src="scripts\scram-gen\scramble_NNN.js"></script>
+		<script src="scripts\scram-gen\scramble_pyram.js"></script>
+		<script src="scripts\scram-gen\scramble_sq1.js"></script>
+		<script src="scripts\libraries\raphael-min.js"></script>
+
+		<script src="scripts\scram-gen\mathlib.js"></script>
+		<script src="scripts\scram-gen\scramble.js"></script>
+		<script src="scripts\scram-gen\pyraminx.js"></script>
+		<script src="scripts\scram-gen\skewb.js"></script>
+		<script src="scripts\scram-gen\1x3x3.js"></script>
+		<script src="scripts\scram-gen\2x2x2.js"></script>
+		<script src="scripts\scram-gen\scramble_333_edit.js"></script>
+		<script src="scripts\scram-gen\cross.js"></script>
+
+		<script src="scripts\scram-draw\scramSeq.js"></script>
+		<script src="scripts\scram-draw\drawSkewb.js"></script>
+		<script src="scripts\scram-draw\draw222.js"></script>
+		<script src="scripts\scram-draw\draw333.js"></script>
+		<script src="scripts\scram-draw\drawPyraminx.js"></script>
 	</body>
 </html>

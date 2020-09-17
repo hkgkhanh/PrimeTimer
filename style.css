@@ -66,7 +66,9 @@
 				padding: 0;
 			}
 			.statTd_td {
-				width: 98%;
+				/*width: 98%;*/
+				width: fit-content;
+				width: moz-fit-content;
 				background: inherit;
 				font-size: 15px;
 			}
@@ -80,7 +82,7 @@
 			}
 			#times_container {
 				font-family: 'Roboto', sans-serif;
-				padding-left: 6px;
+				padding-left: 2px;
 				padding-right: 2px;
 			}
 			#scram_td {
@@ -307,7 +309,8 @@
 				#stat_td {
 					bottom: 0;
 					right: 0;
-					width: 50vw;
+					width: fit-content;
+					width: moz-fit-content;
 					height: 230px;
 					flex-direction: row;
 				}
@@ -321,7 +324,7 @@
 					line-height: 1.5;
 				}
 				#times_container {
-					height: 180px;
+					height: calc(100% - 30px);
 				}
 				.statTd_td {
 					background: inherit;

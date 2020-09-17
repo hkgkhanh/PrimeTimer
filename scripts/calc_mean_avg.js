@@ -1,5 +1,14 @@
 //##### CALCULATE MEAN AND AVERAGE #####
 			function calc(){
+				mean3strngArray = [];
+				avg5strngArray = [];
+				avg12strngArray = [];
+				avg50strngArray = [];
+				avg100strngArray = [];
+				avg200strngArray = [];
+				avg500strngArray = [];
+				avg1000strngArray = [];
+				
 				if (sessions[sesNum - 1].arr.length != 0) {
 					calc_mean();
 					calc_bestSingle();
@@ -170,7 +179,7 @@
 					} else {
 						var avg5strng = "DNF";
 						var avg5 = Math.pow(2, 53) - 1;
-						avg5Array.push(avg12);
+						avg5Array.push(avg5);
 						avg5strngArray.push(avg5strng);
 					};
 				};

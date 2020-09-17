@@ -88,6 +88,7 @@ function changeColor() {
 	document.getElementById("div_ses_choose").style.color = fontColor_value;
 	document.getElementById("choose_session").style.color = fontColor_value;
 	document.getElementById("avg_table").style.color = fontColor_value;
+	document.getElementById("avg_table").style.borderColor = "#585858";
 	document.getElementById("mean_stat").style.color = fontColor_value;
 	document.getElementById("del_table").style.color = fontColor_value;
 	document.getElementById("solve_table").style.color = fontColor_value;
@@ -108,6 +109,12 @@ function changeColor() {
 	document.getElementById("div_hide").style.color = fontColor_value;
 	document.getElementById("draw_scram_dialog").style.color = fontColor_value;
 	document.getElementById("solve_comment").style.color = fontColor_value;
+
+	for (i = 0; i < document.getElementsByClassName("diff_cell").length; i++) {
+		if (document.getElementsByClassName("diff_cell")[i].innerHTML == "0.00") {
+  		document.getElementsByClassName("diff_cell")[i].style.color = fontColor_value;
+  	}
+	}
 	//bg color
 	document.body.style.backgroundColor = bgColor_value;
 	document.getElementById("time").style.backgroundColor = bgColor_value;
@@ -163,7 +170,7 @@ function displaySession(){
 
 	sesNum = parseInt(sesChosen);
 
-	document.getElementById("times_container").innerHTML = "-";
+	document.getElementById("times_container").innerHTML = "";
 	document.getElementById("cur_single").innerHTML = "-";
 	document.getElementById("cur_mo3").innerHTML = "-";
 	document.getElementById("cur_ao5").innerHTML = "-";
@@ -238,8 +245,6 @@ function displaySession(){
 	bestA1000strngArray = [];
 	bestA1000TraoArray = [];
 
-	timeContain();
-
 	if (sessions[sesNum - 1].arr.length != 0) {
 
 		for (var ind0 = 0; ind0 < sessions[sesNum - 1].arr.length; ind0++) {
@@ -258,6 +263,7 @@ function displaySession(){
 
 		calc();
 	};
+	timeContain();
 };
 
 function getTimeSplitVal() {

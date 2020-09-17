@@ -78,8 +78,6 @@ function addSolve(){
 		bestSingleTrao = sessions[sesNum - 1].arr[0].trao;
 	};
 
-	timeContain();
-
 	document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
 	document.getElementById("best_single").innerHTML = bestSinglestrng;
 
@@ -93,6 +91,7 @@ function addSolve(){
 
 	saveSession();
 	calc();
+	timeContain();
 };
 
 function setOK(solveNum) {
@@ -111,8 +110,6 @@ if (sessions[sesNum - 1].arr. length != 0) {
 	if (solveMin != 0 && solveSec >= 10){
 		sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + solveSec.toFixed(2);
 	};
-
-	timeContain();
 
 	document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
 
@@ -182,8 +179,8 @@ if (sessions[sesNum - 1].arr. length != 0) {
 	bestA1000TraoArray = [];
 
 	saveSession();
-
 	calc();
+	timeContain();
 }
 };
 
@@ -204,8 +201,6 @@ if (sessions[sesNum - 1].arr. length != 0) {
 		sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + solveSec.toFixed(2) + "+";
 	};
 
-	timeContain();
-
 	document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
 
 	if (sessions[sesNum - 1].arr.length == 1) {
@@ -274,8 +269,8 @@ if (sessions[sesNum - 1].arr. length != 0) {
 	bestA1000TraoArray = [];
 
 	saveSession();
-
 	calc();
+	timeContain();
 }
 };
 
@@ -285,8 +280,6 @@ if (sessions[sesNum - 1].arr. length != 0) {
 	sessions[sesNum - 1].arr[solveNum].pen = "dnf";
 	sessions[sesNum - 1].arr[solveNum].strng = "DNF";
 	sessions[sesNum - 1].arr[solveNum].time = sessions[sesNum - 1].arr[solveNum].tOk;
-
-	timeContain();
 
 	document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
 
@@ -357,8 +350,8 @@ if (sessions[sesNum - 1].arr. length != 0) {
 	bestA1000TraoArray = [];
 
 	saveSession();
-
 	calc();
+	timeContain();
 }
 };
 			
@@ -472,8 +465,8 @@ if (sessions[sesNum - 1].arr. length != 0) {
 
 		//add solve to times container and save sesion
 		saveSession();
-		timeContain();
 		calc();
+		timeContain();
 	};
 }
 };
@@ -535,8 +528,6 @@ if (sessions[sesNum - 1].arr.length != 0) {
 		bestA1000strngArray = [];
 		bestA1000TraoArray = [];
 
-		document.getElementById("times_container").innerHTML = "";
-
 		document.getElementById("ses_mean").innerHTML = "0.00";
 		document.getElementById("ses_not_dnf").innerHTML = "0";
 		document.getElementById("ses_length").innerHTML = "0";
@@ -569,8 +560,8 @@ if (sessions[sesNum - 1].arr.length != 0) {
 		document.getElementById("best_ao1000").innerHTML = "-";
 
 		saveSession();
-
 		calc();
+		timeContain();
 	};
 }
 };
@@ -603,19 +594,116 @@ function delSes() {
 }
 
 function timeContain() {
+	//var endofTimeCon = 0;
 	timeCon.innerHTML = "";
-	var endofTimeCon = 0;
-	for (var ind0 = 0; ind0 < sessions[sesNum - 1].arr.length; ind0++) {
-		timeCon.innerHTML += " <span onclick='solveStat(" + ind0 + ")' class='solve_dp'>" + sessions[sesNum - 1].arr[ind0].strng + "<\/span>";
-		timeCon.innerHTML += (ind0 == sessions[sesNum - 1].arr.length - 1) ? "" : ", ";
+	var table = document.createElement("table");
+	table.style.textAlign = "center";
+	table.style.borderStyle = "solid";
+	table.style.borderWidth = "1px";
+	table.style.borderColor = "#585858";
+	table.style.width = "100%";
+	table.style.borderCollapse = "inherit";
+  var row = table.insertRow();
+  var indCell = row.insertCell();
+  indCell.innerHTML = "<b>ind</b>";
+  var timeCell = row.insertCell();
+  timeCell.innerHTML = "<b>time</b>";
+  var diffCell = row.insertCell();
+  diffCell.innerHTML = "<b>diff</b>";
+  var ao5Cell = row.insertCell();
+  ao5Cell.innerHTML = "<b>ao5</b>";
 
-		endofTimeCon += 100;
-		timeCon.scrollTo(0, endofTimeCon);
-	};
+	if (sessions[sesNum - 1].arr.length != 0) {
+		for (var ind0 = 0; ind0 < sessions[sesNum - 1].arr.length; ind0++) {
+			/*timeCon.innerHTML += " <span onclick='solveStat(" + ind0 + ")' class='solve_dp'>" + sessions[sesNum - 1].arr[ind0].strng + "<\/span>";
+			timeCon.innerHTML += (ind0 == sessions[sesNum - 1].arr.length - 1) ? "" : ", ";*/
+			/*if (ind0 == sessions[sesNum - 1].arr.length-1) {
+				timeCon.innerHTML = "<table><tr><th>ind</th><th>time</th><th>diff</th><th>ao5</th></tr>";
+			}
+
+			timeCon.innerHTML += "<tr><td>" + (ind0+1) + "</td><td>" + sessions[sesNum - 1].arr[ind0].strng + "</td></tr>";
+
+			if (ind0 == 0) {
+				timeCon.innerHTML += "</table>";
+			}*/
+			//endofTimeCon += 100;
+			//timeCon.scrollTo(0, endofTimeCon);
+			var newRow = table.insertRow(1);
+
+			var newIndCell = newRow.insertCell();
+  		newIndCell.innerHTML = (ind0+1);
+
+  		var newTimeCell = newRow.insertCell();
+  		newTimeCell.innerHTML =  "<span onclick='solveStat(" + ind0 + ")' class='solve_dp'>" + sessions[sesNum - 1].arr[ind0].strng + "</span>";
+
+  		var newDiffCell = newRow.insertCell();
+  		newDiffCell.className = "diff_cell";
+  		//newDiffCell.innerHTML = "diff";
+  		var meanToRound = Math.round(mean * 100) / 100;
+  		var diffFontColor;
+  		var diff = sessions[sesNum - 1].arr[ind0].time - meanToRound;
+  		if (diff > 0) {
+  			diffFontColor = "#990000";
+  			var diffMin = Math.floor(diff / 60);
+				var diffSec = Math.round((diff % 60) * 100) / 100;
+
+				if (diffMin == 0) {
+					var diffstrng = "+" + diffSec.toFixed(2);
+				} else {
+					if (diffSec < 10) {
+						var diffstrng = "+" + diffMin + ":0" + diffSec.toFixed(2);
+					} else {
+						var diffstrng = "+" + diffMin + ":" + diffSec.toFixed(2);
+					};
+				};
+
+			} else if (diff < 0) {
+				diffFontColor = "#006644";
+				diff = Math.abs(diff);
+				var diffMin = Math.floor(diff / 60);
+				var diffSec = Math.round((diff % 60) * 100) / 100;
+
+				if (diffMin == 0) {
+					var diffstrng = "-" + diffSec.toFixed(2);
+				} else {
+					if (diffSec < 10) {
+						var diffstrng = "-" + diffMin + ":0" + diffSec.toFixed(2);
+					} else {
+						var diffstrng = "-" + diffMin + ":" + diffSec.toFixed(2);
+					};
+				};
+
+			} else {
+				diffFontColor = fontColor_value;
+				var diffstrng = "0.00";
+			}
+			newDiffCell.innerHTML = diffstrng;
+			newDiffCell.style.color = diffFontColor;
+
+  		var newAo5Cell = newRow.insertCell();
+  		if (ind0 < 4) {
+  			newAo5Cell.innerHTML = "-";
+  		} else {
+  			newAo5Cell.innerHTML = "<span onclick='showAo5Stat(" + (ind0-4) + ")' class='solve_dp'>" + avg5strngArray[ind0 - 4] + "</span>";
+  		}
+		};
+	}
+	timeCon.appendChild(table);
+	timeCon.scrollTo(0, 0);
 };
 
+function showAo5Stat(start) {
+	document.getElementById("stat_dialog").style.display = "block";
+	var statCon = "";
+	statCon += "average of 5: " + avg5strngArray[start] + "<br>";
+	for (var ind16 = 0; ind16 < 5; ind16++) {
+		statCon += (ind16+1) + ". " + sessions[sesNum - 1].arr[start + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[start + ind16].trao + "<br>";
+	};
+	document.getElementById("stats").innerHTML = statCon;
+}
+
 function clearStatDiv() {
-	document.getElementById("times_container").innerHTML = "-";
+	document.getElementById("times_container").innerHTML = "";
 	document.getElementById("cur_single").innerHTML = "-";
 	document.getElementById("cur_mo3").innerHTML = "-";
 	document.getElementById("cur_ao5").innerHTML = "-";
