@@ -1,3 +1,0 @@
-function Session() {
-	this.arr = [];
-}
