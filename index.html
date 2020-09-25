@@ -10,10 +10,12 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 
 		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Average+Sans&display=swap" rel="stylesheet">
 		<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/segment7" type="text/css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+		<script src="https://cdn.cubing.net/js/scramble-display/latest/scramble-display.browser.js"></script>
 		<!-- this is for loading screen -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
@@ -463,6 +465,10 @@
 				</g>
 			</svg>
 		</div>
+
+		<div id="clock_draw_div">
+			<scramble-display style="width:250px; height:150px;" id="clock_display" event="clock" scramble=""></scramble-display>
+		</div>
 		</div>
 
 		<dialog id="option_dialog">
@@ -472,6 +478,13 @@
 			<div style="overflow-y: scroll; height: 65%; border: none; padding-left: 5px; line-height: 1.5; font-size: 15px;">
 				<p style="padding-left: 5px; font-size: 25px; text-align: center;"><b>Settings</b></p>
 				<ul>
+					<li><text>timer font </text>
+						<select id="timer_font_type" class="sel" onchange="changeSetting()">
+							<option value="segment7Standard" selected="selected">digital &ensp;</option>
+							<option value="Arial">Arial &ensp;</option>
+							<option value="Roboto">Roboto &ensp;</option>
+						</select>
+					</li>
 
 					<li><text>enter time with</text>
 					<select id="enter_time_type" class="sel" onchange="changeSetting()">
@@ -517,34 +530,40 @@
 					</label></li>
 				</ul>
 
-					<p style="padding-left: 5px; font-size: 25px; text-align: center;"><b>Color</b></p>
+				<p style="padding-left: 5px; font-size: 25px; text-align: center;"><b>Colors</b></p>
 
-					<text>background color</text>
-					<input type="color" id="bg_color" onchange="changeSetting()">
-					</br>
+				<ul>
+					<li>
+						<text>background color</text>
+						<input type="color" id="bg_color" onchange="changeSetting()">
+					</li>
 
-					<text>board color</text>
-					<input type="color" id="board_color" onchange="changeSetting()">
-					</br>
+					<li>
+						<text>board color</text>
+						<input type="color" id="board_color" onchange="changeSetting()">
+					</li>
 
-					<text>font color</text>
-					<input type="color" id="font_color" onchange="changeSetting()">
-					</br>
+					<li>
+						<text>font color</text>
+						<input type="color" id="font_color" onchange="changeSetting()">
+					</li>
 
-					<text>link color</text>
-					<input type="color" id="link_color" onchange="changeSetting()">
-					<br></li><br>
+					<li>
+						<text>link color</text>
+						<input type="color" id="link_color" onchange="changeSetting()">
+					</li>
+				</ul>
 
-					<text>Not sure what color theme you like? Try one of these:</text>
-					<ul>
-						<li class="theme" onclick="changeTheme('#FFFFFF', '#FFFFFF', '#000000', '#0000FF')">White</li>
-						<li class="theme" onclick="changeTheme('#000000', '#000000', '#FFFFFF', '#FFFF00')">Black</li>
-						<li class="theme" onclick="changeTheme('#659DBD', '#BC986A', '#FBEEC1', '#FFFFFF')">"Earthy"</li>
-						<li class="theme" onclick="changeTheme('#1F2833', '#0B0C10', '#C5C6C7', '#C5C6C7')">Dark</li>
-						<li class="theme" onclick="changeTheme('#A7CCED', '#63ADF2', '#000000', '#FFFFFF')">Blue</li>
-						<li class="theme" onclick="changeTheme('#96E8BC', '#7DD181', '#000000', '#0000FF')">Green</li>
-						<li class="theme" onclick="changeTheme('#FFFBFF', '#F3E2A9', '#000000', '#0000FF')">No Name (default)</li>
-					</ul>
+				<text>Not sure what color theme you like? Try one of these:</text>
+				<ul>
+					<li class="theme" onclick="changeTheme('#FFFFFF', '#FFFFFF', '#000000', '#0000FF')">White</li>
+					<li class="theme" onclick="changeTheme('#000000', '#000000', '#FFFFFF', '#FFFF00')">Black</li>
+					<li class="theme" onclick="changeTheme('#659DBD', '#BC986A', '#FBEEC1', '#FFFFFF')">"Earthy"</li>
+					<li class="theme" onclick="changeTheme('#1F2833', '#0B0C10', '#C5C6C7', '#C5C6C7')">Dark</li>
+					<li class="theme" onclick="changeTheme('#A7CCED', '#63ADF2', '#000000', '#FFFFFF')">Blue</li>
+					<li class="theme" onclick="changeTheme('#96E8BC', '#7DD181', '#000000', '#0000FF')">Green</li>
+					<li class="theme" onclick="changeTheme('#FFFBFF', '#F3E2A9', '#000000', '#0000FF')">No Name (default)</li>
+				</ul>
 				</div>
 				<br>
 				<div align="center">
@@ -567,7 +586,7 @@
 					<li>Scrambles for WCA events and 70+ puzzles & subsets, get last scramble, draw scramble</li>
 					<li>Mutiple sessions, set penalty of any solve, calculate mean, average...</li>
 				</ul>
-				<p><i class="fa fa-warning" style="color:red"></i> PLease be aware that PrimeTimer is currently only available for PC users (mobile supports currently in developing). It is recommended that you should use Chrome, Edge or Cốc Cốc to browse PrimeTimer as it has only been tested on these browsers. For more information click <a class="link" href="https://khanhfromvn.github.io/primetimer_page.html" target="_blank">here</a>.</p>
+				<p><i class="fa fa-warning" style="color:red"></i> PLease be aware that PrimeTimer is currently available for most platforms (it won't work with Safari browser). It is recommended that you should use Chrome, Edge or Cốc Cốc to browse PrimeTimer as it has only been tested on these browsers. For more information click <a class="link" href="https://khanhfromvn.github.io/primetimer_page.html" target="_blank">here</a>.</p>
 
 				<p style="text-align: center; padding-left: 5px; font-size: 25px;"><b>Copyright</b></p>
 				<p>Written and UI designed by Nông Quốc Khánh: <a href="mailto:hkg11khanh@gmail.com" class="link">hkg11khanh@gmail.com</a></p>
@@ -710,6 +729,7 @@
 			var hideType_value;
 			var drawType_value;
 			var timeSplit_value;
+			var timerFont_value;
 			var randomScramble;
 			var scramble = "";
 			var lastScram = "";

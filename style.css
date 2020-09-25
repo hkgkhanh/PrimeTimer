@@ -30,9 +30,6 @@
 				width: 75vh;
 			}
 			#mnt, #scnd {
-				font-family: 'Segment7Standard';
-   				font-weight: bold;
-   				font-style: italic;
    				-webkit-touch-callout: none;
     			-webkit-user-select: none;
      			-khtml-user-select: none;
@@ -42,9 +39,6 @@
 			}
 			#ispt_display {
 				color: #FF0000;
-				font-family: 'Segment7Standard';
-   				font-weight: bold;
-   				font-style: italic;
    				-webkit-touch-callout: none;
     			-webkit-user-select: none;
      			-khtml-user-select: none;
@@ -66,7 +60,6 @@
 				padding: 0;
 			}
 			.statTd_td {
-				/*width: 98%;*/
 				width: fit-content;
 				width: moz-fit-content;
 				background: inherit;
@@ -346,6 +339,7 @@
 					text-align: center;
 				}
 				#draw_scram_dialog {
+					max-width: calc(100vw - 255px);
 					position: fixed;
 					bottom: 1px;
 					left: 0;
@@ -434,8 +428,12 @@
 					text-align: center;
 				}
 				#draw_scram_dialog {
-					width: 200px;
-					height: 165px;
+					min-width: 200px;
+					min-height: 165px;
+					width: fit-content;
+					width: moz-fit-content;
+					height: fit-content;
+					height: moz-fit-content;
 					position: fixed;
 					bottom: 0;
 					left: 0;

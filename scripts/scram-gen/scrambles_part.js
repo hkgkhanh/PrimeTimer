@@ -15,6 +15,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "skewb"){
 					scramble = skewb_scrambler.getSkewbWCAScramble();
@@ -24,6 +25,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "block";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "clock"){
 					generateClock();
@@ -32,6 +34,8 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "block";
+					document.getElementById("clock_display").scramble = scramble;
 
 				} else if (scramType_value == "relay25"){
 					generate_relay25();
@@ -40,6 +44,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "relay27"){
 					generate_relay27();
@@ -48,6 +53,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "mini_guildfold"){
 					generate_mini_guildfold();
@@ -56,6 +62,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "guildfold"){
 					generate_guildfold();
@@ -64,6 +71,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "112") {
 					scramble = megascramble("112", Math.random()*2 + 2);
@@ -72,6 +80,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "133") {
 					scramble = scrambler133.get133scramble();
@@ -80,6 +89,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "223") {
 					scramble = megascramble("223", Math.random()*3 + 8);
@@ -88,6 +98,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "233") {
 					scramble = megascramble("233", Math.random()*7 + 18);
@@ -96,6 +107,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "334") {
 					scramble = megascramble("334", Math.random()*10 + 30);
@@ -104,6 +116,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "335") {
 					scramble = formatscramble("335", Math.random()*10 + 50);
@@ -112,6 +125,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "336") {
 					scramble = megascramble("336", Math.random()*10 + 70);
@@ -120,6 +134,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "888") {
 					scramble = megascramble("888", Math.random()*10 + 120);
@@ -128,6 +143,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "999") {
 					scramble = megascramble("999", Math.random()*10 + 120);
@@ -136,6 +152,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "101010") {
 					scramble = megascramble("101010", Math.random()*10 + 120);
@@ -144,6 +161,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "111111") {
 					scramble = megascramble("111111", Math.random()*10 + 120);
@@ -152,6 +170,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "15p") {
 					scramble = do15puzzle(false, Math.random()*5 + 30);
@@ -160,6 +179,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "sq2") {
 					scramble = dosq2(Math.random()*5 + 20);
@@ -168,6 +188,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "ssq1t") {
 					scramble = ssq1t_scramble(Math.random()*5 + 30);
@@ -176,6 +197,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "bsq") {
 					scramble = sq1_scramble(2, Math.random()*5 + 20);
@@ -184,6 +206,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "bic") {
 					scramble = bicube("bic", Math.random()*5 + 25);
@@ -192,6 +215,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "heli") {
 					scramble = helicubescramble(Math.random()*5 + 40);
@@ -200,6 +224,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "cm3") {
 					scramble = megascramble("cm3", 20);
@@ -208,6 +233,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "cm2") {
 					scramble = megascramble("cm2", 20);
@@ -216,6 +242,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "fto") {
 					scramble = megascramble("fto", Math.random()*3 + 20);
@@ -224,6 +251,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "gear") {
 					scramble = megascramble("gear", Math.random()*2 + 3);
@@ -232,6 +260,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "sfl") {
 					scramble = megascramble("sfl", Math.random()*5 + 20);
@@ -240,6 +269,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "ufo") {
 					scramble = megascramble("ufo", Math.random()*5 + 20);
@@ -248,6 +278,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "prco") {
 					scramble = megascramble("prco", Math.random()*5 + 40);
@@ -256,6 +287,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "giga") {
 					scramble = gigascramble(300);
@@ -264,6 +296,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					
 				} else if (scramType_value == "2223") {
 					scramble = megascramble("2223", 25);
@@ -273,6 +306,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "2226") {
 					scramble = megascramble("2226", 25);
@@ -281,6 +315,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "222so") {
 					scramble = scramble_222.getRandomScramble();
@@ -290,6 +325,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "222o") {
 					scramble = scramble_222.getOptimalScramble();
@@ -299,6 +335,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "222eg") {
 					scramble = scramble_222.getEGScramble();
@@ -308,6 +345,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "222eg0") {
 					scramble = scramble_222.getEG0Scramble();
@@ -317,6 +355,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "222eg1") {
 					scramble = scramble_222.getEG1Scramble();
@@ -326,6 +365,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "222eg2") {
 					scramble = scramble_222.getEG2Scramble();
@@ -335,6 +375,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "2gen") {
 					scramble = megascramble("2gen", 25);
@@ -344,6 +385,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "2genl") {
 					scramble = megascramble("2genl", 25);
@@ -353,6 +395,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "3gen_L") {
 					scramble = megascramble("3gen_L", 25);
@@ -362,6 +405,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "3gen_F") {
 					scramble = megascramble("3gen_F", 25);
@@ -371,6 +415,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "half") {
 					scramble = megascramble("half", 25);
@@ -380,6 +425,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "RrU") {
 					scramble = megascramble("RrU", 25);
@@ -389,6 +435,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "RrUu") {
 					scramble = megascramble("RrUu", 25);
@@ -398,6 +445,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "333r") {
 					scramble = scramble_333.getRandomScramble();
@@ -407,6 +455,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "lsll") {
 					scramble = scramble_333.getLSLLScramble();
@@ -416,6 +465,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "333e") {
 					scramble = scramble_333.getEdgeScramble();
@@ -425,6 +475,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "333c") {
 					scramble = scramble_333.getCornerScramble();
@@ -434,6 +485,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "333ll") {
 					scramble = scramble_333.getLLScramble();
@@ -443,6 +495,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "zbll") {
 					scramble = scramble_333.getZBLLScramble();
@@ -452,6 +505,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "zbls") {
 					scramble = scramble_333.getZBLSScramble();
@@ -461,6 +515,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "zzll") {
 					scramble = scramble_333.getZZLLScramble();
@@ -470,6 +525,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "f2l") {
 					scramble = scramble_333.getF2LScramble();
@@ -479,6 +535,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "l6e") {
 					scramble = scramble_333.getLSEScramble();
@@ -488,6 +545,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "cmll") {
 					scramble = scramble_333.getCMLLScramble();
@@ -497,6 +555,8 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
+
 				} else if (scramType_value == "coll") {
 					scramble = scramble_333.getCLLScramble();
 					drawCube3(scramble);
@@ -505,6 +565,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "ell") {
 					scramble = scramble_333.getELLScramble();
@@ -514,6 +575,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "eoline") {
 					scramble = scramble_333.getEOLineScramble();
@@ -523,6 +585,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "333bf" && wideMoves == true) {
 					scramble = scramble_333.get3BLDScramble();
@@ -532,6 +595,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "easy_cross") {
 					scramble = scramble_333.getF2LScramble();
@@ -544,6 +608,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "roux") {
 					scramble = megascramble("roux", 25);
@@ -553,6 +618,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "block";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "444si") {
 					scramble = megascramble("444si", 40);
@@ -561,6 +627,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "4edge") {
 					scramble = edgescramble("4edge", 10);
@@ -569,6 +636,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "555si") {
 					scramble = megascramble("555si", 60);
@@ -577,6 +645,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "5edge") {
 					scramble = edgescramble("5edge", 10);
@@ -585,6 +654,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "666p") {
 					scramble = megascramble("666p", 80);
@@ -593,6 +663,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "666s") {
 					scramble = megascramble("666s", 80);
@@ -601,6 +672,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "666si") {
 					scramble = megascramble("666si", 80);
@@ -609,6 +681,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "6edge") {
 					scramble = edgescramble("6edge", 15);
@@ -617,6 +690,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "777p") {
 					scramble = megascramble("777p", 100);
@@ -625,6 +699,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "777s") {
 					scramble = megascramble("777s", 100);
@@ -633,6 +708,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "777si") {
 					scramble = megascramble("777si", 100);
@@ -641,6 +717,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "7edge") {
 					scramble = edgescramble("7edge", 15);
@@ -649,6 +726,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "mgmo") {
 					scramble = oldminxscramble(70);
@@ -657,6 +735,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "mgmp") {
 					scramble = pochscramble(10, Math.ceil(70 / 10));
@@ -665,6 +744,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "mgmc") {
 					scramble = carrotscramble(10, Math.ceil(70 / 10));
@@ -673,6 +753,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "minx2g") {
 					scramble = megascramble("minx2g", 30);
@@ -681,6 +762,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "mlsll") {
 					scramble = megascramble("mlsll", 17);
@@ -689,6 +771,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "pyro") {
 					scramble = pyra_scrambler.getPyraOptimalScramble();
@@ -698,6 +781,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "block";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "skbo") {
 					scramble = skewb_scrambler.getSkewbOptimalScramble();
@@ -707,6 +791,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "block";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "sq1h") {
 					scramble = sq1_scramble(1, 40);
@@ -715,6 +800,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "sq1t") {
 					scramble = sq1_scramble(2, 20);
@@ -723,6 +809,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "clkj") {
 					scramble = "UU" + c("u") + "dU" + c("u") + "dd" + c("u") + "Ud" + c("u") + "dU" + c("u") + "Ud" + c("u") + "UU" + c("u") + "UU" + c("u") + "UU" + c("u") + "dd" + c3() + c2() + "\ndd" + c("d") + "dU" + c("d") + "UU" + c("d") + "Ud" + c("d") + "UU" + c3() + "UU" + c3() + "Ud" + c3() + "dU" + c3() + "UU" + c3() + "dd" + c("d") + c2();
@@ -731,6 +818,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "clkc") {
 					ret = "";
@@ -744,6 +832,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "clke") {
 					scramble = "UU" + c("u") + "dU" + c("u") + "dU" + c("u") + "UU" + c("u") + "UU" + c("u") + "UU" + c("u") + "Ud" + c("u") + "Ud" + c("u") + "dd" + c("u") + "dd" + c3() + c2() + "\nUU" + c3() + "UU" + c3() + "dU" + c("d") + "dU" + c3() + "dd" + c("d") + "Ud" + c3() + "Ud" + c("d") + "UU" + c3() + "UU" + c("d") + "dd" + c("d") + c2();
@@ -752,6 +841,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				} else if (scramType_value == "444yj") {
 					scramble = yj4x4(40);
@@ -760,6 +850,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 
 				}
 				else {
@@ -775,6 +866,7 @@ function generateScram(){
 					document.getElementById("333_draw_div").style.display = "none";
 					document.getElementById("pyram_draw_div").style.display = "none";
 					document.getElementById("skb_draw_div").style.display = "none";
+					document.getElementById("clock_draw_div").style.display = "none";
 					document.getElementById("draw_other_wca").appendChild(newDiv);
 				};
 
@@ -1110,6 +1202,15 @@ function drawLastScram() {
 		document.getElementById("pyram_draw_div").style.display = "none";
 		document.getElementById("skb_draw_div").style.display = "block";
 		drawCubeS(scramble);
+
+	} else if (scrT == "clock") {
+		document.getElementById("draw_other_wca").style.display = "none";
+		document.getElementById("222_draw_div").style.display = "none";
+		document.getElementById("333_draw_div").style.display = "none";
+		document.getElementById("pyram_draw_div").style.display = "none";
+		document.getElementById("skb_draw_div").style.display = "none";
+		document.getElementById("clock_draw_div").style.display = "block";
+		document.getElementById("clock_display").scramble = scramble;
 	};
 };
 

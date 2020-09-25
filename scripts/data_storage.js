@@ -51,6 +51,21 @@ function getSettings() {
 		} else {
 			document.getElementById("time_split").value = 1;
 		}
+		if (localStorage.timerFont) {
+			var jsonTimerFontText = JSON.parse(localStorage.getItem("timerFont"));
+			switch (jsonTimerFontText) {
+				case "segment7Standard":
+					document.getElementById("timer_font_type").selectedIndex = 0;
+					break;
+				case "Arial":
+					document.getElementById("timer_font_type").selectedIndex = 1;
+					break;
+				case "Roboto":
+					document.getElementById("timer_font_type").selectedIndex = 2;
+			}
+		} else {
+			document.getElementById("timer_font_type").selectedIndex = 0;
+		}
 	};
 };
 
@@ -63,25 +78,28 @@ function saveSettings() {
 	var jsonHideAll;
 	var jsonWideMoves;
 	var jsonTimeSplit;
+	var jsonTimerFont;
 
 	if (window.localStorage !== undefined) {
 
-   	jsonIsptType = JSON.stringify(inspectType_value);
-   	jsonEnterType = JSON.stringify(enterTimeType_value);
-   	jsonFormatType = JSON.stringify(enterFormatType_value);
-   	jsonHideType = JSON.stringify(hideType_value);
-   	jsonDrawType = JSON.stringify(drawType_value);
-   	jsonHideAll = JSON.stringify(hideAll);
-   	jsonWideMoves = JSON.stringify(wideMoves);
-   	jsonTimeSplit = JSON.stringify(timeSplit_value);
+   		jsonIsptType = JSON.stringify(inspectType_value);
+   		jsonEnterType = JSON.stringify(enterTimeType_value);
+   		jsonFormatType = JSON.stringify(enterFormatType_value);
+   		jsonHideType = JSON.stringify(hideType_value);
+   		jsonDrawType = JSON.stringify(drawType_value);
+   		jsonHideAll = JSON.stringify(hideAll);
+   		jsonWideMoves = JSON.stringify(wideMoves);
+   		jsonTimeSplit = JSON.stringify(timeSplit_value);
+   		jsonTimerFont = JSON.stringify(timerFont_value);
 	  	localStorage.setItem("isptType", jsonIsptType);
-   	localStorage.setItem("enterType", jsonEnterType);
-   	localStorage.setItem("enterFormat", jsonFormatType);
+   		localStorage.setItem("enterType", jsonEnterType);
+   		localStorage.setItem("enterFormat", jsonFormatType);
   		localStorage.setItem("hideType", jsonHideType);
   		localStorage.setItem("drawType", jsonDrawType);
   		localStorage.setItem("hideAllType", jsonHideAll);
   		localStorage.setItem("wideMovesType", jsonWideMoves);
   		localStorage.setItem("timeSplit", jsonTimeSplit);
+  		localStorage.setItem("timerFont", jsonTimerFont);
   		return;
  	};
 };

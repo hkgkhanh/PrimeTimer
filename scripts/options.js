@@ -31,6 +31,10 @@ function changeSetting(){
 	timeSplit_value = parseInt(getTimeSplitVal());
 	document.getElementById("time_split").value = timeSplit_value;
 
+	//timer font
+	var timerFontType = document.getElementById("timer_font_type");
+	timerFont_value = timerFontType.options[timerFontType.selectedIndex].value;
+
 	//color
 	bgColor_value = document.getElementById("bg_color").value;
 	boardColor_value = document.getElementById("board_color").value;
@@ -66,6 +70,9 @@ function changeSetting(){
 	} else {
 		document.getElementById("draw_scram_dialog").style.display = "none";
 	};
+	document.getElementById("mnt").style.fontFamily = timerFont_value;
+	document.getElementById("scnd").style.fontFamily = timerFont_value;
+	document.getElementById("ispt_display").style.fontFamily = timerFont_value;
 				
 	//other stuff to change
 	timerStatus = 0;
@@ -95,6 +102,7 @@ function changeColor() {
 	document.getElementById("about_dialog").style.color = fontColor_value;
 	document.getElementById("option_dialog").style.color = fontColor_value;
 	document.getElementById("inspect_type").style.color = fontColor_value;
+	document.getElementById("timer_font_type").style.color = fontColor_value;
 	document.getElementById("enter_time_type").style.color = fontColor_value;
 	document.getElementById("enter_format_type").style.color = fontColor_value;
 	document.getElementById("hide_type").style.color = fontColor_value;
@@ -127,6 +135,7 @@ function changeColor() {
 	document.getElementById("inspect_type").style.backgroundColor = boardColor_value;
 	document.getElementById("time_split").style.backgroundColor = boardColor_value;
 	document.getElementById("enter_time_type").style.backgroundColor = boardColor_value;
+	document.getElementById("timer_font_type").style.backgroundColor = boardColor_value;
 	document.getElementById("enter_format_type").style.backgroundColor = boardColor_value;
 	document.getElementById("hide_type").style.backgroundColor = boardColor_value;
 	document.getElementById("draw_type").style.backgroundColor = boardColor_value;
