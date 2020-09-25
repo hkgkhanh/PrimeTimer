@@ -12,7 +12,9 @@ Professional Timer for Cubing and Puzzle Solving
 
 ## Copyrights & Credits
 Written and designed by me (hkg11khanh@gmail.com)
+
 Logo design by Nguyễn Lương Phúc (heliosqv98@gmail.com)
+
 Scramble source code:
 * [JSSS](https://github.com/cubing/jsss)
 * [pyTwistyScrambler](https://github.com/euphwes/pyTwistyScrambler)
