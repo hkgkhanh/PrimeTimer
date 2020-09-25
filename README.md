@@ -21,3 +21,4 @@ Scramble source code:
 * [scramble-display](https://github.com/cubing/scramble-display)
 
 ## License
+[GNU General Public License v3.0](https://github.com/khanhfromvn/PrimeTimer/blob/master/LICENSE.md)
