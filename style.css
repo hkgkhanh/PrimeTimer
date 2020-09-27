@@ -339,7 +339,16 @@
 					text-align: center;
 				}
 				#draw_scram_dialog {
-					max-width: calc(100vw - 255px);
+					/*min-width: 200px;
+					width: fit-content;
+					width: moz-fit-content;*/
+					/*width: calc(100vw - 255px);*/
+					min-width: 200px;
+					min-height: 165px;
+					width: fit-content;
+					width: moz-fit-content;
+					height: fit-content;
+					height: moz-fit-content;
 					position: fixed;
 					bottom: 1px;
 					left: 0;
