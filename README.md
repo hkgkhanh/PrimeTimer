@@ -8,7 +8,7 @@ Beta (latest) version (25.9.20): https://khanhfromvn.github.io/myprojects/PrimeT
 
 ## Features
 * Timer, inspection time + 8/12 seconds voice alert, import time by timer/typing.
-* Scrambles for WCA events and 70+ puzzles & subsets, get last scramble, draw scramble
+* Scrambles for WCA events and 70+ puzzles & subsets, get last scramble, draw scramble.
 * Mutiple sessions, set penalty of any solve, calculate mean, average...
 
 ## Copyrights & Credits
