@@ -1,0 +1,134 @@
+html .p70 {
+	font-size: 1.05vw;
+	font-size: calc(0.45vw + 0.80vh);
+}
+
+html.p80 {
+	font-size: 1.20vw;
+	font-size: calc(0.52vw + 0.92vh);
+}
+
+html.p90 {
+	font-size: 1.35vw;
+	font-size: calc(0.58vw + 1.03vh);
+}
+
+html {
+	font-size: 1.50vw;
+	font-size: calc(0.65vw + 1.15vh);
+}
+
+html.p110 {
+	font-size: 1.65vw;
+	font-size: calc(0.71vw + 1.26vh);
+}
+
+html.p125 {
+	font-size: 1.87vw;
+	font-size: calc(0.81vw + 1.43vh);
+}
+
+html.p150 {
+	font-size: 2.25vw;
+	font-size: calc(0.97vw + 1.72vh);
+}
+
+#buts {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	left: 0;
+	top: 0;
+	height: 10rem;
+	width: 5rem;
+}
+
+#buts img {
+	width: 4rem;
+	height: auto;
+	margin: 0.5rem;
+}
+
+#scram_td {
+	position: fixed;
+	top: 0;
+	left: 5rem;
+	right: 0;
+	padding: 2rem 2rem 1rem 2rem;
+}
+
+#mnt, #two_dot, #scnd,#ispt_display, #hide_text {
+	font-size: 8rem;
+}
+
+#import_plhd {
+	font-size: 8rem;
+	width: 80vw;
+}
+
+#draw_scram_dialog {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+#stat_td {
+	height: 19.5rem;
+	position: fixed;
+	display: flex;
+	bottom: 0;
+	right: 0;
+	flex-direction: row;
+}
+
+.statTd_td {
+	margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+#times_container {
+	height: 14rem;
+}
+
+.table_cell {
+	padding: 0.1rem 0.1rem 0.1rem 0.1rem;
+}
+
+.solve_dp {
+	margin: 0.1rem 0.1rem 0.1rem 0.1rem;
+}
+
+#option_dialog {
+	height: 40rem;
+	width: 90vw;
+}
+
+#about_dialog {
+	height: 40rem;
+	width: 90vw;
+}
+
+#stat_dialog {
+	height: 40rem;
+	width: 90vw;
+}
+
+#solve_dialog {
+	height: 25rem;
+	width: 30rem;
+}
+
+#toggle_statTd {
+	display: block;
+	position: fixed;
+	bottom: 19.5rem;
+	right: 0;
+	padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+#toggle_statTd-text, #toggle_statTd-show, #toggle_statTd-hide, #fa-angle-up {
+	display: none;
+}
+
+#toggle_statTd:hover > #toggle_statTd-text {
+	display: inline-block;
+}

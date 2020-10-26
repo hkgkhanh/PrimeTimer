@@ -14,9 +14,9 @@ document.onkeydown = function(event) {
 		clearInterval(timeBegin);
 		var setTime = getCurTime();
 		addPhase(setTime);
+		hideDiv();
 		addSolve(); generateScram();
 		ispt = 0;
-		hideDiv();
 		timeSplits = [];
 		isRunning = false;
 		curPhase++;
@@ -45,7 +45,8 @@ document.onkeyup = function(event){
 
 		if (timerStatus % 3 == 1){
 
-			document.getElementById("time_imported").style.display = "none";
+			//document.getElementById("time_imported").style.display = "none";
+			document.getElementById("import_plhd").style.display = "none";
 			document.getElementById("mnt").style.display = "none";
 			document.getElementById("two_dot").style.display = "none";
 			document.getElementById("scnd").style.display = "none";
@@ -55,6 +56,7 @@ document.onkeyup = function(event){
 
 			if (hideAll == true) {
 				document.getElementById("buts").style.visibility = "hidden";
+				document.getElementById("toggle_statTd").style.visibility = "hidden";
 				document.getElementById("stat_td").style.visibility = "hidden";
 				document.getElementById("scram_td").style.visibility = "hidden";
 				document.getElementById("draw_scram_dialog").style.visibility = "hidden";
@@ -67,11 +69,22 @@ document.onkeyup = function(event){
 
 			document.getElementById("scnd").style.display = "inline-block";
 			document.getElementById("ispt_display").style.display = "none";
+			document.getElementById("hide_text").style.display = "none";
 
 			if (hideType_value) {
-				document.getElementById("time").style.display = "none";
-				document.getElementById("div_hide").style.display = "inline-block";
-			};
+				//document.getElementById("time").style.display = "none";
+				//document.getElementById("div_hide").style.display = "inline-block";
+				document.getElementById("mnt").style.display = "none";
+				document.getElementById("two_dot").style.display = "none";
+				document.getElementById("scnd").style.display = "none";
+				document.getElementById("hide_text").style.display = "inline-block";
+
+			} else {
+				document.getElementById("mnt").style.display = "inline-block";
+				document.getElementById("two_dot").style.display = "inline-block";
+				document.getElementById("scnd").style.display = "inline-block";
+				document.getElementById("hide_text").style.display = "none";
+			}
 
 			isRunning = true;
 			startTime = new Date();
@@ -91,15 +104,27 @@ document.onkeyup = function(event){
 		sec = 0;
 
 		if (timerStatus % 2 == 1 && curPhase == 1){
+			document.getElementById("hide_text").style.display = "none";
 
 			if (hideType_value) {
-				document.getElementById("time").style.display = "none";
-				document.getElementById("div_hide").style.display = "inline-block";
-			};
+				//document.getElementById("time").style.display = "none";
+				//document.getElementById("div_hide").style.display = "inline-block";
+				document.getElementById("mnt").style.display = "none";
+				document.getElementById("two_dot").style.display = "none";
+				document.getElementById("scnd").style.display = "none";
+				document.getElementById("hide_text").style.display = "inline-block";
+
+			} else {
+				document.getElementById("mnt").style.display = "inline-block";
+				document.getElementById("two_dot").style.display = "inline-block";
+				document.getElementById("scnd").style.display = "inline-block";
+				document.getElementById("hide_text").style.display = "none";
+			}
 
 			if (hideAll) {
 				document.getElementById("buts").style.visibility = "hidden";
 				document.getElementById("stat_td").style.visibility = "hidden";
+				document.getElementById("toggle_statTd").style.visibility = "hidden";
 				document.getElementById("scram_td").style.visibility = "hidden";
 				document.getElementById("draw_scram_dialog").style.visibility = "hidden";
 			}
@@ -113,99 +138,115 @@ document.onkeyup = function(event){
 		};
 	};
 
-	if (keyPressed == 188 && event.altKey) {//set pen to ok (key ,)
+	if (event.altKey && keyPressed == 188) {//set pen to ok (key ,)
 		setOK(sessions[sesNum - 1].arr.length - 1);
 	};
-	if (keyPressed == 190 && event.altKey) {//set pen to +2 (key .)
+	if (event.altKey && keyPressed == 190) {//set pen to +2 (key .)
 		setP2(sessions[sesNum - 1].arr.length - 1);
 	};
-	if (keyPressed == 191 && event.altKey) {//set pen to dnf (key /)
+	if (event.altKey && keyPressed == 191) {//set pen to dnf (key /)
 		setDNF(sessions[sesNum - 1].arr.length - 1);
 	};
 
 	//delete last solve
-	if (keyPressed == 186 && event.altKey) {// key ;
+	if (event.altKey && keyPressed == 186) {// key ;
 		delSolve(sessions[sesNum - 1].arr.length - 1);
 	};
 	//clear session
-	if (keyPressed == 222 && event.altKey) {// key '
+	if (event.altKey && keyPressed == 222) {// key '
 		resetSes();
 	};
 	//add session
-	if (keyPressed == 187 && event.altKey) {// key =
+	if (event.altKey && keyPressed == 187) {// key =
 		addSes();
 	};
 	//delete session
-	if (keyPressed == 189 && event.altKey) {// key -
+	if (event.altKey && keyPressed == 189) {// key -
 		if (confirm("Delete this session?")) { delSes(); }
 	};
 	//last, next scramble
-	if (keyPressed == 219 && event.altKey) {
+	if (event.altKey && keyPressed == 219) {
 		document.getElementById("last_scram_btn").click();
 	};
-	if (keyPressed == 221 && event.altKey) {
+	if (event.altKey && keyPressed == 221) {
 		generateScram();
+		saveScramType();
 	};
 	//scram type
-	if (keyPressed == 49 && event.altKey) {// key 1
+	if (event.altKey && keyPressed == 49) {// key 1
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("111111");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 50 && event.altKey) {// key 2
+	if (event.altKey && keyPressed == 50) {// key 2
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("222");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 51 && event.altKey) {// key 3
+	if (event.altKey && keyPressed == 51) {// key 3
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("333");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 52 && event.altKey) {// key 4
+	if (event.altKey && keyPressed == 52) {// key 4
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("444");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 53 && event.altKey) {// key 5
+	if (event.altKey && keyPressed == 53) {// key 5
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("555");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 54 && event.altKey) {// key 6
+	if (event.altKey && keyPressed == 54) {// key 6
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("666");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 55 && event.altKey) {// key 7
+	if (event.altKey && keyPressed == 55) {// key 7
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("777");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 56 && event.altKey) {// key 8
+	if (event.altKey && keyPressed == 56) {// key 8
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("888");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 57 && event.altKey) {// key 9
+	if (event.altKey && keyPressed == 57) {// key 9
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("999");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 48 && event.altKey) {// key 0
+	if (event.altKey && keyPressed == 48) {// key 0
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("101010");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 83 && event.altKey) {// key s
+	if (event.altKey && keyPressed == 83) {// key s
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("skewb");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 81 && event.altKey) {// key q
+	if (event.altKey && keyPressed == 81) {// key q
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("sq1");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 80 && event.altKey) {// key p
+	if (event.altKey && keyPressed == 80) {// key p
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("pyram");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 77 && event.altKey) {// key m
+	if (event.altKey && keyPressed == 77) {// key m
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("minx");
 		generateScram();
+		saveScramType();
 	};
-	if (keyPressed == 67 && event.altKey) {// key c
+	if (event.altKey && keyPressed == 67) {// key c
 		document.getElementById("scram_type").selectedIndex = getScramTypeIndex("clock");
 		generateScram();
+		saveScramType();
 	};
 
 	if (importFocus == 1 && keyPressed == 13) {
@@ -250,12 +291,12 @@ document.ontouchstart = function(event) {
 		touchId = event.target.id;
 		touchClass = event.target.className;
 
-		if (dialogOpen && (touchId == "time_td" || touchId == "time" || touchId == "mnt" || touchId == "two_dot" || touchId == "scnd" || touchId == "ispt_display" || touchId == "div_hide" || touchZone == "BODY" || touchZone == "HEADER")) {timerEnable = true} else {timerEnable = false};
+		//if (dialogOpen && (touchId == "time_td" || touchId == "time" || touchId == "mnt" || touchId == "two_dot" || touchId == "scnd" || touchId == "ispt_display" || touchId == "div_hide" || touchZone == "BODY" || touchZone == "HEADER")) {timerEnable = true} else {timerEnable = false};
+		if (dialogOpen && (touchId == "mnt" || touchId == "two_dot" || touchId == "scnd" || touchId == "ispt_display" || touchId == "hide_text" || touchZone == "BODY" || touchZone == "HEADER")) {timerEnable = true} else {timerEnable = false};
 	}
 }
 
 document.ontouchend = function(event){
-	//if (dialogOpen && (touchId == "time_td" || touchId == "time" || touchId == "mnt" || touchId == "two_dot" || touchId == "scnd" || touchId == "ispt_display" || touchId == "div_hide" || touchZone == "BODY" || touchZone == "HEADER")) {timerEnable = true};
 
 	if (timerEnable && importFocus == 0 && inspectType_value){
 		if (!isRunning || (isRunning && curPhase == timeSplit_value + 1)) {
@@ -267,7 +308,8 @@ document.ontouchend = function(event){
 
 		if (timerStatus % 3 == 1){
 
-			document.getElementById("time_imported").style.display = "none";
+			//document.getElementById("time_imported").style.display = "none";
+			document.getElementById("import_plhd").style.display = "none";
 			document.getElementById("mnt").style.display = "none";
 			document.getElementById("two_dot").style.display = "none";
 			document.getElementById("scnd").style.display = "none";
@@ -279,6 +321,7 @@ document.ontouchend = function(event){
 			if (hideAll) {
 				document.getElementById("buts").style.visibility = "hidden";
 				document.getElementById("stat_td").style.visibility = "hidden";
+				document.getElementById("toggle_statTd").style.visibility = "hidden";
 				document.getElementById("scram_td").style.visibility = "hidden";
 				document.getElementById("draw_scram_dialog").style.visibility = "hidden";
 			}
@@ -293,9 +336,19 @@ document.ontouchend = function(event){
 			document.getElementById("ispt_display").style.display = "none";
 
 			if (hideType_value) {
-				document.getElementById("time").style.display = "none";
-				document.getElementById("div_hide").style.display = "inline-block";
-			};
+				//document.getElementById("time").style.display = "none";
+				//document.getElementById("div_hide").style.display = "inline-block";
+				document.getElementById("mnt").style.display = "none";
+				document.getElementById("two_dot").style.display = "none";
+				document.getElementById("scnd").style.display = "none";
+				document.getElementById("hide_text").style.display = "inline-block";
+
+			} else {
+				document.getElementById("mnt").style.display = "inline-block";
+				document.getElementById("two_dot").style.display = "inline-block";
+				document.getElementById("scnd").style.display = "inline-block";
+				document.getElementById("hide_text").style.display = "none";
+			}
 
 			isRunning = true;
 			startTime = new Date();
@@ -317,13 +370,24 @@ document.ontouchend = function(event){
 		if (timerStatus % 2 == 1 && curPhase == 1){
 
 			if (hideType_value) {
-				document.getElementById("time").style.display = "none";
-				document.getElementById("div_hide").style.display = "inline-block";
-			};
+				//document.getElementById("time").style.display = "none";
+				//document.getElementById("div_hide").style.display = "inline-block";
+				document.getElementById("mnt").style.display = "none";
+				document.getElementById("two_dot").style.display = "none";
+				document.getElementById("scnd").style.display = "none";
+				document.getElementById("hide_text").style.display = "inline-block";
+
+			} else {
+				document.getElementById("mnt").style.display = "inline-block";
+				document.getElementById("two_dot").style.display = "inline-block";
+				document.getElementById("scnd").style.display = "inline-block";
+				document.getElementById("hide_text").style.display = "none";
+			}
 
 			if (hideAll) {
 				document.getElementById("buts").style.visibility = "hidden";
 				document.getElementById("stat_td").style.visibility = "hidden";
+				document.getElementById("toggle_statTd").style.visibility = "hidden";
 				document.getElementById("scram_td").style.visibility = "hidden";
 				document.getElementById("draw_scram_dialog").style.visibility = "hidden";
 			}

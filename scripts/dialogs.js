@@ -1,4 +1,5 @@
 //##### ABOUT, OPTIONS, STAT AND SOLVE DIALOGS #####
+var maxInt = Number.MAX_SAFE_INTEGER;
 
 document.getElementById("draw_scram_dialog").style.display = "block";
 document.getElementById("about_dialog").style.display = "none";
@@ -30,6 +31,25 @@ document.getElementById("close_stat_but").onclick = function() {
 	document.getElementById("stat_dialog").style.display = "none";
 };
 
+function selectText(element) {
+  	if (/INPUT|TEXTAREA/i.test(element.tagName)) {
+    	element.focus();
+    	if (element.setSelectionRange) {
+      	element.setSelectionRange(0, element.value.length);
+    	} else {
+      	element.select();
+    	}
+    	return;
+  	}
+  	if (window.getSelection) { // All browsers, except IE <=8
+   	window.getSelection().selectAllChildren(element);
+  	} else if (document.body.createTextRange) { // IE <=8
+    	var range = document.body.createTextRange();
+    	range.moveToElementText(element);
+    	range.select();
+  	}
+}
+
 function showStat(statNum) {
 	
 	switch (statNum) {
@@ -43,6 +63,7 @@ function showStat(statNum) {
 					statCon += (ind18 + 1) + ". " + sessions[sesNum - 1].arr[ind18].strng + " &emsp; " + sessions[sesNum - 1].arr[ind18].trao + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -53,6 +74,7 @@ function showStat(statNum) {
 				statCon += "single: " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng + "<br>";
 				statCon += "1. " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].trao + "<br>";
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -63,6 +85,7 @@ function showStat(statNum) {
 				statCon += "single: " + bestSinglestrng + "<br>";
 				statCon += "1. " + bestSinglestrng + " &emsp; " + bestSingleTrao + "<br>";
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -75,6 +98,7 @@ function showStat(statNum) {
 					statCon += ind14 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 4 + ind14].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 4 + ind14].trao + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -87,6 +111,7 @@ function showStat(statNum) {
 					statCon += ind15 + ". " + bestM3strngArray[ind15 - 1] + " &emsp; " + bestM3TraoArray[ind15 - 1] + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -99,6 +124,7 @@ function showStat(statNum) {
 					statCon += ind16 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 6 + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 6 + ind16].trao + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -111,6 +137,7 @@ function showStat(statNum) {
 					statCon += ind17 + ". " + bestA5strngArray[ind17 - 1] + " &emsp; " + bestA5TraoArray[ind17 - 1] + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -123,6 +150,7 @@ function showStat(statNum) {
 					statCon += ind24 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 13 + ind24].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 13 + ind24].trao + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -135,6 +163,7 @@ function showStat(statNum) {
 					statCon += ind25 + ". " + bestA12strngArray[ind25 - 1] + " &emsp; " + bestA12TraoArray[ind25 - 1] + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -147,6 +176,7 @@ function showStat(statNum) {
 					statCon += ind32 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 51 + ind32].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 51 + ind32].trao + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -159,6 +189,7 @@ function showStat(statNum) {
 					statCon += ind33 + ". " + bestA50strngArray[ind33 - 1] + " &emsp; " + bestA50TraoArray[ind33 - 1] + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -171,6 +202,7 @@ function showStat(statNum) {
 					statCon += ind40 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 101 + ind40].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 101 + ind40].trao + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -183,6 +215,7 @@ function showStat(statNum) {
 					statCon += ind41 + ". " + bestA100strngArray[ind41 - 1] + " &emsp; " + bestA100TraoArray[ind41 - 1] + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -195,6 +228,7 @@ function showStat(statNum) {
 					statCon += ind60 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 201 + ind60].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 201 + ind60].trao + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -207,6 +241,7 @@ function showStat(statNum) {
 					statCon += ind61 + ". " + bestA200strngArray[ind61 - 1] + " &emsp; " + bestA200TraoArray[ind61 - 1] + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -219,6 +254,7 @@ function showStat(statNum) {
 					statCon += ind62 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 501 + ind62].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 501 + ind62].trao + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -231,6 +267,7 @@ function showStat(statNum) {
 					statCon += ind63 + ". " + bestA500strngArray[ind63 - 1] + " &emsp; " + bestA500TraoArray[ind63 - 1] + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -243,6 +280,7 @@ function showStat(statNum) {
 					statCon += ind64 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1001 + ind64].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1001 + ind64].trao + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 			break;
 
@@ -255,6 +293,7 @@ function showStat(statNum) {
 					statCon += ind65 + ". " + bestA1000strngArray[ind65 - 1] + " &emsp; " + bestA1000TraoArray[ind65 - 1] + "<br>";
 				};
 				document.getElementById("stats").innerHTML = statCon;
+				selectText(document.getElementById("stats"));
 			}
 	};
 };

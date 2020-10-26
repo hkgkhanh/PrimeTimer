@@ -11,8 +11,7 @@ function inspector(){
 	};
 	if (ispt < 15){
 		document.getElementById("ispt_display").innerHTML = ispt_dp;
-		document.getElementById("ispt_display").style.fontFamily = 'Segment7Standard';
-		document.getElementById("ispt_display").style.fontWeight = 'bold';
+		document.getElementById("ispt_display").style.fontFamily = timerFont_value;
 		document.getElementById("ispt_display").style.fontStyle = 'normal';
 	};
 	if (ispt >= 15 && ispt < 17){
@@ -45,6 +44,9 @@ function timer(){
 		document.getElementById("mnt").style.display = "inline-block";
 		document.getElementById("two_dot").style.display = "inline-block";
 		document.getElementById("mnt").innerHTML = mnt;
+	} else {
+		document.getElementById("mnt").style.display = "none";
+		document.getElementById("two_dot").style.display = "none";
 	}
 };
 
@@ -53,9 +55,6 @@ function importTime() {
 
 	if (enterVal != "") {
 		var enterTimeVal = parseFloat(enterVal);
-
-		/*sec = Math.round((enterTimeVal % 60) * 100) / 100;
-		mnt = Math.floor(enterTimeVal / 60);*/
 
 		if (enterFormatType_value == 1) {
 

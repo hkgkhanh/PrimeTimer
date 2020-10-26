@@ -1,5 +1,11 @@
 //##### OPTIONS #####
 
+var bg_color;
+var board_color;
+var font_color;
+var link_color;
+var hv_color;
+
 function changeSetting(){
 	//hide all when solve
 	hideAll = document.getElementById("hide_all").checked;
@@ -36,10 +42,15 @@ function changeSetting(){
 	timerFont_value = timerFontType.options[timerFontType.selectedIndex].value;
 
 	//color
-	bgColor_value = document.getElementById("bg_color").value;
+	/*bgColor_value = document.getElementById("bg_color").value;
 	boardColor_value = document.getElementById("board_color").value;
 	fontColor_value = document.getElementById("font_color").value;
-	linkColor_value = document.getElementById("link_color").value;
+	linkColor_value = document.getElementById("link_color").value;*/
+	bgColor_value = bg_color;
+	boardColor_value = board_color;
+	fontColor_value = font_color;
+	linkColor_value = link_color;
+	hvColor_value = hv_color;
 
 	changeColor();
 	saveColor();
@@ -50,19 +61,21 @@ function changeSetting(){
 		importFocus = 0;
 		mnt = 0;
 		sec = 0;
-		document.getElementById("time_imported").style.display = "none";
-		document.getElementById("time").style.display = "block"
+		//document.getElementById("time_imported").style.display = "none";
+		//document.getElementById("time").style.display = "block"
 		document.getElementById("scnd").style.display = "inline-block";
-		document.getElementById("draw_scram_dialog").style.display = "block";
+		//document.getElementById("draw_scram_dialog").style.display = "block";
+		document.getElementById("import_plhd").style.display = "none";
 	};
 	if (enterTimeType_value == 2) {
 
 		importFocus = 1;
-		document.getElementById("time_imported").style.display = "block";
+		//document.getElementById("time_imported").style.display = "block";
 		document.getElementById("scnd").style.display = "none";
 		document.getElementById("mnt").style.display = "none";
 		document.getElementById("two_dot").style.display = "none";
-		document.getElementById("draw_scram_dialog").style.display = "block";
+		//document.getElementById("draw_scram_dialog").style.display = "block";
+		document.getElementById("import_plhd").style.display = "block";
 	};
 	if (drawType_value) {
 		document.getElementById("draw_scram_dialog").style.display = "block";
@@ -78,11 +91,33 @@ function changeSetting(){
 	timerStatus = 0;
 };
 
-function changeTheme(bg, bd, fn, lk) {
-	document.getElementById("bg_color").value = bg;
+for (let i = 0; i < document.getElementsByClassName("hover").length; i++) {
+	document.getElementsByClassName("hover")[i].addEventListener("mouseover", function() {
+		document.getElementsByClassName("hover")[i].style.backgroundColor = hvColor_value;
+	});
+	document.getElementsByClassName("hover")[i].addEventListener("mouseout", function() {
+		document.getElementsByClassName("hover")[i].style.background = "none";
+	});
+}
+
+function bgOnMouseOver(x) {
+	x.style.backgroundColor = hvColor_value;
+	x.style.cursor = "pointer";
+}
+function bgOnMouseOut(x) {
+	x.style.backgroundColor = boardColor_value;
+}
+
+function changeTheme(bg, bd, fn, lk, hv) {
+	/*document.getElementById("bg_color").value = bg;
 	document.getElementById("board_color").value = bd;
 	document.getElementById("font_color").value = fn;
-	document.getElementById("link_color").value = lk;
+	document.getElementById("link_color").value = lk;*/
+	bg_color = bg;
+	board_color = bd;
+	font_color = fn;
+	link_color = lk;
+	hv_color = hv;
 
 	changeSetting();
 };
@@ -112,11 +147,20 @@ function changeColor() {
 	document.getElementById("stat_dialog").style.color = fontColor_value;
 	document.getElementById("solve_dialog").style.color = fontColor_value;
 	document.getElementById("solve_scram_table").style.color = fontColor_value;
-	document.getElementById("time").style.color = fontColor_value;
+	document.getElementById("toggle_statTd").style.color = fontColor_value;
+	//document.getElementById("time").style.color = fontColor_value;
+	document.getElementById("mnt").style.color = fontColor_value;
+	document.getElementById("two_dot").style.color = fontColor_value;
+	document.getElementById("scnd").style.color = fontColor_value;
 	document.getElementById("import_plhd").style.color = fontColor_value;
-	document.getElementById("div_hide").style.color = fontColor_value;
+	//document.getElementById("div_hide").style.color = fontColor_value;
+	document.getElementById("hide_text").style.color = fontColor_value;
 	document.getElementById("draw_scram_dialog").style.color = fontColor_value;
 	document.getElementById("solve_comment").style.color = fontColor_value;
+	for (i = 0; i < document.getElementsByClassName("fa").length; i++) {
+  	document.getElementsByClassName("fa")[i].style.color = fontColor_value;
+	}
+	document.getElementById("fa-warning").style.color = "#FF0000";
 
 	for (i = 0; i < document.getElementsByClassName("diff_cell").length; i++) {
 		if (document.getElementsByClassName("diff_cell")[i].innerHTML == "0.00") {
@@ -125,9 +169,15 @@ function changeColor() {
 	}
 	//bg color
 	document.body.style.backgroundColor = bgColor_value;
-	document.getElementById("time").style.backgroundColor = bgColor_value;
+	//document.getElementById("time").style.backgroundColor = bgColor_value;
 	document.getElementById("import_plhd").style.backgroundColor = bgColor_value;
 	//board color
+	document.getElementById("buts").style.backgroundColor = boardColor_value;
+	document.getElementById("logo").style.backgroundColor = boardColor_value;
+	document.getElementById("option").style.backgroundColor = boardColor_value;
+	document.getElementById("last_scram_btn").style.backgroundColor = boardColor_value;
+	document.getElementById("next_scram_btn").style.backgroundColor = boardColor_value;
+	document.getElementById("buts").style.backgroundColor = boardColor_value;
 	document.getElementById("about_dialog").style.backgroundColor = boardColor_value;
 	document.getElementById("option_dialog").style.backgroundColor = boardColor_value;
 	document.getElementById("stat_dialog").style.backgroundColor = boardColor_value;
@@ -145,20 +195,77 @@ function changeColor() {
 	document.getElementById("scram_con").style.backgroundColor = boardColor_value;
 	document.getElementById("choose_session").style.backgroundColor = boardColor_value;
 	document.getElementById("stat_td").style.backgroundColor = boardColor_value;
+	document.getElementById("toggle_statTd").style.backgroundColor = boardColor_value;
 	document.getElementById("draw_scram_dialog").style.backgroundColor = boardColor_value;
 	document.getElementById("solve_comment").style.backgroundColor = boardColor_value;
+	for (i = 0; i < document.getElementsByClassName("table_cell").length; i++) {
+  		document.getElementsByClassName("table_cell")[i].style.backgroundColor = boardColor_value;
+	}
+	for (i = 0; i < document.getElementsByClassName("theme").length; i++) {
+  		document.getElementsByClassName("theme")[i].style.backgroundColor = boardColor_value;
+	}
+	for (i = 0; i < document.getElementsByClassName("session-but").length; i++) {
+  		document.getElementsByClassName("session-but")[i].style.backgroundColor = boardColor_value;
+	}
+	for (i = 0; i < document.getElementsByClassName("solve_dp").length; i++) {
+  		document.getElementsByClassName("solve_dp")[i].style.backgroundColor = boardColor_value;
+	}
 	//link color
 	for (i = 0; i < document.getElementsByClassName("link").length; i++) {
   		document.getElementsByClassName("link")[i].style.color = linkColor_value;
 	}
 };
 
+function toggleStatTd() {
+	var div = document.getElementById("stat_td");
+	var toggleDiv = document.getElementById("toggle_statTd");
+
+	if (div.style.display == "flex") {
+		div.style.display = "none";
+		toggleDiv.style.bottom = "0";
+		document.getElementById("fa-angle-up").style.display = "inline-block";
+		document.getElementById("fa-angle-down").style.display = "none";
+
+	} else {
+		div.style.display = "flex";
+		toggleDiv.style.bottom = "19.5rem";
+		document.getElementById("fa-angle-down").style.display = "inline-block";
+		document.getElementById("fa-angle-up").style.display = "none";
+	}
+}
+
+function toggleStatOnHover() {
+	var div = document.getElementById("stat_td");
+	var toggleDiv = document.getElementById("toggle_statTd");
+
+	if (div.style.display != "none") {
+		document.getElementById("toggle_statTd-hide").style.display = "inline-block";
+	} else {
+		document.getElementById("toggle_statTd-show").style.display = "inline-block";
+	}
+}
+
+function toggleStatOutHover() {
+	document.getElementById("toggle_statTd-hide").style.display = "none";
+	document.getElementById("toggle_statTd-show").style.display = "none";
+}
+
 function hideDiv() {
-	document.getElementById("div_hide").style.display = "none";
-	document.getElementById("time").style.display = "block";
+	/*document.getElementById("div_hide").style.display = "none";
+	document.getElementById("time").style.display = "block";*/
+	document.getElementById("hide_text").style.display = "none";
+	if (mnt > 0) {
+		document.getElementById("mnt").style.display = "block";
+		document.getElementById("two_dot").style.display = "block";
+	} else {
+		document.getElementById("mnt").style.display = "none";
+		document.getElementById("two_dot").style.display = "none";
+	}
+	document.getElementById("scnd").style.display = "block";
 
 	document.getElementById("buts").style.visibility = "visible";
 	document.getElementById("stat_td").style.visibility = "visible";
+	document.getElementById("toggle_statTd").style.visibility = "visible";
 	document.getElementById("scram_td").style.visibility = "visible";
 	document.getElementById("draw_scram_dialog").style.visibility = "visible";
 };
@@ -273,6 +380,8 @@ function displaySession(){
 		calc();
 	};
 	timeContain();
+
+	document.getElementById("hide_text").style.display = "none";
 };
 
 function getTimeSplitVal() {

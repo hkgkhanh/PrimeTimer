@@ -109,6 +109,7 @@ function saveColor() {
 	var jsonBoardColor;
 	var jsonFontColor;
 	var jsonLinkColor;
+	var jsonHvColor;
 
 	if (window.localStorage !== undefined) {
 
@@ -116,10 +117,12 @@ function saveColor() {
 		jsonBoardColor = JSON.stringify(boardColor_value);
 		jsonFontColor = JSON.stringify(fontColor_value);
 		jsonLinkColor = JSON.stringify(linkColor_value);
+		jsonHvColor = JSON.stringify(hvColor_value);
 		localStorage.setItem("bgColor", jsonBgColor);
 		localStorage.setItem("boardColor", jsonBoardColor);
 		localStorage.setItem("fontColor", jsonFontColor);
 		localStorage.setItem("linkColor", jsonLinkColor);
+		localStorage.setItem("hvColor", jsonHvColor);
 		return;
 	};
 }
@@ -129,27 +132,41 @@ function getColor() {
 
 		if (localStorage.bgColor) {
 			var jsonBgColorText = localStorage.getItem("bgColor");
-			document.getElementById("bg_color").value = JSON.parse(jsonBgColorText);
+			//document.getElementById("bg_color").value = JSON.parse(jsonBgColorText);
+			bg_color = JSON.parse(jsonBgColorText);
 		} else {
-			document.getElementById("bg_color").value = '#FFFBFF';
+			//document.getElementById("bg_color").value = '#FFFBFF';
+			bg_color = '#F8F4E3';
 		}
 		if (localStorage.boardColor) {
 			var jsonBoardColorText = localStorage.getItem("boardColor");
-			document.getElementById("board_color").value = JSON.parse(jsonBoardColorText);
+			//document.getElementById("board_color").value = JSON.parse(jsonBoardColorText);
+			board_color = JSON.parse(jsonBoardColorText);
 		} else {
-			document.getElementById("board_color").value = '#F4FA58';
+			//document.getElementById("board_color").value = '#F4FA58';
+			board_color = '#D4CDC3';
 		}
 		if (localStorage.fontColor) {
 			var jsonFontColorText = localStorage.getItem("fontColor");
-			document.getElementById("font_color").value = JSON.parse(jsonFontColorText);
+			//document.getElementById("font_color").value = JSON.parse(jsonFontColorText);
+			font_color = JSON.parse(jsonFontColorText);
 		} else {
-			document.getElementById("font_color").value = '#000000';
+			//document.getElementById("font_color").value = '#000000';
+			font_color = '#000000';
 		}
 		if (localStorage.linkColor) {
 			var jsonLinkColorText = localStorage.getItem("linkColor");
-			document.getElementById("link_color").value = JSON.parse(jsonLinkColorText);
+			//document.getElementById("link_color").value = JSON.parse(jsonLinkColorText);
+			link_color = JSON.parse(jsonLinkColorText);
 		} else {
-			document.getElementById("link_color").value = '#0000FF';
+			//document.getElementById("link_color").value = '#0000FF';
+			link_color = '#0000FF';
+		}
+		if (localStorage.hvColor) {
+			var jsonHvColorText = localStorage.getItem("hvColor");
+			hv_color = JSON.parse(jsonHvColorText);
+		} else {
+			hv_color = '#BAAE9E';
 		}
 	};
 }

@@ -598,7 +598,7 @@ function timeContain() {
 	timeCon.innerHTML = "";
 	var table = document.createElement("table");
 	table.style.textAlign = "center";
-	table.style.borderStyle = "solid";
+	table.style.borderStyle = "none";
 	table.style.borderWidth = "1px";
 	table.style.borderColor = "#585858";
 	table.style.width = "100%";
@@ -634,7 +634,7 @@ function timeContain() {
   		newIndCell.innerHTML = (ind0+1);
 
   		var newTimeCell = newRow.insertCell();
-  		newTimeCell.innerHTML =  "<span onclick='solveStat(" + ind0 + ")' class='solve_dp'>" + sessions[sesNum - 1].arr[ind0].strng + "</span>";
+  		newTimeCell.innerHTML =  "<span onclick='solveStat(" + ind0 + ")' onmouseover='bgOnMouseOver(this)' onmouseout='bgOnMouseOut(this)' class='solve_dp'>" + sessions[sesNum - 1].arr[ind0].strng + "</span>";
 
   		var newDiffCell = newRow.insertCell();
   		newDiffCell.className = "diff_cell";
@@ -658,7 +658,7 @@ function timeContain() {
 				};
 
 			} else if (diff < 0) {
-				diffFontColor = "#006644";
+				diffFontColor = "#088A08";
 				diff = Math.abs(diff);
 				var diffMin = Math.floor(diff / 60);
 				var diffSec = Math.round((diff % 60) * 100) / 100;
@@ -684,7 +684,7 @@ function timeContain() {
   		if (ind0 < 4) {
   			newAo5Cell.innerHTML = "-";
   		} else {
-  			newAo5Cell.innerHTML = "<span onclick='showAo5Stat(" + (ind0-4) + ")' class='solve_dp'>" + avg5strngArray[ind0 - 4] + "</span>";
+  			newAo5Cell.innerHTML = "<span onclick='showAo5Stat(" + (ind0-4) + ")' onmouseover='bgOnMouseOver(this)' onmouseout='bgOnMouseOut(this)' class='solve_dp'>" + avg5strngArray[ind0 - 4] + "</span>";
   		}
 		};
 	}

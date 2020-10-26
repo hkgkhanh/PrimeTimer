@@ -43,16 +43,22 @@
 				bestSingle = Math.pow(2, 53) - 1;
 				bestSinglestrng = "DNF";
 				bestSingleTrao = "";
+				var bestInd = 0;
 
 				for (var ind8 = 0; ind8 < sessions[sesNum - 1].arr.length; ind8++) {
 					if (sessions[sesNum - 1].arr[ind8].time <= bestSingle && sessions[sesNum - 1].arr[ind8].pen != "dnf") {
 						bestSingle = sessions[sesNum - 1].arr[ind8].time;
 						bestSinglestrng = sessions[sesNum - 1].arr[ind8].strng;
 						bestSingleTrao = sessions[sesNum - 1].arr[ind8].trao;
+						bestInd = ind8;
 					}
 				}
 				document.getElementById("best_single").innerHTML = bestSinglestrng;
 				document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
+				
+				if (bestInd == sessions[sesNum - 1].arr.length - 1) {
+					messageHint += "single ";
+				}
 			}
 
 			function calc_mean() {
