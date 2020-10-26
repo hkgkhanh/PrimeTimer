@@ -1,17 +1,18 @@
 # PrimeTimer
-Professional Timer for Cubing and Puzzle Solving
+Online Timer for Cubing and Puzzle Solving
 
 ## Versions
-Current version (25.9.20): https://khanhfromvn.github.io/PrimeTimer/
+Current version (25.10.20): https://khanhfromvn.github.io/PrimeTimer/
 
-Beta (latest) version (24.10.20): https://khanhfromvn.github.io/myprojects/PrimeTimer%20latest%20version/index.html
+Beta (latest) version (25.10.20): https://khanhfromvn.github.io/myprojects/PrimeTimer%20latest%20version/index.html
 
 ## Features
 * Timer, inspection time + 8/12 seconds voice alert, import time by timer/typing.
 * Scrambles for WCA events and 70+ puzzles & subsets, get last scramble, draw scramble.
 * Mutiple sessions, set penalty of any solve, calculate mean, average...
+* Keyboard shortcuts for better experience.
 
-## Copyrights & Credits
+## Copyright
 Written and designed by me (hkg11khanh@gmail.com)
 
 Logo design by Nguyễn Lương Phúc (heliosqv98@gmail.com)
