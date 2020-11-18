@@ -2,6 +2,7 @@
 
 function inspector(){
 	ispt++;
+	//document.getElementById("ispt_display").style.fontFamily = timerFont_value;
 	var ispt_dp = Math.floor(15 - ispt);
 	if (ispt == 8) {
 		document.getElementById("eight_sec").play();
@@ -110,10 +111,25 @@ function importTime() {
 
 function contain(str, char) {
 	var have = false;
+
 	for (let i = 0; i < str.length; i++) {
 		if (str[i] == char) {
 			have = true;
 			break;
+		}
+	}
+	return have;
+}
+
+function orderContain(str, char) {
+	var have = false;
+	var length = str.length >= char.length ? char.length : str.length;
+
+	for (let i = 0; i < length; i++) {
+		if (str[i] != char[i]) break;
+		
+		if (i == length - 1 && str[i] == char[i]) {
+			have = true;
 		}
 	}
 	return have;

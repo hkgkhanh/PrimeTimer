@@ -157,6 +157,7 @@ function changeColor() {
 	document.getElementById("hide_text").style.color = fontColor_value;
 	document.getElementById("draw_scram_dialog").style.color = fontColor_value;
 	document.getElementById("solve_comment").style.color = fontColor_value;
+	document.getElementById("search_result").style.color = fontColor_value;
 	for (i = 0; i < document.getElementsByClassName("fa").length; i++) {
   	document.getElementsByClassName("fa")[i].style.color = fontColor_value;
 	}
@@ -198,6 +199,9 @@ function changeColor() {
 	document.getElementById("toggle_statTd").style.backgroundColor = boardColor_value;
 	document.getElementById("draw_scram_dialog").style.backgroundColor = boardColor_value;
 	document.getElementById("solve_comment").style.backgroundColor = boardColor_value;
+	document.getElementById("search_result").style.backgroundColor = boardColor_value;
+	document.getElementById("search_close_but").style.backgroundColor = boardColor_value;
+	document.getElementById("search_icon").style.backgroundColor = boardColor_value;
 	for (i = 0; i < document.getElementsByClassName("table_cell").length; i++) {
   		document.getElementsByClassName("table_cell")[i].style.backgroundColor = boardColor_value;
 	}
@@ -214,7 +218,35 @@ function changeColor() {
 	for (i = 0; i < document.getElementsByClassName("link").length; i++) {
   		document.getElementsByClassName("link")[i].style.color = linkColor_value;
 	}
+
+	//img color
+	if (boardColor_value == "#000000" || boardColor_value == "#0B0C10") {
+		document.getElementById("logo").src = "img-audio/prtimer_icon.png";
+		document.getElementById("option").src = "img-audio/gear-white.png";
+		document.getElementById("clear-img").src = "img-audio/clear-session-white.png";
+		document.getElementById("add-img").src = "img-audio/add-session-white.png";
+		document.getElementById("delete-img").src = "img-audio/delete-session-white.png";
+		document.getElementById("search_close_but").src = "img-audio/close-button-white.png";
+		document.getElementById("search_icon").src = "img-audio/search-white.png";
+	} else {
+		document.getElementById("logo").src = "img-audio/prtimer_icon_black.png";
+		document.getElementById("option").src = "img-audio/gear-black.png";
+		document.getElementById("clear-img").src = "img-audio/clear-session-black.png";
+		document.getElementById("add-img").src = "img-audio/add-session-black.png";
+		document.getElementById("delete-img").src = "img-audio/delete-session-black.png";
+		document.getElementById("search_close_but").src = "img-audio/close-button-black.png";
+		document.getElementById("search_icon").src = "img-audio/search-black.png";
+	}
 };
+
+function toggleSearchDiv() {
+	var div = document.getElementById("search_result");
+	if (div.style.display == "block") {
+		div.style.display = "none";
+	} else {
+		div.style.display = "block";
+	}
+}
 
 function toggleStatTd() {
 	var div = document.getElementById("stat_td");
@@ -251,8 +283,6 @@ function toggleStatOutHover() {
 }
 
 function hideDiv() {
-	/*document.getElementById("div_hide").style.display = "none";
-	document.getElementById("time").style.display = "block";*/
 	document.getElementById("hide_text").style.display = "none";
 	if (mnt > 0) {
 		document.getElementById("mnt").style.display = "block";

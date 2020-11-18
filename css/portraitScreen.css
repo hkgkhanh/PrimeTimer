@@ -49,6 +49,46 @@ html.p150 {
 	margin: 0.5rem;
 }
 
+#search_icon {
+	height: 1rem;
+	width: 1rem;
+}
+
+#search_result {
+	background-color: #00FF00;
+	position: fixed;
+	padding: 0.5rem;
+	right: 0;
+	bottom: 0;
+	height: 40vh;
+}
+
+#search_result-title {
+	float: left;
+	font-size: 1rem;
+}
+
+#search_close_but {
+	float: right;
+	height: 1.2rem;
+	width: 1.2rem;
+}
+
+#search_bar {
+	border: 0.01rem solid;
+	background-color: inherit;
+	color: inherit;
+	width: 12rem;
+	font-size: 2rem;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+}
+
+#search_container {
+	overflow-y: scroll;
+	height: calc(40vh - 5rem);
+}
+
 #scram_td {
 	position: fixed;
 	top: 0;
@@ -86,6 +126,7 @@ html.p150 {
 }
 
 #times_container {
+	overflow-y: scroll;
 	height: 14rem;
 }
 

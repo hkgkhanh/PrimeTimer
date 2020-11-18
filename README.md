@@ -2,7 +2,7 @@
 Online Timer for Cubing and Puzzle Solving
 
 ## Versions
-Current version (25/10/2020): https://khanhfromvn.github.io/PrimeTimer/
+Current version (16/11/2020): https://khanhfromvn.github.io/PrimeTimer/
 
 Beta (latest) version (16/11/2020): https://khanhfromvn.github.io/myprojects/PrimeTimer%20latest%20version/index.html
 

@@ -7,7 +7,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="keywords" content="prtimer, primetimer, timer, cube timer, rubiks cube, online timer, web timer">
 	<meta name="author" content="Nông Quốc Khánh">
-	<link rel="shortcut icon" type="image/png" href="img-audio\prtimer_icon.png"/>
+	<link rel="shortcut icon" type="image/png" href="img-audio\prtimer_icon_black.png"/>
 	<title>Cube Training/Practising Timer</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="css/landscapeScreen.css">
@@ -23,248 +23,252 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 	<script>
-			// this is for loading screen
-			// Wait for window load
-			$(window).load(function() {
-				// Animate loader off screen
-				$(".se-pre-con").fadeOut("fast");;
-			});
-		</script>
+		// this is for loading screen
+		// Wait for window load
+		$(window).load(function() {
+			// Animate loader off screen
+			$(".se-pre-con").fadeOut("fast");;
+		});
+	</script>
 
-	</head>
+</head>
 
-	<body onload="getSettings(); getColor(); getScramType(); changeSetting(); generateScram(); displayChooseSession(); displaySession(); resizeWindow();" onresize="resizeWindow()">
+<body onload="getSettings(); getColor(); getScramType(); changeSetting(); generateScram(); displayChooseSession(); displaySession(); resizeWindow();" onresize="resizeWindow()">
 
-		<!--##### HTML PART #####-->
-		<!--<header>-->
-			<!-- this is for loading screen -->
-			<div class="se-pre-con" id="loading_div">
-				<img id="loading_img" src="img-audio\Preloader_3.gif" alt="loading...">
-			</div>
+	<!--##### HTML PART #####-->
+	<!-- this is for loading screen -->
+	<div class="se-pre-con" id="loading_div">
+		<img id="loading_img" src="img-audio\Preloader_3.gif" alt="Loading...">
+	</div>
 
-			<div id="buts">
-				<img src="img-audio\prtimer_icon_black.png" alt="About" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" id="logo" title="About" class="fa">
-				<img src="img-audio\cog.png" alt="Options" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" id="option" title="Options" class="fa">
-			</div>
+	<div id="buts">
+		<img src="img-audio\prtimer_icon.png" alt="About" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" id="logo" title="About" class="fa">
+		<img src="img-audio\gear-black.png" alt="Options" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" id="option" title="Options" class="fa">
+	</div>
 
-			<text id="mnt">0</text><text id="two_dot">:</text>
-			<text id="scnd">0.00</text>
-			<text id="ispt_display">15</text>
-			<text id="hide_text">solve</text>
-			<input id="import_plhd"></input>
+	<text id="mnt">0</text><text id="two_dot">:</text>
+	<text id="scnd">0.00</text>
+	<text id="ispt_display">15</text>
+	<text id="hide_text">solve</text>
+	<input id="import_plhd"></input>
 
-			<div id="scram_td">
-				<div align="center" id="scram_con">
-					<text id="scram"></text>
-				</div>
-				<div align="center" id="div_scram_type" style="padding-top: 0; margin-top: 1.5rem;">
+	<div id="scram_td">
+		<div align="center" id="scram_con">
+			<text id="scram"></text>
+		</div>
+		<div align="center" id="div_scram_type" style="padding-top: 0; margin-top: 1.5rem;">
 
-					<select id="scram_type" onchange="generateScram(); document.getElementById('scram_type').blur(); saveScramType();" class="sel">
-						<option>==========WCA==========</option>
-						<option value="333" selected="selected">3x3</option>
-						<option value="222">2x2</option>
-						<option value="444">4x4</option>
-						<option value="555">5x5</option>
-						<option value="666">6x6</option>
-						<option value="777">7x7</option>
-						<option value="333oh">3x3 oh</option>
-						<option value="333bf">3x3 bld</option>
-						<option value="333fm">3x3 fm</option>
-						<option value="pyram">Pyraminx</option>
-						<option value="skewb">Skewb</option>
-						<option value="minx">Megaminx</option>
-						<option value="sq1">Square-1</option>
-						<option value="clock">Clock</option>
-						<option value="444bf">4x4 bld</option>
-						<option value="555bf">5x5 bld</option>
-						<option value="333mbf">3x3 mbld</option>
-						<option>=========RELAYS========</option>
-						<option value="relay25">Relay 2-5</option>
-						<option value="relay27">Relay 2-7</option>
-						<option value="mini_guildfold">Mini Guildfold</option>
-						<option value="guildfold">Guildfold</option>
-						<option>=========LxMxN=========</option>
-						<option value="112">1x1x2</option>
-						<option value="133">1x3x3</option>
-						<option value="223">2x2x3</option>
-						<option value="233">2x3x3</option>
-						<option value="334">3x3x4</option>
-						<option value="336">3x3x6</option>
-						<option value="888">8x8x8</option>
-						<option value="999">9x9x9</option>
-						<option value="101010">10x10x10</option>
-						<option value="111111">11x11x11</option>
-						<option>========SUBSETS========</option>
-						<option>----------2x2----------</option>
-						<option value="2223">2x2 - 3-gen RUF</option>
-						<option value="2226">2x2 - 6-gen</option>
-						<option value="222so">2x2 - random moves</option>
-						<option value="222o">2x2 - optimal</option>
-						<option value="222eg">2x2 - EG</option>
-						<option value="222eg0">2x2 - EG0/CLL</option>
-						<option value="222eg1">2x2 - EG1</option>
-						<option value="222eg2">2x2 - EG2</option>
-						<option>----------3x3----------</option>
-						<option value="333r">3x3 - random moves</option>
-						<option value="2gen">3x3 - 2-gen RU</option>
-						<option value="2genl">3x3 - 2-gen LU</option>
-						<option value="roux">3x3 - 2-gen MU (L6E)</option>
-						<option value="3gen_L">3x3 - 3-gen RUL</option>
-						<option value="3gen_F">3x3 - 3-gen RUF</option>
-						<option value="half">3x3 - half turns only</option>
-						<option value="RrU">3x3 - RrU</option>
-						<option value="RrUu">3x3 - RrUu</option>
-						<option value="lsll">3x3 - LSLL</option>
-						<option value="333e">3x3 - edges only</option>
-						<option value="333c">3x3 - corners only</option>
-						<option value="f2l">3x3 - cross solved</option>
-						<option value="easy_cross">3x3 - easy cross</option>
-						<option value="333ll">3x3 - last layer</option>
-						<option value="zbll">3x3 - ZBLL</option>
-						<option value="zbls">3x3 - ZBLS</option>
-						<option value="zzll">3x3 - ZZLL</option>
-						<option value="l6e">3x3 - L6E (CN)</option>
-						<option value="cmll">3x3 - CMLL</option>
-						<option value="coll">3x3 - COLL</option>
-						<option value="ell">3x3 - ELL</option>
-						<option value="eoline">3x3 - EOLine</option>
-						<option>----------4567---------</option>
-						<option value="444si">4x4x4 SiGN</option>
-						<option value="444yj">4x4x4 YJ</option>
-						<option value="4edge">4x4x4 edges</option>
-						<option value="555si">5x5x5 SiGN</option>
-						<option value="5edge">5x5x5 edges</option>
-						<option value="666p">6x6x6 prefix</option>
-						<option value="666s">6x6x6 suffix</option>
-						<option value="666si">6x6x6 SiGN</option>
-						<option value="6edge">6x6x6 edges</option>
-						<option value="777p">7x7x7 prefix</option>
-						<option value="777s">7x7x7 suffix</option>
-						<option value="777si">7x7x7 SiGN</option>
-						<option value="7edge">7x7x7 edges</option>
-						<option>--------MEGAMINX-------</option>
-						<option value="mgmo">Megaminx - old style</option>
-						<option value="mgmp">Megaminx - Pochmann</option>
-						<option value="mgmc">Megaminx - Carrot</option>
-						<option value="minx2g">Megaminx - 2-gen RU</option>
-						<option value="mlsll">Megaminx - LSLL</option>
-						<option>--------PYRAMINX-------</option>
-						<option value="pyro">Pyramix - optimal</option>
-						<option>---------SKEWB---------</option>
-						<option value="skbo">Skewb - optimal</option>
-						<option>--------SQUARE-1-------</option>
-						<option value="sq1h">Sq1 - turn metric</option>
-						<option value="sq1t">Sq1 - twist metric</option>
-						<option>---------CLOCK---------</option>
-						<option value="clkj">Clock - Jaap order</option>
-						<option value="clkc">Clock - concise</option>
-						<option value="clke">Clock - efficient order</option>
-						<option>=========OTHERS========</option>
-						<option value="15p">15 puzzle</option>
-						<option value="sq2">Square-2</option>
-						<option value="ssq1t">Super Square-1</option>
-						<option value="bsq">Bandaged Square-1</option>
-						<option value="bic">Bicube</option>
-						<option value="heli">Helicopter Cube</option>
-						<option value="cm3">Cmetrick</option>
-						<option value="cm2">Cmetrick Mini</option>
-						<option value="fto">Face-Turning Octa</option>
-						<option value="gear">Gear Cube</option>
-						<option value="sfl">Super Floppy Cube</option>
-						<option value="ufo">UFO</option>
-						<option value="prco">Pyraminx Crystal</option>
-						<option value="giga">Gigaminx</option>
-					</select>
+			<select id="scram_type" onchange="generateScram(); document.getElementById('scram_type').blur(); saveScramType();" class="sel">
+				<option>==========WCA==========</option>
+				<option value="333" selected="selected">3x3</option>
+				<option value="222">2x2</option>
+				<option value="444">4x4</option>
+				<option value="555">5x5</option>
+				<option value="666">6x6</option>
+				<option value="777">7x7</option>
+				<option value="333oh">3x3 oh</option>
+				<option value="333bf">3x3 bld</option>
+				<option value="333fm">3x3 fm</option>
+				<option value="pyram">Pyraminx</option>
+				<option value="skewb">Skewb</option>
+				<option value="minx">Megaminx</option>
+				<option value="sq1">Square-1</option>
+				<option value="clock">Clock</option>
+				<option value="444bf">4x4 bld</option>
+				<option value="555bf">5x5 bld</option>
+				<option value="333mbf">3x3 mbld</option>
+				<option>=========RELAYS========</option>
+				<option value="relay25">Relay 2-5</option>
+				<option value="relay27">Relay 2-7</option>
+				<option value="mini_guildfold">Mini Guildfold</option>
+				<option value="guildfold">Guildfold</option>
+				<option>=========LxMxN=========</option>
+				<option value="112">1x1x2</option>
+				<option value="133">1x3x3</option>
+				<option value="223">2x2x3</option>
+				<option value="233">2x3x3</option>
+				<option value="334">3x3x4</option>
+				<option value="336">3x3x6</option>
+				<option value="888">8x8x8</option>
+				<option value="999">9x9x9</option>
+				<option value="101010">10x10x10</option>
+				<option value="111111">11x11x11</option>
+				<option>========SUBSETS========</option>
+				<option>----------2x2----------</option>
+				<option value="2223">2x2 - 3-gen RUF</option>
+				<option value="2226">2x2 - 6-gen</option>
+				<option value="222so">2x2 - random moves</option>
+				<option value="222o">2x2 - optimal</option>
+				<option value="222eg">2x2 - EG</option>
+				<option value="222eg0">2x2 - EG0/CLL</option>
+				<option value="222eg1">2x2 - EG1</option>
+				<option value="222eg2">2x2 - EG2</option>
+				<option>----------3x3----------</option>
+				<option value="333r">3x3 - random moves</option>
+				<option value="2gen">3x3 - 2-gen RU</option>
+				<option value="2genl">3x3 - 2-gen LU</option>
+				<option value="roux">3x3 - 2-gen MU (L6E)</option>
+				<option value="3gen_L">3x3 - 3-gen RUL</option>
+				<option value="3gen_F">3x3 - 3-gen RUF</option>
+				<option value="half">3x3 - half turns only</option>
+				<option value="RrU">3x3 - RrU</option>
+				<option value="RrUu">3x3 - RrUu</option>
+				<option value="lsll">3x3 - LSLL</option>
+				<option value="333e">3x3 - edges only</option>
+				<option value="333c">3x3 - corners only</option>
+				<option value="f2l">3x3 - cross solved</option>
+				<option value="easy_cross">3x3 - easy cross</option>
+				<option value="333ll">3x3 - last layer</option>
+				<option value="zbll">3x3 - ZBLL</option>
+				<option value="zbls">3x3 - ZBLS</option>
+				<option value="zzll">3x3 - ZZLL</option>
+				<option value="l6e">3x3 - L6E (CN)</option>
+				<option value="cmll">3x3 - CMLL</option>
+				<option value="coll">3x3 - COLL</option>
+				<option value="ell">3x3 - ELL</option>
+				<option value="eoline">3x3 - EOLine</option>
+				<option>----------4567---------</option>
+				<option value="444si">4x4x4 SiGN</option>
+				<option value="444yj">4x4x4 YJ</option>
+				<option value="4edge">4x4x4 edges</option>
+				<option value="555si">5x5x5 SiGN</option>
+				<option value="5edge">5x5x5 edges</option>
+				<option value="666p">6x6x6 prefix</option>
+				<option value="666s">6x6x6 suffix</option>
+				<option value="666si">6x6x6 SiGN</option>
+				<option value="6edge">6x6x6 edges</option>
+				<option value="777p">7x7x7 prefix</option>
+				<option value="777s">7x7x7 suffix</option>
+				<option value="777si">7x7x7 SiGN</option>
+				<option value="7edge">7x7x7 edges</option>
+				<option>--------MEGAMINX-------</option>
+				<option value="mgmo">Megaminx - old style</option>
+				<option value="mgmp">Megaminx - Pochmann</option>
+				<option value="mgmc">Megaminx - Carrot</option>
+				<option value="minx2g">Megaminx - 2-gen RU</option>
+				<option value="mlsll">Megaminx - LSLL</option>
+				<option>--------PYRAMINX-------</option>
+				<option value="pyro">Pyramix - optimal</option>
+				<option>---------SKEWB---------</option>
+				<option value="skbo">Skewb - optimal</option>
+				<option>--------SQUARE-1-------</option>
+				<option value="sq1h">Sq1 - turn metric</option>
+				<option value="sq1t">Sq1 - twist metric</option>
+				<option>---------CLOCK---------</option>
+				<option value="clkj">Clock - Jaap order</option>
+				<option value="clkc">Clock - concise</option>
+				<option value="clke">Clock - efficient order</option>
+				<option>=========OTHERS========</option>
+				<option value="15p">15 puzzle</option>
+				<option value="sq2">Square-2</option>
+				<option value="ssq1t">Super Square-1</option>
+				<option value="bsq">Bandaged Square-1</option>
+				<option value="bic">Bicube</option>
+				<option value="heli">Helicopter Cube</option>
+				<option value="cm3">Cmetrick</option>
+				<option value="cm2">Cmetrick Mini</option>
+				<option value="fto">Face-Turning Octa</option>
+				<option value="gear">Gear Cube</option>
+				<option value="sfl">Super Floppy Cube</option>
+				<option value="ufo">UFO</option>
+				<option value="prco">Pyraminx Crystal</option>
+				<option value="giga">Gigaminx</option>
+			</select>
 
-					<i>
-						<text id="last_scram_btn" onclick="scramble = lastScram; document.getElementById('scram').innerHTML = scramble; drawLastScram();" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">last</text> /
-						<text id="next_scram_btn" onclick="generateScram()" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">next</text>
-					</i> scramble
-					<br>
+			<i>
+				<text id="last_scram_btn" onclick="scramble = lastScram; document.getElementById('scram').innerHTML = scramble; drawLastScram();" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">last</text> /
+				<text id="next_scram_btn" onclick="generateScram()" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">next</text>
+			</i> scramble
+			<br>
 
-				</div>
-			</div>
+		</div>
+	</div>
 
-			<div id="toggle_statTd" onclick="toggleStatTd()" onmouseover="bgOnMouseOver(this); toggleStatOnHover();" onmouseout="bgOnMouseOut(this); toggleStatOutHover()">
-				<i style="font-size: 3rem" class="fa fa-angle-down" id="fa-angle-down"></i>
-				<i style="font-size: 3rem" class="fa fa-angle-up" id="fa-angle-up"></i>
-				<text style="font-size: 1.2rem" id="toggle_statTd-hide"><sup>hide</sup></text>
-				<text style="font-size: 1.2rem" id="toggle_statTd-show"><sup>show</sup></text>
-				<text style="font-size: 1.2rem" id="toggle_statTd-text"><sup>stats</sup></text>
-			</div>
-			<div id="stat_td">
+	<div id="toggle_statTd" onclick="toggleStatTd()" onmouseover="bgOnMouseOver(this); toggleStatOnHover();" onmouseout="bgOnMouseOut(this); toggleStatOutHover()">
+		<i style="font-size: 3rem" class="fa fa-angle-down" id="fa-angle-down"></i>
+		<i style="font-size: 3rem" class="fa fa-angle-up" id="fa-angle-up"></i>
+		<text style="font-size: 1.2rem" id="toggle_statTd-hide"><sup>hide</sup></text>
+		<text style="font-size: 1.2rem" id="toggle_statTd-show"><sup>show</sup></text>
+		<text style="font-size: 1.2rem" id="toggle_statTd-text"><sup>stats</sup></text>
+	</div>
 
-				<div id="statTd_td" class="statTd_td">
+	<div id="stat_td">
 
-					<div id="div_ses_choose" style="text-align: center; width: 100%;">
-						<text>session</text>
-						<select id="choose_session" onchange="document.getElementById('choose_session').blur(); displaySession();" class="sel">
-						</select><br>
-						<table style="text-align: center; width: 100%;">
-							<tr>
-								<td id="reset_ses" class="session-but" onclick="resetSes()" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" title="Clear session">
-									<i style="font-size: 1rem" class="fa fa-remove"></i>
-								</td>
-								<td id="add_ses" class="session-but" onclick="addSes()" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" title="Add session">
-									<i style="font-size: 1rem" class="fa fa-plus"></i>
-								</td>
-								<td id="del_ses" class="session-but" onclick="if (confirm('Delete this session?')) {delSes()}" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" title="Delete session">
-									<i style="font-size: 1rem" class="fa fa-minus"></i>
-								</td>
-							</tr>
-						</table>
+		<div id="statTd_td" class="statTd_td">
 
-					</div>
-
-				<div id="avg_table_div">
-
-					<table id="avg_table" style="width: 100%; border: none; line-height: 1.5;">
-
-						<tr class="table_cell">
-
-							<td class="table_cell" style="width: 30%">
-
-							</br>
-							<text class="table_cell"><b>single</b></text></br>
-							<text class="table_cell" id="word_mo3"><b>mo3</b></text></br>
-							<text class="table_cell" id="word_ao5"><b>ao5</b></text></br>
-							<text class="table_cell" id="word_ao12"><b>ao12</b></text></br>
-							<text class="table_cell" id="word_ao50"><b>ao50</b></text></br>
-							<text class="table_cell" id="word_ao100"><b>ao100</b></text></br>
-							<text class="table_cell" id="word_ao200"><b>ao200</b></text></br>
-							<text class="table_cell" id="word_ao500"><b>ao500</b></text></br>
-							<text class="table_cell" id="word_ao1000"><b>ao1000</b></text></br>
+			<div id="div_ses_choose" style="text-align: center; width: 100%;">
+				<text>session</text>
+				<select id="choose_session" onchange="document.getElementById('choose_session').blur(); displaySession();" class="sel">
+				</select><br>
+				<table style="text-align: center; width: 100%;">
+					<tr>
+						<td id="reset_ses" class="session-but" onclick="resetSes()" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" title="Clear session">
+							<img src="img-audio\clear-session-black.png" alt="Clear session" id="clear-img" class="fa">
 
 						</td>
-
-						<td class="table_cell" style="width: 35%">
-
-							<text class="table_cell"><b>current</b></text></br>
-							<text class="table_cell" id="cur_single" onclick="showStat(1)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="cur_mo3" onclick="showStat(3)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="cur_ao5" onclick="showStat(5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="cur_ao12" onclick="showStat(12)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="cur_ao50" onclick="showStat(50)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="cur_ao100" onclick="showStat(100)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="cur_ao200" onclick="showStat(200)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="cur_ao500" onclick="showStat(500)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="cur_ao1000" onclick="showStat(1000)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-
+						<td id="add_ses" class="session-but" onclick="addSes()" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" title="Add session">
+							<img src="img-audio\add-session-black.png" alt="Add session" id="add-img" class="fa">
 						</td>
-
-						<td class="table_cell" style="width: 35%">
-
-							<text class="table_cell"><b>best</b></text></br>
-							<text class="table_cell" id="best_single" onclick="showStat(1.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="best_mo3" onclick="showStat(3.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="best_ao5" onclick="showStat(5.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="best_ao12" onclick="showStat(12.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="best_ao50" onclick="showStat(50.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="best_ao100" onclick="showStat(100.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="best_ao200" onclick="showStat(200.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="best_ao500" onclick="showStat(500.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
-							<text class="table_cell" id="best_ao1000" onclick="showStat(1000.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+						<td id="del_ses" class="session-but" onclick="if (confirm('Delete this session?')) {delSes()}" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" title="Delete session">
+							<img src="img-audio\delete-session-black.png" alt="Delete session" id="delete-img" class="fa">
 						</td>
+					</tr>
+				</table>
+
+			</div>
+
+			<div id="avg_table_div">
+				<table id="avg_table">
+					<tr>
+						<td onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" onclick="toggleSearchDiv()"
+						id="search_icon" class="fa fa-search table_cell" title="Search" style="width: 4rem"></td>
+						<td class="table_cell">current</td>
+						<td class="table_cell">best</td>
+					</tr>
+					<tr>
+						<td class="table_cell">single</td>
+						<td class="table_cell" id="cur_single" onclick="showStat(1)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+						<td class="table_cell" id="best_single" onclick="showStat(1.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+					</tr>
+					<tr>
+						<td class="table_cell">mo3</td>
+						<td class="table_cell" id="cur_mo3" onclick="showStat(3)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+						<td class="table_cell" id="best_mo3" onclick="showStat(3.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+					</tr>
+					<tr>
+						<td class="table_cell">ao5</td>
+						<td class="table_cell" id="cur_ao5" onclick="showStat(5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+						<td class="table_cell" id="best_ao5" onclick="showStat(5.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+					</tr>
+					<tr>
+						<td class="table_cell">ao12</td>
+						<td class="table_cell" id="cur_ao12" onclick="showStat(12)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+						<td class="table_cell" id="best_ao12" onclick="showStat(12.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+					</tr>
+					<tr>
+						<td class="table_cell">ao50</td>
+						<td class="table_cell" id="cur_ao50" onclick="showStat(50)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+						<td class="table_cell" id="best_ao50" onclick="showStat(50.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+					</tr>
+					<tr>
+						<td class="table_cell">ao100</td>
+						<td class="table_cell" id="cur_ao100" onclick="showStat(100)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+						<td class="table_cell" id="best_ao100" onclick="showStat(100.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+					</tr>
+					<tr>
+						<td class="table_cell">ao200</td>
+						<td class="table_cell" id="cur_ao200" onclick="showStat(200)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+						<td class="table_cell" id="best_ao200" onclick="showStat(200.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+					</tr>
+					<tr>
+						<td class="table_cell">ao500</td>
+						<td class="table_cell" id="cur_ao500" onclick="showStat(500)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+						<td class="table_cell" id="best_ao500" onclick="showStat(500.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+					</tr>
+					<tr>
+						<td class="table_cell">ao1000</td>
+						<td class="table_cell" id="cur_ao1000" onclick="showStat(1000)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
+						<td class="table_cell" id="best_ao1000" onclick="showStat(1000.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</td>
 					</tr>
 				</table>
 			</div>
@@ -283,28 +287,38 @@
 				</tr>
 			</table>
 
-			<div id="times_container" style="overflow-y: scroll"></div>
+			<div id="times_container"></div>
 
 		</div>
 	</div>
 
+	<div id="search_result">
+		<span id="search_result-title">Search in this session</span>
+		<img src="img-audio\close-button-black.png" alt="close" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" onclick="toggleSearchDiv()" id="search_close_but" title="close" class="fa close-but">
+		<br>
+
+		<input id="search_bar" oninput="solveSearch('single', getKeyword(this))">
+
+		<div id="search_container"></div>
+	</div>
+
 	<div id="draw_scram_dialog">
-			<scramble-display style="width:17rem; height:12rem;" id="333_display" event="333" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="222_display" event="222" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="444_display" event="444" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="555_display" event="555" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="666_display" event="666" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="777_display" event="777" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="333oh_display" event="333oh" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="333bf_display" event="333bf" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="333fm_display" event="333fm" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="minx_display" event="minx" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="skb_display" event="skewb" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="pyram_display" event="pyram" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="sq1_display" event="sq1" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="444bf_display" event="444bf" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height:12rem;" id="555bf_display" event="555bf" scramble=""></scramble-display>
-			<scramble-display style="width:17rem; height: 8rem;" id="clock_display" event="clock" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="333_display" event="333" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="222_display" event="222" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="444_display" event="444" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="555_display" event="555" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="666_display" event="666" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="777_display" event="777" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="333oh_display" event="333oh" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="333bf_display" event="333bf" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="333fm_display" event="333fm" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="minx_display" event="minx" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="skb_display" event="skewb" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="pyram_display" event="pyram" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="sq1_display" event="sq1" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="444bf_display" event="444bf" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height:12rem;" id="555bf_display" event="555bf" scramble=""></scramble-display>
+		<scramble-display style="width:17rem; height: 8rem;" id="clock_display" event="clock" scramble=""></scramble-display>
 	</div>
 
 	<dialog id="option_dialog">
@@ -391,7 +405,7 @@
 				<br>
 
 				<div style="overflow-y: scroll; height: 75%; border: none; padding-left: 0.2rem; padding-right: 0.2rem; line-height: 1.5; font-size: 1rem;">
-					
+
 					<p style="text-align: center; padding-left: 0.2rem; font-size: 2rem;"><b>Introduction</b></p>
 					<p>PrimeTimer is a web timer for Rubik's cube and twisty puzzles speedsolvers. It provides varieties of functions:</p>
 					<ul>
@@ -526,144 +540,147 @@
 				<source src="img-audio/12sec.mp3" type="audio/mpeg">
 				</audio>
 
-				<!--</header>-->
-
 				<!--##### JS PART #####-->
 				<script>
-			//##### VARRIBLES AND CONSTS #####
-			var mnt = 0;
-			var sec = 0;
-			var ispt = 0;
-			var timerStatus = 0;
-			var inspectType_value = 1;
-			var importFocus = 0; // 0 means import by timer, 1 means by typing
-			var keyPressed;
-			var inspectBegin;
-			var timeBegin;
-			var hideAll;
-			var wideMoves;
-			var enterTimeType_value;
-			var enterFormatType_value;
-			var scramType_value;
-			var hideType_value;
-			var drawType_value;
-			var timeSplit_value;
-			var timerFont_value;
-			var randomScramble;
-			var scramble = "";
-			var lastScram = "";
-			var ind1 = 0;
-			var sesNum;
-			var sessions = [];
-			var sesSum = 0;
-			var mean = 0;
-			var bestSingle;
-			var bestSinglestrng;
-			var bestSingleTrao;
-			var mean3Array = [];
-			var mean3strngArray = [];
-			var bestMean3 = 99999;
-			var bestMean3strng = "DNF";
-			var bestM3strngArray = [];
-			var bestM3TraoArray = [];
-			var avg5Array = [];
-			var avg5strngArray = [];
-			var bestAvg5 = 99999;
-			var bestAvg5strng = "DNF";
-			var bestA5strngArray = [];
-			var bestA5TraoArray = [];
-			var avg12Array = [];
-			var avg12strngArray = [];
-			var bestAvg12 = 99999;
-			var bestAvg12strng = "DNF";
-			var bestA12strngArray = [];
-			var bestA12TraoArray = [];
-			var avg50Array = [];
-			var avg50strngArray = [];
-			var bestAvg50 = 99999;
-			var bestAvg50strng = "DNF";
-			var bestA50strngArray = [];
-			var bestA50TraoArray = [];
-			var avg100Array = [];
-			var avg100strngArray = [];
-			var bestAvg100 = 99999;
-			var bestAvg100strng = "DNF";
-			var bestA100strngArray = [];
-			var bestA100TraoArray = [];
-			var avg200Array = [];
-			var avg100strngArray = [];
-			var bestAvg200 = 99999;
-			var bestAvg200strng = "DNF";
-			var bestA200strngArray = [];
-			var bestA200TraoArray = [];
-			var avg500Array = [];
-			var avg500strngArray = [];
-			var bestAvg500 = 99999;
-			var bestAvg500strng = "DNF";
-			var bestA500strngArray = [];
-			var bestA500TraoArray = [];
-			var avg1000Array = [];
-			var avg1000strngArray = [];
-			var bestAvg1000 = 99999;
-			var bestAvg1000strng = "DNF";
-			var bestA1000strngArray = [];
-			var bestA1000TraoArray = [];
-			var timeCon = document.getElementById("times_container");
-			var solveIndex;
-			var dlc = 0; // standard devitation
-			var bgColor_value = "#F8F4E3";
-			var boardColor_value = "#D4CDC3";
-			var fontColor_value = "#000000";
-			var linkColor_value = "#0000FF";
-			var hvColor_value = "#BAAE9E";
-			var messageHint = "new best ";
+		//##### VARRIBLES AND CONSTS #####
+		var mnt = 0;
+		var sec = 0;
+		var ispt = 0;
+		var timerStatus = 0;
+		var inspectType_value = 1;
+		var importFocus = 0; // 0 means import by timer, 1 means by typing
+		var keyPressed;
+		var inspectBegin;
+		var timeBegin;
+		var hideAll;
+		var wideMoves;
+		var enterTimeType_value;
+		var enterFormatType_value;
+		var scramType_value;
+		var hideType_value;
+		var drawType_value;
+		var timeSplit_value;
+		var timerFont_value;
+		var randomScramble;
+		var scramble = "";
+		var lastScram = "";
+		var ind1 = 0;
+		var sesNum;
+		var sessions = [];
+		var sesSum = 0;
+		var mean = 0;
+		var bestSingle;
+		var bestSinglestrng;
+		var bestSingleTrao;
+		var mean3Array = [];
+		var mean3strngArray = [];
+		var bestMean3 = 99999;
+		var bestMean3strng = "DNF";
+		var bestM3strngArray = [];
+		var bestM3TraoArray = [];
+		var avg5Array = [];
+		var avg5strngArray = [];
+		var bestAvg5 = 99999;
+		var bestAvg5strng = "DNF";
+		var bestA5strngArray = [];
+		var bestA5TraoArray = [];
+		var avg12Array = [];
+		var avg12strngArray = [];
+		var bestAvg12 = 99999;
+		var bestAvg12strng = "DNF";
+		var bestA12strngArray = [];
+		var bestA12TraoArray = [];
+		var avg50Array = [];
+		var avg50strngArray = [];
+		var bestAvg50 = 99999;
+		var bestAvg50strng = "DNF";
+		var bestA50strngArray = [];
+		var bestA50TraoArray = [];
+		var avg100Array = [];
+		var avg100strngArray = [];
+		var bestAvg100 = 99999;
+		var bestAvg100strng = "DNF";
+		var bestA100strngArray = [];
+		var bestA100TraoArray = [];
+		var avg200Array = [];
+		var avg100strngArray = [];
+		var bestAvg200 = 99999;
+		var bestAvg200strng = "DNF";
+		var bestA200strngArray = [];
+		var bestA200TraoArray = [];
+		var avg500Array = [];
+		var avg500strngArray = [];
+		var bestAvg500 = 99999;
+		var bestAvg500strng = "DNF";
+		var bestA500strngArray = [];
+		var bestA500TraoArray = [];
+		var avg1000Array = [];
+		var avg1000strngArray = [];
+		var bestAvg1000 = 99999;
+		var bestAvg1000strng = "DNF";
+		var bestA1000strngArray = [];
+		var bestA1000TraoArray = [];
+		var timeCon = document.getElementById("times_container");
+		var solveIndex;
+		var dlc = 0; // standard devitation
+		var bgColor_value = "#F8F4E3";
+		var boardColor_value = "#D4CDC3";
+		var fontColor_value = "#000000";
+		var linkColor_value = "#0000FF";
+		var hvColor_value = "#BAAE9E";
+		var messageHint = "new best ";
 
-			document.getElementById("mnt").style.display = "none";
-			document.getElementById("two_dot").style.display = "none";
-			document.getElementById("ispt_display").style.display = "none";
+		//default settings & stuff
+		document.getElementById("mnt").style.display = "none";
+		document.getElementById("two_dot").style.display = "none";
+		document.getElementById("ispt_display").style.display = "none";
 
-			var landscapeStyleSheet = document.styleSheets[1];
-			var portraitStyleSheet = document.styleSheets[2];
+		document.getElementById("search_result").style.display = "none";
 
-			function resizeWindow() {
-				let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-				let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		//toggle stylesheet when resizing window
+		var landscapeStyleSheet = document.styleSheets[1];
+		var portraitStyleSheet = document.styleSheets[2];
 
-				if (width/height < 6/5) {
-					landscapeStyleSheet.disabled = true;
-					portraitStyleSheet.disabled = false;
-				} else {
-					landscapeStyleSheet.disabled = false;
-					portraitStyleSheet.disabled = true;
-				}
+		function resizeWindow() {
+			let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+			let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+			if (width/height < 6/5) {
+				landscapeStyleSheet.disabled = true;
+				portraitStyleSheet.disabled = false;
+			} else {
+				landscapeStyleSheet.disabled = false;
+				portraitStyleSheet.disabled = true;
 			}
-		</script>
-		
-		<script src="scripts\data_storage.js"></script>
-		<script src="scripts\timer.js"></script>
-		<script src="scripts\dialogs.js"></script>
-		<script src="scripts\Session.js"></script>
-		<script src="scripts\options.js"></script>
-		<script src="scripts\key_events.js"></script>
-		<script src="scripts\calc_mean_avg.js"></script>
-		<script src="scripts\solve_related.js"></script>
+		}
+	</script>
 
-		<script src="scripts\scram-gen\scramble_222.js"></script>
-		<script src="scripts\scram-gen\scramble_333.js"></script>
-		<script src="scripts\scram-gen\scramble_clock.js"></script>
-		<script src="scripts\scram-gen\scramble_minx.js"></script>
-		<script src="scripts\scram-gen\scramble_NNN.js"></script>
-		<script src="scripts\scram-gen\scramble_pyram.js"></script>
-		<script src="scripts\scram-gen\scramble_sq1.js"></script>
-		<script src="scripts\scram-gen\scrambles_part.js"></script>
+	<script src="scripts\data_storage.js"></script>
+	<script src="scripts\timer.js"></script>
+	<script src="scripts\dialogs.js"></script>
+	<script src="scripts\Session.js"></script>
+	<script src="scripts\options.js"></script>
+	<script src="scripts\key_events.js"></script>
+	<script src="scripts\calc_mean_avg.js"></script>
+	<script src="scripts\solve_related.js"></script>
+	<script src="scripts\solve_search.js"></script>
 
-		<script src="scripts\scram-gen\mathlib.js"></script>
-		<script src="scripts\scram-gen\scramble.js"></script>
-		<script src="scripts\scram-gen\pyraminx.js"></script>
-		<script src="scripts\scram-gen\skewb.js"></script>
-		<script src="scripts\scram-gen\1x3x3.js"></script>
-		<script src="scripts\scram-gen\2x2x2.js"></script>
-		<script src="scripts\scram-gen\scramble_333_edit.js"></script>
-		<script src="scripts\scram-gen\cross.js"></script>
-	</body>
-	</html>
+	<script src="scripts\scram-gen\scramble_222.js"></script>
+	<script src="scripts\scram-gen\scramble_333.js"></script>
+	<script src="scripts\scram-gen\scramble_clock.js"></script>
+	<script src="scripts\scram-gen\scramble_minx.js"></script>
+	<script src="scripts\scram-gen\scramble_NNN.js"></script>
+	<script src="scripts\scram-gen\scramble_pyram.js"></script>
+	<script src="scripts\scram-gen\scramble_sq1.js"></script>
+	<script src="scripts\scram-gen\scrambles_part.js"></script>
+
+	<script src="scripts\scram-gen\mathlib.js"></script>
+	<script src="scripts\scram-gen\scramble.js"></script>
+	<script src="scripts\scram-gen\pyraminx.js"></script>
+	<script src="scripts\scram-gen\skewb.js"></script>
+	<script src="scripts\scram-gen\1x3x3.js"></script>
+	<script src="scripts\scram-gen\2x2x2.js"></script>
+	<script src="scripts\scram-gen\scramble_333_edit.js"></script>
+	<script src="scripts\scram-gen\cross.js"></script>
+</body>
+</html>

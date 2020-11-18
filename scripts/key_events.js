@@ -45,12 +45,13 @@ document.onkeyup = function(event){
 
 		if (timerStatus % 3 == 1){
 
-			//document.getElementById("time_imported").style.display = "none";
 			document.getElementById("import_plhd").style.display = "none";
 			document.getElementById("mnt").style.display = "none";
 			document.getElementById("two_dot").style.display = "none";
 			document.getElementById("scnd").style.display = "none";
 			document.getElementById("ispt_display").style.display = "inline-block";
+
+			document.getElementById("search_result").style.display = "none";
 
 			inspectBegin = setInterval(inspector, 1000);
 
@@ -72,8 +73,6 @@ document.onkeyup = function(event){
 			document.getElementById("hide_text").style.display = "none";
 
 			if (hideType_value) {
-				//document.getElementById("time").style.display = "none";
-				//document.getElementById("div_hide").style.display = "inline-block";
 				document.getElementById("mnt").style.display = "none";
 				document.getElementById("two_dot").style.display = "none";
 				document.getElementById("scnd").style.display = "none";
@@ -103,12 +102,12 @@ document.onkeyup = function(event){
 		mnt = 0;
 		sec = 0;
 
+		document.getElementById("search_result").style.display = "none";
+
 		if (timerStatus % 2 == 1 && curPhase == 1){
 			document.getElementById("hide_text").style.display = "none";
 
 			if (hideType_value) {
-				//document.getElementById("time").style.display = "none";
-				//document.getElementById("div_hide").style.display = "inline-block";
 				document.getElementById("mnt").style.display = "none";
 				document.getElementById("two_dot").style.display = "none";
 				document.getElementById("scnd").style.display = "none";
@@ -308,12 +307,13 @@ document.ontouchend = function(event){
 
 		if (timerStatus % 3 == 1){
 
-			//document.getElementById("time_imported").style.display = "none";
 			document.getElementById("import_plhd").style.display = "none";
 			document.getElementById("mnt").style.display = "none";
 			document.getElementById("two_dot").style.display = "none";
 			document.getElementById("scnd").style.display = "none";
 			document.getElementById("ispt_display").style.display = "inline-block";
+
+			document.getElementById("search_result").style.display = "none";
 
 			isInspecting = true;
 			inspectBegin = setInterval(inspector, 1000);
@@ -336,8 +336,6 @@ document.ontouchend = function(event){
 			document.getElementById("ispt_display").style.display = "none";
 
 			if (hideType_value) {
-				//document.getElementById("time").style.display = "none";
-				//document.getElementById("div_hide").style.display = "inline-block";
 				document.getElementById("mnt").style.display = "none";
 				document.getElementById("two_dot").style.display = "none";
 				document.getElementById("scnd").style.display = "none";
@@ -367,11 +365,11 @@ document.ontouchend = function(event){
 		mnt = 0;
 		sec = 0;
 
+		document.getElementById("search_result").style.display = "none";
+
 		if (timerStatus % 2 == 1 && curPhase == 1){
 
 			if (hideType_value) {
-				//document.getElementById("time").style.display = "none";
-				//document.getElementById("div_hide").style.display = "inline-block";
 				document.getElementById("mnt").style.display = "none";
 				document.getElementById("two_dot").style.display = "none";
 				document.getElementById("scnd").style.display = "none";
@@ -410,17 +408,6 @@ function checkDialogOpen() {
 		 (document.getElementById("option_dialog").style.display == "none" || document.getElementById("option_dialog").style.display == "") &&
 		 (document.getElementById("about_dialog").style.display == "none" || document.getElementById("about_dialog").style.display == "") &&
 		 (document.getElementById("stat_dialog").style.display == "none" || document.getElementById("stat_dialog").style.display == ""));
-}
-function checkTargetId(e, t) {
-	return (e != "loading_div" && e != "loading_img" && e != "buts" && e != "logo" &&
-			  e != "option" && e != "scram_td" && e != "scram_con" && e != "scram" &&
-			  e != "div_scram_type" && e != "scram_type" && e != "last_scram_btn" &&
-			  e != "next_scram_btn" && e != "stat_td" &&e != "statTd_td" && e != "div_ses_choose" &&
-			  e != "choose_session" && e != "reset_ses" && e != "add_ses" && e != "del_ses" &&
-			  e != "avg_table_div" && e != "avg_table" && e != "sovle_table" && e != "del_table" &&
-			  e != "times_container" && e != "draw_scram_dialog" && e != "draw_other_wca" &&
-			  e != "222_draw_div" && e != "333_draw_div" && e != "pyram_draw_div" &&
-			  e != "skb_draw_div" && t != "solve_dp" && t != "table_cell");
 }
 //////////
 

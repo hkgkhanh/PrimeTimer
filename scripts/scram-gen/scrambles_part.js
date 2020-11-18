@@ -25,7 +25,6 @@ function scramDrawDisplay(three, two, four, five, six, seven, threeOh, threeBf, 
 function generateScram(){
 	lastScram = scramble;
 	lastScramType = getScramTypeSelectedIndex();
-	//document.getElementById("draw_other_wca").innerHTML = "";
 	document.getElementById("scram_con").scrollTo(0, 0);
 	scramType_value = document.getElementById("scram_type").options[document.getElementById("scram_type").selectedIndex].value;
 
@@ -430,10 +429,10 @@ function generateScram(){
 	} else if (scramType_value == "clkc") {
 		ret = "";
 		for (var i = 0; i < 4; i++) {
-			ret += "(" + (rn(12) - 5) + ", " + (rn(12) - 5) + ") / "
+			ret += "(" + (rn(12) - 5) + "," + (rn(12) - 5) + ")/ "
 		}
 		for (var i = 0; i < 6; i++) {
-			ret += "(" + (rn(12) - 5) + ") / "
+			ret += "(" + (rn(12) - 5) + ")/ "
 		}
 		for (var i = 0; i < 4; i++) {
 			ret += rndEl(["d", "U"])
@@ -863,12 +862,10 @@ function drawScram() {
 };
 
 function drawLastScram() {
-	//document.getElementById("draw_other_wca").innerHTML = "";
 	scramType_value = document.getElementById("scram_type").value;
 	let scrT = scramType_value;
 	
 	if (scramType_value == "444" || scramType_value == "444bf" || scramType_value == "444si" || scramType_value == "444yj" || scramType_value == "4edge") {
-		//document.getElementById("draw_other_wca").appendChild(lastDraw);
 		scramDrawDisplay(false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false);
 		document.getElementById("444_display").scramble = scramble;
 
@@ -889,55 +886,24 @@ function drawLastScram() {
 		document.getElementById("sq1_display").scramble = scramble;
 
 	} else if (scrT == "222" || scrT == "2223" || scrT == "222so" || scrT == "222o" || scrT == "222eg" || scrT == "222eg0" || scrT == "222eg1" || scrT == "222eg2") {
-		/*document.getElementById("draw_other_wca").style.display = "none";
-		document.getElementById("222_draw_div").style.display = "block";
-		document.getElementById("333_draw_div").style.display = "none";
-		document.getElementById("pyram_draw_div").style.display = "none";
-		document.getElementById("skb_draw_div").style.display = "none";
-		drawCube2(scramble);*/
 		scramDrawDisplay(false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
 		document.getElementById("222_display").scramble = scramble;
 
 	} else if (scrT == "333" || scrT == "333oh" || scrT == "333fm" || scrT == "333bf" || scrT == "333r" || scrT == "2gen" || scrT == "2genl" || scrT == "roux" || scrT == "3gen_L" || scrT == "3gen_F"  || scrT == "half"
 		|| scrT == "RrU" || scrT == "RrUu" || scrT == "lsll" || scrT == "333e" || scrT == "333c" || scrT == "f2l" || scrT == "easy_cross"
 		|| scrT == "333ll" || scrT == "zbll" || scrT == "zbls" || scrT == "l6e" || scrT == "cmll" || scrT == "coll" || scrT == "ell" || scrT == "eoline") {
-		/*document.getElementById("draw_other_wca").style.display = "none";
-		document.getElementById("222_draw_div").style.display = "none";
-		document.getElementById("333_draw_div").style.display = "block";
-		document.getElementById("pyram_draw_div").style.display = "none";
-		document.getElementById("skb_draw_div").style.display = "none";
-		drawCube3(scramble);*/
 		scramDrawDisplay(true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
 		document.getElementById("333_display").scramble = scramble;
 
 	} else if (scrT == "pyro" || scrT == "pyram") {
-		/*document.getElementById("draw_other_wca").style.display = "none";
-		document.getElementById("222_draw_div").style.display = "none";
-		document.getElementById("333_draw_div").style.display = "none";
-		document.getElementById("pyram_draw_div").style.display = "block";
-		document.getElementById("skb_draw_div").style.display = "none";
-		drawCubeP(scramble);*/
 		scramDrawDisplay(false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false);
 		document.getElementById("pyram_display").scramble = scramble;
 
 	} else if (scrT == "skbo" || scrT == "skewb") {
-		/*document.getElementById("draw_other_wca").style.display = "none";
-		document.getElementById("222_draw_div").style.display = "none";
-		document.getElementById("333_draw_div").style.display = "none";
-		document.getElementById("pyram_draw_div").style.display = "none";
-		document.getElementById("skb_draw_div").style.display = "block";
-		drawCubeS(scramble);*/
 		scramDrawDisplay(false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false);
 		document.getElementById("skb_display").scramble = scramble;
 
 	} else if (scrT == "clock") {
-		/*document.getElementById("draw_other_wca").style.display = "none";
-		document.getElementById("222_draw_div").style.display = "none";
-		document.getElementById("333_draw_div").style.display = "none";
-		document.getElementById("pyram_draw_div").style.display = "none";
-		document.getElementById("skb_draw_div").style.display = "none";
-		document.getElementById("clock_draw_div").style.display = "block";
-		document.getElementById("clock_display").scramble = scramble;*/
 		scramDrawDisplay(false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false);
 		document.getElementById("clock_display").scramble = scramble;
 

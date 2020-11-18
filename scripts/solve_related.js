@@ -95,325 +95,40 @@ function addSolve(){
 };
 
 function setOK(solveNum) {
-if (sessions[sesNum - 1].arr. length != 0) {
+	if (sessions[sesNum - 1].arr. length != 0) {
 
-	sessions[sesNum - 1].arr[solveNum].pen = "ok";
-	sessions[sesNum - 1].arr[solveNum].time = sessions[sesNum - 1].arr[solveNum].tOk;
-	var solveMin = Math.floor(sessions[sesNum - 1].arr[solveNum].time / 60);
-	var solveSec = Math.floor((sessions[sesNum - 1].arr[solveNum].time % 60) * 100) / 100;
-	if (solveMin == 0){
-		sessions[sesNum - 1].arr[solveNum].strng = solveSec.toFixed(2);
-	};
-	if (solveMin != 0 && solveSec < 10){
-		sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + "0" + solveSec.toFixed(2);
-	};
-	if (solveMin != 0 && solveSec >= 10){
-		sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + solveSec.toFixed(2);
-	};
-
-	document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
-
-	if (sessions[sesNum - 1].arr.length == 1) {
-		bestSingle = sessions[sesNum - 1].arr[0].time;
-		bestSinglestrng = sessions[sesNum - 1].arr[0].strng;
-		bestSingleTrao = sessions[sesNum - 1].arr[0].trao;
-	};
-
-	bestSingle = 99999;
-	for (var ind8 = 0; ind8 < sessions[sesNum - 1].arr.length; ind8++) {
-		if (sessions[sesNum - 1].arr[ind8].time <= bestSingle && sessions[sesNum - 1].arr[ind8].pen != "dnf") {
-			bestSingle = sessions[sesNum - 1].arr[ind8].time;
-			bestSinglestrng = sessions[sesNum - 1].arr[ind8].strng;
-			bestSingleTrao = sessions[sesNum - 1].arr[ind8].trao;
-			document.getElementById("best_single").innerHTML = bestSinglestrng;
+		sessions[sesNum - 1].arr[solveNum].pen = "ok";
+		sessions[sesNum - 1].arr[solveNum].time = sessions[sesNum - 1].arr[solveNum].tOk;
+		var solveMin = Math.floor(sessions[sesNum - 1].arr[solveNum].time / 60);
+		var solveSec = Math.floor((sessions[sesNum - 1].arr[solveNum].time % 60) * 100) / 100;
+		if (solveMin == 0){
+			sessions[sesNum - 1].arr[solveNum].strng = solveSec.toFixed(2);
 		};
-	};
-
-	mean3Array = [];
-	mean3strngArray = [];
-	bestMean3 = 99999;
-	bestMean3strng = "DNF";
-	bestM3strngArray = [];
-	bestM3TraoArray = [];
-	avg5Array = [];
-	avg5strngArray = [];
-	bestAvg5 = 99999;
-	bestAvg5strng = "DNF";
-	bestA5strngArray = [];
-	bestA5TraoArray = [];
-	avg12Array = [];
-	avg12strngArray = [];
-	bestAvg12 = 99999;
-	bestAvg12strng = "DNF";
-	bestA12strngArray = [];
-	bestA12TraoArray = [];
-	avg50Array = [];
-	avg50strngArray = [];
-	bestAvg50 = 99999;
-	bestAvg50strng = "DNF";
-	bestA50strngArray = [];
-	bestA50TraoArray = [];
-	avg100Array = [];
-	avg100strngArray = [];
-	bestAvg100 = 99999;
-	bestAvg100strng = "DNF";
-	bestA100strngArray = [];
-	bestA100TraoArray = [];
-	avg200Array = [];
-	avg200strngArray = [];
-	bestAvg200 = 99999;
-	bestAvg200strng = "DNF";
-	bestA200strngArray = [];
-	bestA200TraoArray = [];
-	avg500Array = [];
-	avg500strngArray = [];
-	bestAvg500 = 99999;
-	bestAvg500strng = "DNF";
-	bestA500strngArray = [];
-	bestA500TraoArray = [];
-	avg1000Array = [];
-	avg1000strngArray = [];
-	bestAvg1000 = 99999;
-	bestAvg1000strng = "DNF";
-	bestA1000strngArray = [];
-	bestA1000TraoArray = [];
-
-	saveSession();
-	calc();
-	timeContain();
-}
-};
-
-function setP2(solveNum) {
-if (sessions[sesNum - 1].arr. length != 0) {
-
-	sessions[sesNum - 1].arr[solveNum].pen = "plus2";
-	sessions[sesNum - 1].arr[solveNum].time = sessions[sesNum - 1].arr[solveNum].tPlus2;
-	var solveMin = Math.floor(sessions[sesNum - 1].arr[solveNum].time / 60);
-	var solveSec = Math.floor((sessions[sesNum - 1].arr[solveNum].time % 60) * 100) / 100;
-	if (solveMin == 0){
-		sessions[sesNum - 1].arr[solveNum].strng = solveSec.toFixed(2) + "+";
-	};
-	if (solveMin != 0 && solveSec < 10){
-		sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + "0" + solveSec.toFixed(2) + "+";
-	};
-	if (solveMin != 0 && solveSec >= 10){
-		sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + solveSec.toFixed(2) + "+";
-	};
-
-	document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
-
-	if (sessions[sesNum - 1].arr.length == 1) {
-		bestSingle = sessions[sesNum - 1].arr[0].time;
-		bestSinglestrng = sessions[sesNum - 1].arr[0].strng;
-		bestSingleTrao = sessions[sesNum - 1].arr[0].trao;
-	};
-
-	bestSingle = 99999;
-	for (var ind8 = 0; ind8 < sessions[sesNum - 1].arr.length; ind8++) {
-		if (sessions[sesNum - 1].arr[ind8].time <= bestSingle && sessions[sesNum - 1].arr[ind8].pen != "dnf") {
-			bestSingle = sessions[sesNum - 1].arr[ind8].time;
-			bestSinglestrng = sessions[sesNum - 1].arr[ind8].strng;
-			bestSingleTrao = sessions[sesNum - 1].arr[ind8].trao;
-			document.getElementById("best_single").innerHTML = bestSinglestrng;
+		if (solveMin != 0 && solveSec < 10){
+			sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + "0" + solveSec.toFixed(2);
 		};
-	};
-
-	mean3Array = [];
-	mean3strngArray = [];
-	bestMean3 = 99999;
-	bestMean3strng = "DNF";
-	bestM3strngArray = [];
-	bestM3TraoArray = [];
-	avg5Array = [];
-	avg5strngArray = [];
-	bestAvg5 = 99999;
-	bestAvg5strng = "DNF";
-	bestA5strngArray = [];
-	bestA5TraoArray = [];
-	avg12Array = [];
-	avg12strngArray = [];
-	bestAvg12 = 99999;
-	bestAvg12strng = "DNF";
-	bestA12strngArray = [];
-	bestA12TraoArray = [];
-	avg50Array = [];
-	avg50strngArray = [];
-	bestAvg50 = 99999;
-	bestAvg50strng = "DNF";
-	bestA50strngArray = [];
-	bestA50TraoArray = [];
-	avg100Array = [];
-	avg100strngArray = [];
-	bestAvg100 = 99999;
-	bestAvg100strng = "DNF";
-	bestA100strngArray = [];
-	bestA100TraoArray = [];
-	avg200Array = [];
-	avg200strngArray = [];
-	bestAvg200 = 99999;
-	bestAvg200strng = "DNF";
-	bestA200strngArray = [];
-	bestA200TraoArray = [];
-	avg500Array = [];
-	avg500strngArray = [];
-	bestAvg500 = 99999;
-	bestAvg500strng = "DNF";
-	bestA500strngArray = [];
-	bestA500TraoArray = [];
-	avg1000Array = [];
-	avg1000strngArray = [];
-	bestAvg1000 = 99999;
-	bestAvg1000strng = "DNF";
-	bestA1000strngArray = [];
-	bestA1000TraoArray = [];
-
-	saveSession();
-	calc();
-	timeContain();
-}
-};
-
-function setDNF(solveNum) {
-if (sessions[sesNum - 1].arr. length != 0) {
-
-	sessions[sesNum - 1].arr[solveNum].pen = "dnf";
-	sessions[sesNum - 1].arr[solveNum].strng = "DNF";
-	sessions[sesNum - 1].arr[solveNum].time = sessions[sesNum - 1].arr[solveNum].tOk;
-
-	document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
-
-	if (sessions[sesNum - 1].arr.length == 1) {
-		bestSingle = sessions[sesNum - 1].arr[0].time;
-		bestSinglestrng = sessions[sesNum - 1].arr[0].strng;
-		bestSingleTrao = sessions[sesNum - 1].arr[0].trao;
-	};
-
-	bestSingle = 99999;
-	bestSinglestrng = "DNF";
-	for (var ind8 = 0; ind8 < sessions[sesNum - 1].arr.length; ind8++) {
-		if (sessions[sesNum - 1].arr[ind8].pen != "dnf" && sessions[sesNum - 1].arr[ind8].time <= bestSingle) {
-			bestSingle = sessions[sesNum - 1].arr[ind8].time;
-			bestSinglestrng = sessions[sesNum - 1].arr[ind8].strng;
-			bestSingleTrao = sessions[sesNum - 1].arr[ind8].trao;	
+		if (solveMin != 0 && solveSec >= 10){
+			sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + solveSec.toFixed(2);
 		};
-	};
-	document.getElementById("best_single").innerHTML = bestSinglestrng;
 
-	mean3Array = [];
-	mean3strngArray = [];
-	bestMean3 = 99999;
-	bestMean3strng = "DNF";
-	bestM3strngArray = [];
-	bestM3TraoArray = [];
-	avg5Array = [];
-	avg5strngArray = [];
-	bestAvg5 = 99999;
-	bestAvg5strng = "DNF";
-	bestA5strngArray = [];
-	bestA5TraoArray = [];
-	avg12Array = [];
-	avg12strngArray = [];
-	bestAvg12 = 99999;
-	bestAvg12strng = "DNF";
-	bestA12strngArray = [];
-	bestA12TraoArray = [];
-	avg50Array = [];
-	avg50strngArray = [];
-	bestAvg50 = 99999;
-	bestAvg50strng = "DNF";
-	bestA50strngArray = [];
-	bestA50TraoArray = [];
-	avg100Array = [];
-	avg100strngArray = [];
-	bestAvg100 = 99999;
-	bestAvg100strng = "DNF";
-	bestA100strngArray = [];
-	bestA100TraoArray = [];
-	avg200Array = [];
-	avg200strngArray = [];
-	bestAvg200 = 99999;
-	bestAvg200strng = "DNF";
-	bestA200strngArray = [];
-	bestA200TraoArray = [];
-	avg500Array = [];
-	avg500strngArray = [];
-	bestAvg500 = 99999;
-	bestAvg500strng = "DNF";
-	bestA500strngArray = [];
-	bestA500TraoArray = [];
-	avg1000Array = [];
-	avg1000strngArray = [];
-	bestAvg1000 = 99999;
-	bestAvg1000strng = "DNF";
-	bestA1000strngArray = [];
-	bestA1000TraoArray = [];
-
-	saveSession();
-	calc();
-	timeContain();
-}
-};
-			
-function delSolve(i) {
-if (sessions[sesNum - 1].arr. length != 0) {
-
-	if (confirm("Delete the solve " + sessions[sesNum - 1].arr[i].strng + "?") == true) {
-
-		sessions[sesNum - 1].arr.splice(i, 1);
-		document.getElementById('solve_dialog').style.display = 'none';
-
-		if (sessions[sesNum - 1].arr.length == 0) {
-			document.getElementById("cur_single").innerHTML = "-";
-			document.getElementById("best_single").innerHTML = "-";
-			timeCon.innerHTML = "";
-
-			document.getElementById("ses_mean").innerHTML = "0.00";
-			document.getElementById("ses_not_dnf").innerHTML = "0";
-			document.getElementById("ses_length").innerHTML = "0";
-		} else {
+		document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
 
 		if (sessions[sesNum - 1].arr.length == 1) {
 			bestSingle = sessions[sesNum - 1].arr[0].time;
 			bestSinglestrng = sessions[sesNum - 1].arr[0].strng;
+			bestSingleTrao = sessions[sesNum - 1].arr[0].trao;
 		};
 
-		document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
-		document.getElementById("best_single").innerHTML = bestSinglestrng;
+		bestSingle = 99999;
+		for (var ind8 = 0; ind8 < sessions[sesNum - 1].arr.length; ind8++) {
+			if (sessions[sesNum - 1].arr[ind8].time <= bestSingle && sessions[sesNum - 1].arr[ind8].pen != "dnf") {
+				bestSingle = sessions[sesNum - 1].arr[ind8].time;
+				bestSinglestrng = sessions[sesNum - 1].arr[ind8].strng;
+				bestSingleTrao = sessions[sesNum - 1].arr[ind8].trao;
+				document.getElementById("best_single").innerHTML = bestSinglestrng;
+			};
+		};
 
-		if (sessions[sesNum - 1].arr.length < 3) {
-			document.getElementById("cur_mo3").innerHTML = "-";
-			document.getElementById("best_mo3").innerHTML = "-";
-		};
-		if (sessions[sesNum - 1].arr.length < 5) {
-			document.getElementById("cur_ao5").innerHTML = "-";
-			document.getElementById("best_ao5").innerHTML = "-";
-		};
-		if (sessions[sesNum - 1].arr.length < 12) {
-			document.getElementById("cur_ao12").innerHTML = "-";
-			document.getElementById("best_ao12").innerHTML = "-";
-		};
-		if (sessions[sesNum - 1].arr.length < 50) {
-			document.getElementById("cur_ao50").innerHTML = "-";
-			document.getElementById("best_ao50").innerHTML = "-";
-		};
-		if (sessions[sesNum - 1].arr.length < 100) {
-			document.getElementById("cur_ao100").innerHTML = "-";
-			document.getElementById("best_ao100").innerHTML = "-";
-		};
-		if (sessions[sesNum - 1].arr.length < 200) {
-			document.getElementById("cur_ao200").innerHTML = "-";
-			document.getElementById("best_ao200").innerHTML = "-";
-		};
-		if (sessions[sesNum - 1].arr.length < 500) {
-			document.getElementById("cur_ao500").innerHTML = "-";
-			document.getElementById("best_ao500").innerHTML = "-";
-		};
-		if (sessions[sesNum - 1].arr.length < 1000) {
-			document.getElementById("cur_ao1000").innerHTML = "-";
-			document.getElementById("best_ao1000").innerHTML = "-";
-		};
-		}
 		mean3Array = [];
 		mean3strngArray = [];
 		bestMean3 = 99999;
@@ -462,6 +177,291 @@ if (sessions[sesNum - 1].arr. length != 0) {
 		bestAvg1000strng = "DNF";
 		bestA1000strngArray = [];
 		bestA1000TraoArray = [];
+
+		saveSession();
+		calc();
+		timeContain();
+	}
+};
+
+function setP2(solveNum) {
+	if (sessions[sesNum - 1].arr. length != 0) {
+
+		sessions[sesNum - 1].arr[solveNum].pen = "plus2";
+		sessions[sesNum - 1].arr[solveNum].time = sessions[sesNum - 1].arr[solveNum].tPlus2;
+		var solveMin = Math.floor(sessions[sesNum - 1].arr[solveNum].time / 60);
+		var solveSec = Math.floor((sessions[sesNum - 1].arr[solveNum].time % 60) * 100) / 100;
+		if (solveMin == 0){
+			sessions[sesNum - 1].arr[solveNum].strng = solveSec.toFixed(2) + "+";
+		};
+		if (solveMin != 0 && solveSec < 10){
+			sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + "0" + solveSec.toFixed(2) + "+";
+		};
+		if (solveMin != 0 && solveSec >= 10){
+			sessions[sesNum - 1].arr[solveNum].strng = solveMin + ":" + solveSec.toFixed(2) + "+";
+		};
+
+		document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
+
+		if (sessions[sesNum - 1].arr.length == 1) {
+			bestSingle = sessions[sesNum - 1].arr[0].time;
+			bestSinglestrng = sessions[sesNum - 1].arr[0].strng;
+			bestSingleTrao = sessions[sesNum - 1].arr[0].trao;
+		};
+
+		bestSingle = 99999;
+		for (var ind8 = 0; ind8 < sessions[sesNum - 1].arr.length; ind8++) {
+			if (sessions[sesNum - 1].arr[ind8].time <= bestSingle && sessions[sesNum - 1].arr[ind8].pen != "dnf") {
+				bestSingle = sessions[sesNum - 1].arr[ind8].time;
+				bestSinglestrng = sessions[sesNum - 1].arr[ind8].strng;
+				bestSingleTrao = sessions[sesNum - 1].arr[ind8].trao;
+				document.getElementById("best_single").innerHTML = bestSinglestrng;
+			};
+		};
+
+		mean3Array = [];
+		mean3strngArray = [];
+		bestMean3 = 99999;
+		bestMean3strng = "DNF";
+		bestM3strngArray = [];
+		bestM3TraoArray = [];
+		avg5Array = [];
+		avg5strngArray = [];
+		bestAvg5 = 99999;
+		bestAvg5strng = "DNF";
+		bestA5strngArray = [];
+		bestA5TraoArray = [];
+		avg12Array = [];
+		avg12strngArray = [];
+		bestAvg12 = 99999;
+		bestAvg12strng = "DNF";
+		bestA12strngArray = [];
+		bestA12TraoArray = [];
+		avg50Array = [];
+		avg50strngArray = [];
+		bestAvg50 = 99999;
+		bestAvg50strng = "DNF";
+		bestA50strngArray = [];
+		bestA50TraoArray = [];
+		avg100Array = [];
+		avg100strngArray = [];
+		bestAvg100 = 99999;
+		bestAvg100strng = "DNF";
+		bestA100strngArray = [];
+		bestA100TraoArray = [];
+		avg200Array = [];
+		avg200strngArray = [];
+		bestAvg200 = 99999;
+		bestAvg200strng = "DNF";
+		bestA200strngArray = [];
+		bestA200TraoArray = [];
+		avg500Array = [];
+		avg500strngArray = [];
+		bestAvg500 = 99999;
+		bestAvg500strng = "DNF";
+		bestA500strngArray = [];
+		bestA500TraoArray = [];
+		avg1000Array = [];
+		avg1000strngArray = [];
+		bestAvg1000 = 99999;
+		bestAvg1000strng = "DNF";
+		bestA1000strngArray = [];
+		bestA1000TraoArray = [];
+
+		saveSession();
+		calc();
+		timeContain();
+	}
+};
+
+function setDNF(solveNum) {
+	if (sessions[sesNum - 1].arr. length != 0) {
+
+		sessions[sesNum - 1].arr[solveNum].pen = "dnf";
+		sessions[sesNum - 1].arr[solveNum].strng = "DNF";
+		sessions[sesNum - 1].arr[solveNum].time = sessions[sesNum - 1].arr[solveNum].tOk;
+
+		document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
+
+		if (sessions[sesNum - 1].arr.length == 1) {
+			bestSingle = sessions[sesNum - 1].arr[0].time;
+			bestSinglestrng = sessions[sesNum - 1].arr[0].strng;
+			bestSingleTrao = sessions[sesNum - 1].arr[0].trao;
+		};
+
+		bestSingle = 99999;
+		bestSinglestrng = "DNF";
+		for (var ind8 = 0; ind8 < sessions[sesNum - 1].arr.length; ind8++) {
+			if (sessions[sesNum - 1].arr[ind8].pen != "dnf" && sessions[sesNum - 1].arr[ind8].time <= bestSingle) {
+				bestSingle = sessions[sesNum - 1].arr[ind8].time;
+				bestSinglestrng = sessions[sesNum - 1].arr[ind8].strng;
+				bestSingleTrao = sessions[sesNum - 1].arr[ind8].trao;	
+			};
+		};
+		document.getElementById("best_single").innerHTML = bestSinglestrng;
+
+		mean3Array = [];
+		mean3strngArray = [];
+		bestMean3 = 99999;
+		bestMean3strng = "DNF";
+		bestM3strngArray = [];
+		bestM3TraoArray = [];
+		avg5Array = [];
+		avg5strngArray = [];
+		bestAvg5 = 99999;
+		bestAvg5strng = "DNF";
+		bestA5strngArray = [];
+		bestA5TraoArray = [];
+		avg12Array = [];
+		avg12strngArray = [];
+		bestAvg12 = 99999;
+		bestAvg12strng = "DNF";
+		bestA12strngArray = [];
+		bestA12TraoArray = [];
+		avg50Array = [];
+		avg50strngArray = [];
+		bestAvg50 = 99999;
+		bestAvg50strng = "DNF";
+		bestA50strngArray = [];
+		bestA50TraoArray = [];
+		avg100Array = [];
+		avg100strngArray = [];
+		bestAvg100 = 99999;
+		bestAvg100strng = "DNF";
+		bestA100strngArray = [];
+		bestA100TraoArray = [];
+		avg200Array = [];
+		avg200strngArray = [];
+		bestAvg200 = 99999;
+		bestAvg200strng = "DNF";
+		bestA200strngArray = [];
+		bestA200TraoArray = [];
+		avg500Array = [];
+		avg500strngArray = [];
+		bestAvg500 = 99999;
+		bestAvg500strng = "DNF";
+		bestA500strngArray = [];
+		bestA500TraoArray = [];
+		avg1000Array = [];
+		avg1000strngArray = [];
+		bestAvg1000 = 99999;
+		bestAvg1000strng = "DNF";
+		bestA1000strngArray = [];
+		bestA1000TraoArray = [];
+
+		saveSession();
+		calc();
+		timeContain();
+	}
+};
+
+function delSolve(i) {
+	if (sessions[sesNum - 1].arr. length != 0) {
+
+		if (confirm("Delete the solve " + sessions[sesNum - 1].arr[i].strng + "?") == true) {
+
+			sessions[sesNum - 1].arr.splice(i, 1);
+			document.getElementById('solve_dialog').style.display = 'none';
+
+			if (sessions[sesNum - 1].arr.length == 0) {
+				document.getElementById("cur_single").innerHTML = "-";
+				document.getElementById("best_single").innerHTML = "-";
+				timeCon.innerHTML = "";
+
+				document.getElementById("ses_mean").innerHTML = "0.00";
+				document.getElementById("ses_not_dnf").innerHTML = "0";
+				document.getElementById("ses_length").innerHTML = "0";
+			} else {
+
+				if (sessions[sesNum - 1].arr.length == 1) {
+					bestSingle = sessions[sesNum - 1].arr[0].time;
+					bestSinglestrng = sessions[sesNum - 1].arr[0].strng;
+				};
+
+				document.getElementById("cur_single").innerHTML = sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng;
+				document.getElementById("best_single").innerHTML = bestSinglestrng;
+
+				if (sessions[sesNum - 1].arr.length < 3) {
+					document.getElementById("cur_mo3").innerHTML = "-";
+					document.getElementById("best_mo3").innerHTML = "-";
+				};
+				if (sessions[sesNum - 1].arr.length < 5) {
+					document.getElementById("cur_ao5").innerHTML = "-";
+					document.getElementById("best_ao5").innerHTML = "-";
+				};
+				if (sessions[sesNum - 1].arr.length < 12) {
+					document.getElementById("cur_ao12").innerHTML = "-";
+					document.getElementById("best_ao12").innerHTML = "-";
+				};
+				if (sessions[sesNum - 1].arr.length < 50) {
+					document.getElementById("cur_ao50").innerHTML = "-";
+					document.getElementById("best_ao50").innerHTML = "-";
+				};
+				if (sessions[sesNum - 1].arr.length < 100) {
+					document.getElementById("cur_ao100").innerHTML = "-";
+					document.getElementById("best_ao100").innerHTML = "-";
+				};
+				if (sessions[sesNum - 1].arr.length < 200) {
+					document.getElementById("cur_ao200").innerHTML = "-";
+					document.getElementById("best_ao200").innerHTML = "-";
+				};
+				if (sessions[sesNum - 1].arr.length < 500) {
+					document.getElementById("cur_ao500").innerHTML = "-";
+					document.getElementById("best_ao500").innerHTML = "-";
+				};
+				if (sessions[sesNum - 1].arr.length < 1000) {
+					document.getElementById("cur_ao1000").innerHTML = "-";
+					document.getElementById("best_ao1000").innerHTML = "-";
+				};
+			}
+			mean3Array = [];
+			mean3strngArray = [];
+			bestMean3 = 99999;
+			bestMean3strng = "DNF";
+			bestM3strngArray = [];
+			bestM3TraoArray = [];
+			avg5Array = [];
+			avg5strngArray = [];
+			bestAvg5 = 99999;
+			bestAvg5strng = "DNF";
+			bestA5strngArray = [];
+			bestA5TraoArray = [];
+			avg12Array = [];
+			avg12strngArray = [];
+			bestAvg12 = 99999;
+			bestAvg12strng = "DNF";
+			bestA12strngArray = [];
+			bestA12TraoArray = [];
+			avg50Array = [];
+			avg50strngArray = [];
+			bestAvg50 = 99999;
+			bestAvg50strng = "DNF";
+			bestA50strngArray = [];
+			bestA50TraoArray = [];
+			avg100Array = [];
+			avg100strngArray = [];
+			bestAvg100 = 99999;
+			bestAvg100strng = "DNF";
+			bestA100strngArray = [];
+			bestA100TraoArray = [];
+			avg200Array = [];
+			avg200strngArray = [];
+			bestAvg200 = 99999;
+			bestAvg200strng = "DNF";
+			bestA200strngArray = [];
+			bestA200TraoArray = [];
+			avg500Array = [];
+			avg500strngArray = [];
+			bestAvg500 = 99999;
+			bestAvg500strng = "DNF";
+			bestA500strngArray = [];
+			bestA500TraoArray = [];
+			avg1000Array = [];
+			avg1000strngArray = [];
+			bestAvg1000 = 99999;
+			bestAvg1000strng = "DNF";
+			bestA1000strngArray = [];
+			bestA1000TraoArray = [];
 
 		//add solve to times container and save sesion
 		saveSession();
@@ -472,98 +472,98 @@ if (sessions[sesNum - 1].arr. length != 0) {
 };
 
 function resetSes() {
-if (sessions[sesNum - 1].arr.length != 0) {
+	if (sessions[sesNum - 1].arr.length != 0) {
 
-	if (confirm("Delete all solve(s)?") == true) {
-		sessions[sesNum - 1].arr = [];
-		bestSingle = 99999;
-		bestSinglestrng = "";
+		if (confirm("Delete all solve(s)?") == true) {
+			sessions[sesNum - 1].arr = [];
+			bestSingle = 99999;
+			bestSinglestrng = "";
 
-		mean3Array = [];
-		mean3strngArray = [];
-		bestMean3 = 99999;
-		bestMean3strng = "DNF";
-		bestM3strngArray = [];
-		bestM3TraoArray = [];
-		avg5Array = [];
-		avg5strngArray = [];
-		bestAvg5 = 99999;
-		bestAvg5strng = "DNF";
-		bestA5strngArray = [];
-		bestA5TraoArray = [];
-		avg12Array = [];
-		avg12strngArray = [];
-		bestAvg12 = 99999;
-		bestAvg12strng = "DNF";
-		bestA12strngArray = [];
-		bestA12TraoArray = [];
-		avg50Array = [];
-		avg50strngArray = [];
-		bestAvg50 = 99999;
-		bestAvg50strng = "DNF";
-		bestA50strngArray = [];
-		bestA50TraoArray = [];
-		avg100Array = [];
-		avg100strngArray = [];
-		bestAvg100 = 99999;
-		bestAvg100strng = "DNF";
-		bestA100strngArray = [];
-		bestA100TraoArray = [];
-		avg200Array = [];
-		avg200strngArray = [];
-		bestAvg200 = 99999;
-		bestAvg200strng = "DNF";
-		bestA200strngArray = [];
-		bestA200TraoArray = [];
-		avg500Array = [];
-		avg500strngArray = [];
-		bestAvg500 = 99999;
-		bestAvg500strng = "DNF";
-		bestA500strngArray = [];
-		bestA500TraoArray = [];
-		avg1000Array = [];
-		avg1000strngArray = [];
-		bestAvg1000 = 99999;
-		bestAvg1000strng = "DNF";
-		bestA1000strngArray = [];
-		bestA1000TraoArray = [];
+			mean3Array = [];
+			mean3strngArray = [];
+			bestMean3 = 99999;
+			bestMean3strng = "DNF";
+			bestM3strngArray = [];
+			bestM3TraoArray = [];
+			avg5Array = [];
+			avg5strngArray = [];
+			bestAvg5 = 99999;
+			bestAvg5strng = "DNF";
+			bestA5strngArray = [];
+			bestA5TraoArray = [];
+			avg12Array = [];
+			avg12strngArray = [];
+			bestAvg12 = 99999;
+			bestAvg12strng = "DNF";
+			bestA12strngArray = [];
+			bestA12TraoArray = [];
+			avg50Array = [];
+			avg50strngArray = [];
+			bestAvg50 = 99999;
+			bestAvg50strng = "DNF";
+			bestA50strngArray = [];
+			bestA50TraoArray = [];
+			avg100Array = [];
+			avg100strngArray = [];
+			bestAvg100 = 99999;
+			bestAvg100strng = "DNF";
+			bestA100strngArray = [];
+			bestA100TraoArray = [];
+			avg200Array = [];
+			avg200strngArray = [];
+			bestAvg200 = 99999;
+			bestAvg200strng = "DNF";
+			bestA200strngArray = [];
+			bestA200TraoArray = [];
+			avg500Array = [];
+			avg500strngArray = [];
+			bestAvg500 = 99999;
+			bestAvg500strng = "DNF";
+			bestA500strngArray = [];
+			bestA500TraoArray = [];
+			avg1000Array = [];
+			avg1000strngArray = [];
+			bestAvg1000 = 99999;
+			bestAvg1000strng = "DNF";
+			bestA1000strngArray = [];
+			bestA1000TraoArray = [];
 
-		document.getElementById("ses_mean").innerHTML = "0.00";
-		document.getElementById("ses_not_dnf").innerHTML = "0";
-		document.getElementById("ses_length").innerHTML = "0";
+			document.getElementById("ses_mean").innerHTML = "0.00";
+			document.getElementById("ses_not_dnf").innerHTML = "0";
+			document.getElementById("ses_length").innerHTML = "0";
 
-		document.getElementById("cur_single").innerHTML = "-";
-		document.getElementById("best_single").innerHTML = "-";
+			document.getElementById("cur_single").innerHTML = "-";
+			document.getElementById("best_single").innerHTML = "-";
 
-		document.getElementById("cur_mo3").innerHTML = "-";
-		document.getElementById("best_mo3").innerHTML = "-";
+			document.getElementById("cur_mo3").innerHTML = "-";
+			document.getElementById("best_mo3").innerHTML = "-";
 
-		document.getElementById("cur_ao5").innerHTML = "-";
-		document.getElementById("best_ao5").innerHTML = "-";
+			document.getElementById("cur_ao5").innerHTML = "-";
+			document.getElementById("best_ao5").innerHTML = "-";
 
-		document.getElementById("cur_ao12").innerHTML = "-";
-		document.getElementById("best_ao12").innerHTML = "-";
+			document.getElementById("cur_ao12").innerHTML = "-";
+			document.getElementById("best_ao12").innerHTML = "-";
 
-		document.getElementById("cur_ao50").innerHTML = "-";
-		document.getElementById("best_ao50").innerHTML = "-";
+			document.getElementById("cur_ao50").innerHTML = "-";
+			document.getElementById("best_ao50").innerHTML = "-";
 
-		document.getElementById("cur_ao100").innerHTML = "-";
-		document.getElementById("best_ao100").innerHTML = "-";
+			document.getElementById("cur_ao100").innerHTML = "-";
+			document.getElementById("best_ao100").innerHTML = "-";
 
-		document.getElementById("cur_ao200").innerHTML = "-";
-		document.getElementById("best_ao200").innerHTML = "-";
+			document.getElementById("cur_ao200").innerHTML = "-";
+			document.getElementById("best_ao200").innerHTML = "-";
 
-		document.getElementById("cur_ao500").innerHTML = "-";
-		document.getElementById("best_ao500").innerHTML = "-";
+			document.getElementById("cur_ao500").innerHTML = "-";
+			document.getElementById("best_ao500").innerHTML = "-";
 
-		document.getElementById("cur_ao1000").innerHTML = "-";
-		document.getElementById("best_ao1000").innerHTML = "-";
+			document.getElementById("cur_ao1000").innerHTML = "-";
+			document.getElementById("best_ao1000").innerHTML = "-";
 
-		saveSession();
-		calc();
-		timeContain();
-	};
-}
+			saveSession();
+			calc();
+			timeContain();
+		};
+	}
 };
 
 function addSes() {
@@ -580,8 +580,8 @@ function delSes() {
 
 	var chooseSession = document.getElementById("choose_session");
 	while (chooseSession.firstChild) {
-    	chooseSession.removeChild(chooseSession.lastChild);
-  	}
+		chooseSession.removeChild(chooseSession.lastChild);
+	}
 	for (let i = 1; i <= sessions.length; i++) {
 		addOpt(i);
 	}
@@ -603,48 +603,35 @@ function timeContain() {
 	table.style.borderColor = "#585858";
 	table.style.width = "100%";
 	table.style.borderCollapse = "inherit";
-  var row = table.insertRow();
-  var indCell = row.insertCell();
-  indCell.innerHTML = "<b>ind</b>";
-  var timeCell = row.insertCell();
-  timeCell.innerHTML = "<b>time</b>";
-  var diffCell = row.insertCell();
-  diffCell.innerHTML = "<b>diff</b>";
-  var ao5Cell = row.insertCell();
-  ao5Cell.innerHTML = "<b>ao5</b>";
+	var row = table.insertRow();
+	var indCell = row.insertCell();
+	indCell.innerHTML = "<b>ind</b>";
+	var timeCell = row.insertCell();
+	timeCell.innerHTML = "<b>time</b>";
+	var diffCell = row.insertCell();
+	diffCell.innerHTML = "<b>diff</b>";
+	var ao5Cell = row.insertCell();
+	ao5Cell.innerHTML = "<b>ao5</b>";
 
 	if (sessions[sesNum - 1].arr.length != 0) {
 		for (var ind0 = 0; ind0 < sessions[sesNum - 1].arr.length; ind0++) {
-			/*timeCon.innerHTML += " <span onclick='solveStat(" + ind0 + ")' class='solve_dp'>" + sessions[sesNum - 1].arr[ind0].strng + "<\/span>";
-			timeCon.innerHTML += (ind0 == sessions[sesNum - 1].arr.length - 1) ? "" : ", ";*/
-			/*if (ind0 == sessions[sesNum - 1].arr.length-1) {
-				timeCon.innerHTML = "<table><tr><th>ind</th><th>time</th><th>diff</th><th>ao5</th></tr>";
-			}
-
-			timeCon.innerHTML += "<tr><td>" + (ind0+1) + "</td><td>" + sessions[sesNum - 1].arr[ind0].strng + "</td></tr>";
-
-			if (ind0 == 0) {
-				timeCon.innerHTML += "</table>";
-			}*/
-			//endofTimeCon += 100;
-			//timeCon.scrollTo(0, endofTimeCon);
 			var newRow = table.insertRow(1);
 
 			var newIndCell = newRow.insertCell();
-  		newIndCell.innerHTML = (ind0+1);
+			newIndCell.innerHTML = (ind0+1);
 
-  		var newTimeCell = newRow.insertCell();
-  		newTimeCell.innerHTML =  "<span onclick='solveStat(" + ind0 + ")' onmouseover='bgOnMouseOver(this)' onmouseout='bgOnMouseOut(this)' class='solve_dp'>" + sessions[sesNum - 1].arr[ind0].strng + "</span>";
+			var newTimeCell = newRow.insertCell();
+			newTimeCell.innerHTML =  "<span onclick='solveStat(" + ind0 + ")' onmouseover='bgOnMouseOver(this)' onmouseout='bgOnMouseOut(this)' class='solve_dp'>" + sessions[sesNum - 1].arr[ind0].strng + "</span>";
 
-  		var newDiffCell = newRow.insertCell();
-  		newDiffCell.className = "diff_cell";
-  		//newDiffCell.innerHTML = "diff";
-  		var meanToRound = Math.round(mean * 100) / 100;
-  		var diffFontColor;
-  		var diff = sessions[sesNum - 1].arr[ind0].time - meanToRound;
-  		if (diff > 0) {
-  			diffFontColor = "#990000";
-  			var diffMin = Math.floor(diff / 60);
+			var newDiffCell = newRow.insertCell();
+			newDiffCell.className = "diff_cell";
+			
+			var meanToRound = Math.round(mean * 100) / 100;
+			var diffFontColor;
+			var diff = sessions[sesNum - 1].arr[ind0].time - meanToRound;
+			if (diff > 0) {
+				diffFontColor = "#990000";
+				var diffMin = Math.floor(diff / 60);
 				var diffSec = Math.round((diff % 60) * 100) / 100;
 
 				if (diffMin == 0) {
@@ -680,12 +667,12 @@ function timeContain() {
 			newDiffCell.innerHTML = diffstrng;
 			newDiffCell.style.color = diffFontColor;
 
-  		var newAo5Cell = newRow.insertCell();
-  		if (ind0 < 4) {
-  			newAo5Cell.innerHTML = "-";
-  		} else {
-  			newAo5Cell.innerHTML = "<span onclick='showAo5Stat(" + (ind0-4) + ")' onmouseover='bgOnMouseOver(this)' onmouseout='bgOnMouseOut(this)' class='solve_dp'>" + avg5strngArray[ind0 - 4] + "</span>";
-  		}
+			var newAo5Cell = newRow.insertCell();
+			if (ind0 < 4) {
+				newAo5Cell.innerHTML = "-";
+			} else {
+				newAo5Cell.innerHTML = "<span onclick='showAo5Stat(" + (ind0-4) + ")' onmouseover='bgOnMouseOver(this)' onmouseout='bgOnMouseOut(this)' class='solve_dp'>" + avg5strngArray[ind0 - 4] + "</span>";
+			}
 		};
 	}
 	timeCon.appendChild(table);
@@ -740,10 +727,10 @@ function solveStat(i) {
 
 function addOpt(i) {
 	var opt = document.createElement("OPTION");
-  	opt.setAttribute("value", i);
-  	var t = document.createTextNode(" " + (i) + " ");
-  	opt.appendChild(t);
-  	document.getElementById("choose_session").appendChild(opt);
+	opt.setAttribute("value", i);
+	var t = document.createTextNode(" " + (i) + " ");
+	opt.appendChild(t);
+	document.getElementById("choose_session").appendChild(opt);
 }
 
 function dateOfSolve() {

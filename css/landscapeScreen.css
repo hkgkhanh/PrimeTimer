@@ -43,6 +43,47 @@ html.p150 {
 	width: auto;
 	margin: 0.5rem;
 }
+
+#search_icon {
+	height: 1rem;
+	width: 1rem;
+}
+
+#search_result {
+	background-color: #00FF00;
+	position: fixed;
+	padding: 0.5rem;
+	top: 6rem;
+	bottom: 13rem;
+	left: 0;
+}
+
+#search_result-title {
+	float: left;
+	font-size: 1rem;
+}
+
+#search_close_but {
+	float: right;
+	height: 1.2rem;
+	width: 1.2rem;
+}
+
+#search_bar {
+	border: 0.01rem solid;
+	background-color: inherit;
+	color: inherit;
+	width: 12rem;
+	font-size: 2rem;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+}
+
+#search_container {
+	overflow-y: scroll;
+	height: 25rem;
+}
+
 #stat_td {
 	height: 100vh;
 	position: fixed;
@@ -66,6 +107,7 @@ html.p150 {
 }
 
 #times_container {
+	overflow-y: scroll;
 	height: 25rem;
 }
 
@@ -73,7 +115,7 @@ html.p150 {
 	position: fixed;
 	bottom: 0;
 	left: 17rem;
-	right: 12rem;
+	right: 11rem;
 	padding: 2rem 2rem 1rem 2rem;
 }
 
@@ -82,19 +124,6 @@ html.p150 {
 	bottom: 0;
 	left: 0;
 }
-
-/*#time_td {
-	position: fixed;
-	top: 0;
-	left: 9rem;
-	font-size: 12rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: calc(100vw - 13rem - 9rem);
-	height: 100vh;
-	z-index: -1;
-}*/
 
 #mnt, #two_dot, #scnd,#ispt_display, #hide_text {
 	font-size: 12rem;
