@@ -2,9 +2,9 @@
 Online Timer for Cubing and Puzzle Solving
 
 ## Versions
-Current version (16/11/2020): https://khanhfromvn.github.io/PrimeTimer/
+Current version (20/11/2020): https://khanhfromvn.github.io/PrimeTimer/
 
-Beta (latest) version (16/11/2020): https://khanhfromvn.github.io/PrimeTimer-beta/
+Beta (latest) version (20/11/2020): https://khanhfromvn.github.io/PrimeTimer-beta/
 
 ## Features
 * Timer, inspection time + 8/12 seconds voice alert, import time by timer/typing.
