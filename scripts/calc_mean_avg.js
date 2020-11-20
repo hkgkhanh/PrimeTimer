@@ -172,6 +172,7 @@ function calc_ao5() {
 			avg5strngArray.push(avg5strng);
 
 			if (avg5 < bestAvg5) {
+				best5Start = ind19;
 				bestA5strngArray = [];
 				bestA5TraoArray = [];
 				bestAvg5 = avg5;
@@ -232,6 +233,7 @@ function calc_ao12() {
 			avg12strngArray.push(avg12strng);
 
 			if (avg12 < bestAvg12) {
+				best12Start = ind19;
 				bestA12strngArray = [];
 				bestA12TraoArray = [];
 				bestAvg12 = avg12;
@@ -296,6 +298,7 @@ function calc_ao50() {
 			avg50strngArray.push(avg50strng);
 
 			if (avg50 < bestAvg50) {
+				best50Start = ind26;
 				bestA50strngArray = [];
 				bestA50TraoArray = [];
 				bestAvg50 = avg50;
@@ -360,6 +363,7 @@ function calc_ao100() {
 			avg100strngArray.push(avg100strng);
 
 			if (avg100 < bestAvg100) {
+				best100Start = ind34;
 				bestA100strngArray = [];
 				bestA100TraoArray = [];
 				bestAvg100 = avg100;
@@ -424,6 +428,7 @@ function calc_ao200() {
 			avg200strngArray.push(avg200strng);
 
 			if (avg200 < bestAvg200) {
+				best5Start = ind42;
 				bestA200strngArray = [];
 				bestA200TraoArray = [];
 				bestAvg200 = avg200;
@@ -488,6 +493,7 @@ function calc_ao500() {
 			avg500strngArray.push(avg500strng);
 
 			if (avg500 < bestAvg500) {
+				best5Start = ind48;
 				bestA500strngArray = [];
 				bestA500TraoArray = [];
 				bestAvg500 = avg500;
@@ -526,7 +532,7 @@ function calc_ao1000() {
 			};
 		};
 
-		if (ind55 < 6) {
+		if (ind55 < 51) {
 			array1000Time.sort(compare);
 
 			var sum1009 = 0;
@@ -552,6 +558,7 @@ function calc_ao1000() {
 			avg1000strngArray.push(avg1000strng);
 
 			if (avg1000 < bestAvg1000) {
+				best5Start = ind54;
 				bestA1000strngArray = [];
 				bestA1000TraoArray = [];
 				bestAvg1000 = avg1000;
@@ -577,13 +584,43 @@ function compare(truoc, sau) {
 	return truoc - sau;
 };
 
-			function calc_dlc() {  // calculate standard devitation
-				dlc = 0;
-				var temp_sum = 0;
-				for (let i = 0; i < sessions[sesNum - 1].arr.length; i++) {
-					temp_sum += Math.pow(sessions[sesNum - 1].arr[i].time - mean, 2);
-				};
-				temp_sum /= sessions[sesNum - 1].arr.length;
-				dlc = Math.sqrt(temp_sum);
-				var roundDLC = parseFloat(dlc); dlc = Math.round(roundDLC * 100)/100;
+function calc_dlc() {  // calculate standard devitation
+	dlc = 0;
+	var temp_sum = 0;
+	for (let i = 0; i < sessions[sesNum - 1].arr.length; i++) {
+		temp_sum += Math.pow(sessions[sesNum - 1].arr[i].time - mean, 2);
+	};
+	temp_sum /= sessions[sesNum - 1].arr.length;
+	dlc = Math.sqrt(temp_sum);
+	var roundDLC = parseFloat(dlc); dlc = Math.round(roundDLC * 100)/100;
+}
+
+function getIndexInOrder(arr, ind) {
+	var orderedArr = [];
+	for (let i = 0; i < arr.length; i++) { orderedArr.push(i);}
+
+	var swapp;
+	var n = arr.length-1;
+	var x = [];
+	for (let i = 0; i < arr.length; i++) { x.push(arr[i].time);}
+
+	do {
+		swapp = false;
+		for (var i = 0; i < n; i++) {
+			if (x[i] > x[i+1]) {
+				var temp1 = x[i];
+				x[i] = x[i+1];
+				x[i+1] = temp1;
+
+				var temp2 = orderedArr[i];
+				orderedArr[i] = orderedArr[i+1];
+				orderedArr[i+1] = temp2;
+
+				swapp = true;
 			}
+		}
+		n--;
+	} while (swapp);
+
+	return orderedArr[ind];
+}

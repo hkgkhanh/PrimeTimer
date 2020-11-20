@@ -15,7 +15,6 @@
 
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Average+Sans&display=swap" rel="stylesheet">
-	<!--<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/segment7" type="text/css"/>-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<script src="scripts/scram-draw/scramble-display.js"></script>
@@ -218,6 +217,56 @@
 			</div>
 
 			<div id="avg_table_div">
+
+				<!--<table id="avg_table" style="width: 100%; border: none; line-height: 1.5;">
+
+					<tr class="table_cell">
+
+						<td class="table_cell" style="width: 30%">
+
+							<img src="img-audio\search-black.png" id="search_icon" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" onclick="toggleSearchDiv()" title="Search" class="fa"></br>
+							<text class="table_cell"><b>single</b></text></br>
+							<text class="table_cell" id="word_mo3"><b>mo3</b></text></br>
+							<text class="table_cell" id="word_ao5"><b>ao5</b></text></br>
+							<text class="table_cell" id="word_ao12"><b>ao12</b></text></br>
+							<text class="table_cell" id="word_ao50"><b>ao50</b></text></br>
+							<text class="table_cell" id="word_ao100"><b>ao100</b></text></br>
+							<text class="table_cell" id="word_ao200"><b>ao200</b></text></br>
+							<text class="table_cell" id="word_ao500"><b>ao500</b></text></br>
+							<text class="table_cell" id="word_ao1000"><b>ao1000</b></text></br>
+
+						</td>
+
+						<td class="table_cell" style="width: 35%">
+
+							<text class="table_cell"><b>current</b></text></br>
+							<text class="table_cell" id="cur_single" onclick="showStat(1)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="cur_mo3" onclick="showStat(3)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="cur_ao5" onclick="showStat(5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="cur_ao12" onclick="showStat(12)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="cur_ao50" onclick="showStat(50)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="cur_ao100" onclick="showStat(100)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="cur_ao200" onclick="showStat(200)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="cur_ao500" onclick="showStat(500)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="cur_ao1000" onclick="showStat(1000)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+
+						</td>
+
+						<td class="table_cell" style="width: 35%">
+
+							<text class="table_cell"><b>best</b></text></br>
+							<text class="table_cell" id="best_single" onclick="showStat(1.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="best_mo3" onclick="showStat(3.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="best_ao5" onclick="showStat(5.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="best_ao12" onclick="showStat(12.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="best_ao50" onclick="showStat(50.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="best_ao100" onclick="showStat(100.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="best_ao200" onclick="showStat(200.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="best_ao500" onclick="showStat(500.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+							<text class="table_cell" id="best_ao1000" onclick="showStat(1000.5)" onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)">-</text></br>
+						</td>
+					</tr>
+				</table>-->
 				<table id="avg_table">
 					<tr>
 						<td onmouseover="bgOnMouseOver(this)" onmouseout="bgOnMouseOut(this)" onclick="toggleSearchDiv()"
@@ -580,42 +629,49 @@
 		var bestM3TraoArray = [];
 		var avg5Array = [];
 		var avg5strngArray = [];
+		var best5Start = 0;
 		var bestAvg5 = 99999;
 		var bestAvg5strng = "DNF";
 		var bestA5strngArray = [];
 		var bestA5TraoArray = [];
 		var avg12Array = [];
 		var avg12strngArray = [];
+		var best12Start = 0;
 		var bestAvg12 = 99999;
 		var bestAvg12strng = "DNF";
 		var bestA12strngArray = [];
 		var bestA12TraoArray = [];
 		var avg50Array = [];
 		var avg50strngArray = [];
+		var best50Start = 0;
 		var bestAvg50 = 99999;
 		var bestAvg50strng = "DNF";
 		var bestA50strngArray = [];
 		var bestA50TraoArray = [];
 		var avg100Array = [];
 		var avg100strngArray = [];
+		var best100Start = 0;
 		var bestAvg100 = 99999;
 		var bestAvg100strng = "DNF";
 		var bestA100strngArray = [];
 		var bestA100TraoArray = [];
 		var avg200Array = [];
 		var avg100strngArray = [];
+		var best200Start = 0;
 		var bestAvg200 = 99999;
 		var bestAvg200strng = "DNF";
 		var bestA200strngArray = [];
 		var bestA200TraoArray = [];
 		var avg500Array = [];
 		var avg500strngArray = [];
+		var best500Start = 0;
 		var bestAvg500 = 99999;
 		var bestAvg500strng = "DNF";
 		var bestA500strngArray = [];
 		var bestA500TraoArray = [];
 		var avg1000Array = [];
 		var avg1000strngArray = [];
+		var best1000Start = 0;
 		var bestAvg1000 = 99999;
 		var bestAvg1000strng = "DNF";
 		var bestA1000strngArray = [];

@@ -64,6 +64,7 @@ function showStat(statNum) {
 				};
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -75,6 +76,7 @@ function showStat(statNum) {
 				statCon += "1. " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1].trao + "<br>";
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -86,6 +88,7 @@ function showStat(statNum) {
 				statCon += "1. " + bestSinglestrng + " &emsp; " + bestSingleTrao + "<br>";
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -99,6 +102,7 @@ function showStat(statNum) {
 				};
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -112,6 +116,7 @@ function showStat(statNum) {
 				};
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -119,12 +124,28 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 5) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 5: " + avg5strngArray[avg5strngArray.length - 1] + "<br>";
-				for (var ind16 = 1; ind16 <= 5; ind16++) {
+				/*for (var ind16 = 1; ind16 <= 5; ind16++) {
 					statCon += ind16 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 6 + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 6 + ind16].trao + "<br>";
+				};*/
+				for (var ind16 = 1; ind16 <= 5; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 6 + ind16]);
 				};
+				indArr.push(getIndexInOrder(arr, 0), getIndexInOrder(arr, 4));
+
+				for (var ind16 = 1; ind16 <= 5; ind16++) {
+					if (!contain(indArr, (ind16-1))) {
+						statCon += ind16 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 6 + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 6 + ind16].trao + "<br>";
+					} else {
+						statCon += ind16 + ". (" + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 6 + ind16].strng + ") &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 6 + ind16].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -132,12 +153,28 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 5) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 5: " + bestAvg5strng + "<br>";
-				for (var ind17 = 1; ind17 <= 5; ind17++) {
+				/*for (var ind17 = 1; ind17 <= 5; ind17++) {
 					statCon += ind17 + ". " + bestA5strngArray[ind17 - 1] + " &emsp; " + bestA5TraoArray[ind17 - 1] + "<br>";
+				};*/
+				for (var ind16 = best5Start+1; ind16 <= best5Start+5; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[ind16-1]);
 				};
+				indArr.push(getIndexInOrder(arr, 0), getIndexInOrder(arr, 4));
+
+				for (var ind16 = best5Start+1; ind16 <= best5Start+5; ind16++) {
+					if (!contain(indArr, (ind16-1-best5Start))) {
+						statCon += (ind16-best5Start) + ". " + sessions[sesNum - 1].arr[ind16-1].strng + " &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					} else {
+						statCon += (ind16-best5Start) + ". (" + sessions[sesNum - 1].arr[ind16-1].strng + ") &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -145,12 +182,28 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 12) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 12: " + avg12strngArray[avg12strngArray.length - 1] + "<br>";
-				for (var ind24 = 1; ind24 <= 12; ind24++) {
+				/*for (var ind24 = 1; ind24 <= 12; ind24++) {
 					statCon += ind24 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 13 + ind24].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 13 + ind24].trao + "<br>";
+				};*/
+				for (var ind16 = 1; ind16 <= 12; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 13 + ind16]);
 				};
+				indArr.push(getIndexInOrder(arr, 0), getIndexInOrder(arr, 11));
+
+				for (var ind16 = 1; ind16 <= 12; ind16++) {
+					if (!contain(indArr, (ind16-1))) {
+						statCon += ind16 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 13 + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 13 + ind16].trao + "<br>";
+					} else {
+						statCon += ind16 + ". (" + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 13 + ind16].strng + ") &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 13 + ind16].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -158,12 +211,28 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 12) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 12: " + bestAvg12strng + "<br>";
-				for (var ind25 = 1; ind25 <= 12; ind25++) {
+				/*for (var ind25 = 1; ind25 <= 12; ind25++) {
 					statCon += ind25 + ". " + bestA12strngArray[ind25 - 1] + " &emsp; " + bestA12TraoArray[ind25 - 1] + "<br>";
+				};*/
+				for (var ind16 = best12Start+1; ind16 <= best12Start+12; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[ind16-1]);
 				};
+				indArr.push(getIndexInOrder(arr, 0), getIndexInOrder(arr, 11));
+
+				for (var ind16 = best12Start+1; ind16 <= best12Start+12; ind16++) {
+					if (!contain(indArr, (ind16-1-best12Start))) {
+						statCon += (ind16-best12Start) + ". " + sessions[sesNum - 1].arr[ind16-1].strng + " &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					} else {
+						statCon += (ind16-best12Start) + ". (" + sessions[sesNum - 1].arr[ind16-1].strng + ") &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -171,12 +240,30 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 50) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 50: " + avg50strngArray[avg50strngArray.length - 1] + "<br>";
-				for (var ind32 = 1; ind32 <= 50; ind32++) {
+				/*for (var ind32 = 1; ind32 <= 50; ind32++) {
 					statCon += ind32 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 51 + ind32].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 51 + ind32].trao + "<br>";
+				};*/
+				for (var ind16 = 1; ind16 <= 50; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 51 + ind16]);
 				};
+				for (let i = 0; i < 3; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 49-i));
+				}
+
+				for (var ind16 = 1; ind16 <= 50; ind16++) {
+					if (!contain(indArr, (ind16-1))) {
+						statCon += ind16 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 51 + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 51 + ind16].trao + "<br>";
+					} else {
+						statCon += ind16 + ". (" + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 51 + ind16].strng + ") &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 51 + ind16].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -184,12 +271,30 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 50) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 50: " + bestAvg50strng + "<br>";
-				for (var ind33 = 1; ind33 <= 50; ind33++) {
+				/*for (var ind33 = 1; ind33 <= 50; ind33++) {
 					statCon += ind33 + ". " + bestA50strngArray[ind33 - 1] + " &emsp; " + bestA50TraoArray[ind33 - 1] + "<br>";
+				};*/
+				for (var ind16 = best50Start+1; ind16 <= best50Start+50; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[ind16-1]);
 				};
+				for (let i = 0; i < 3; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 49-i));
+				}
+
+				for (var ind16 = best50Start+1; ind16 <= best50Start+50; ind16++) {
+					if (!contain(indArr, (ind16-1-best50Start))) {
+						statCon += (ind16-best50Start) + ". " + sessions[sesNum - 1].arr[ind16-1].strng + " &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					} else {
+						statCon += (ind16-best50Start) + ". (" + sessions[sesNum - 1].arr[ind16-1].strng + ") &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -197,12 +302,30 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 100) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 100: " + avg100strngArray[avg100strngArray.length - 1] + "<br>";
-				for (var ind40 = 1; ind40 <= 100; ind40++) {
+				/*for (var ind40 = 1; ind40 <= 100; ind40++) {
 					statCon += ind40 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 101 + ind40].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 101 + ind40].trao + "<br>";
+				};*/
+				for (var ind16 = 1; ind16 <= 100; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 101 + ind16]);
 				};
+				for (let i = 0; i < 5; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 49-i));
+				}
+
+				for (var ind16 = 1; ind16 <= 100; ind16++) {
+					if (!contain(indArr, (ind16-1))) {
+						statCon += ind16 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 101 + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 101 + ind16].trao + "<br>";
+					} else {
+						statCon += ind16 + ". (" + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 101 + ind16].strng + ") &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 101 + ind16].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -210,12 +333,30 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 100) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 100: " + bestAvg100strng + "<br>";
-				for (var ind41 = 1; ind41 <= 100; ind41++) {
+				/*for (var ind41 = 1; ind41 <= 100; ind41++) {
 					statCon += ind41 + ". " + bestA100strngArray[ind41 - 1] + " &emsp; " + bestA100TraoArray[ind41 - 1] + "<br>";
+				};*/
+				for (var ind16 = best100Start+1; ind16 <= best100Start+100; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[ind16-1]);
 				};
+				for (let i = 0; i < 5; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 99-i));
+				}
+
+				for (var ind16 = best100Start+1; ind16 <= best100Start+100; ind16++) {
+					if (!contain(indArr, (ind16-1-best100Start))) {
+						statCon += (ind16-best100Start) + ". " + sessions[sesNum - 1].arr[ind16-1].strng + " &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					} else {
+						statCon += (ind16-best100Start) + ". (" + sessions[sesNum - 1].arr[ind16-1].strng + ") &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -223,12 +364,30 @@ function showStat(statNum) {
 	    	if (sessions[sesNum - 1].arr.length >= 200) {
 		   		document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 200: " + avg200strngArray[avg200strngArray.length - 1] + "<br>";
-				for (var ind60 = 1; ind60 <= 200; ind60++) {
+				/*for (var ind60 = 1; ind60 <= 200; ind60++) {
 					statCon += ind60 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 201 + ind60].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 201 + ind60].trao + "<br>";
+				};*/
+				for (var ind16 = 1; ind16 <= 200; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 201 + ind16]);
 				};
+				for (let i = 0; i < 10; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 199-i));
+				}
+
+				for (var ind16 = 1; ind16 <= 200; ind16++) {
+					if (!contain(indArr, (ind16-1))) {
+						statCon += ind16 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 201 + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 201 + ind16].trao + "<br>";
+					} else {
+						statCon += ind16 + ". (" + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 201 + ind16].strng + ") &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 201 + ind16].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -236,12 +395,30 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 200) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 200: " + bestAvg200strng + "<br>";
-				for (var ind61 = 1; ind61 <= 200; ind61++) {
+				/*for (var ind61 = 1; ind61 <= 200; ind61++) {
 					statCon += ind61 + ". " + bestA200strngArray[ind61 - 1] + " &emsp; " + bestA200TraoArray[ind61 - 1] + "<br>";
+				};*/
+				for (var ind16 = best200Start+1; ind16 <= best200Start+200; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[ind16-1]);
 				};
+				for (let i = 0; i < 10; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 199-i));
+				}
+
+				for (var ind16 = best200Start+1; ind16 <= best200Start+200; ind16++) {
+					if (!contain(indArr, (ind16-1-best200Start))) {
+						statCon += (ind16-best200Start) + ". " + sessions[sesNum - 1].arr[ind16-1].strng + " &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					} else {
+						statCon += (ind16-best200Start) + ". (" + sessions[sesNum - 1].arr[ind16-1].strng + ") &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -249,12 +426,30 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 500) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 500: " + avg500strngArray[avg500strngArray.length - 1] + "<br>";
-				for (var ind62 = 1; ind62 <= 500; ind462++) {
+				/*for (var ind62 = 1; ind62 <= 500; ind462++) {
 					statCon += ind62 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 501 + ind62].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 501 + ind62].trao + "<br>";
+				};*/
+				for (var ind16 = 1; ind16 <= 500; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 501 + ind16]);
 				};
+				for (let i = 0; i < 25; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 499-i));
+				}
+
+				for (var ind16 = 1; ind16 <= 500; ind16++) {
+					if (!contain(indArr, (ind16-1))) {
+						statCon += ind16 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 501 + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 501 + ind16].trao + "<br>";
+					} else {
+						statCon += ind16 + ". (" + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 501 + ind16].strng + ") &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 501 + ind16].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -262,12 +457,30 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 500) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 500: " + bestAvg500strng + "<br>";
-				for (var ind63 = 1; ind63 <= 100; ind63++) {
+				/*for (var ind63 = 1; ind63 <= 100; ind63++) {
 					statCon += ind63 + ". " + bestA500strngArray[ind63 - 1] + " &emsp; " + bestA500TraoArray[ind63 - 1] + "<br>";
+				};*/
+				for (var ind16 = best500Start+1; ind16 <= best500Start+500; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[ind16-1]);
 				};
+				for (let i = 0; i < 25; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 499-i));
+				}
+
+				for (var ind16 = best500Start+1; ind16 <= best500Start+500; ind16++) {
+					if (!contain(indArr, (ind16-1-best500Start))) {
+						statCon += (ind16-best500Start) + ". " + sessions[sesNum - 1].arr[ind16-1].strng + " &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					} else {
+						statCon += (ind16-best500Start) + ". (" + sessions[sesNum - 1].arr[ind16-1].strng + ") &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -275,12 +488,30 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 1000) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 1000: " + avg1000strngArray[avg1000strngArray.length - 1] + "<br>";
-				for (var ind64 = 1; ind64 <= 1000; ind64++) {
+				/*for (var ind64 = 1; ind64 <= 1000; ind64++) {
 					statCon += ind64 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1001 + ind64].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1001 + ind64].trao + "<br>";
+				};*/
+				for (var ind16 = 1; ind16 <= 1000; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1001 + ind16]);
 				};
+				for (let i = 0; i < 50; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 999-i));
+				}
+
+				for (var ind16 = 1; ind16 <= 1000; ind16++) {
+					if (!contain(indArr, (ind16-1))) {
+						statCon += ind16 + ". " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1001 + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1001 + ind16].trao + "<br>";
+					} else {
+						statCon += ind16 + ". (" + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1001 + ind16].strng + ") &emsp; " + sessions[sesNum - 1].arr[sessions[sesNum - 1].arr.length - 1001 + ind16].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 			break;
 
@@ -288,12 +519,30 @@ function showStat(statNum) {
 			if (sessions[sesNum - 1].arr.length >= 1000) {
 				document.getElementById("stat_dialog").style.display = "block";
 				var statCon = "";
+				var arr = [];
+				var indArr = [];
 				statCon += "average of 1000: " + bestAvg1000strng + "<br>";
-				for (var ind65 = 1; ind65 <= 1000; ind65++) {
+				/*for (var ind65 = 1; ind65 <= 1000; ind65++) {
 					statCon += ind65 + ". " + bestA1000strngArray[ind65 - 1] + " &emsp; " + bestA1000TraoArray[ind65 - 1] + "<br>";
+				};*/
+				for (var ind16 = best1000Start+1; ind16 <= best1000Start+1000; ind16++) {
+					arr.push(sessions[sesNum - 1].arr[ind16-1]);
 				};
+				for (let i = 0; i < 50; i++) {
+					indArr.push(getIndexInOrder(arr, i), getIndexInOrder(arr, 999-i));
+				}
+
+				for (var ind16 = best1000Start+1; ind16 <= best1000Start+1000; ind16++) {
+					if (!contain(indArr, (ind16-1-best1000Start))) {
+						statCon += (ind16-best1000Start) + ". " + sessions[sesNum - 1].arr[ind16-1].strng + " &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					} else {
+						statCon += (ind16-best1000Start) + ". (" + sessions[sesNum - 1].arr[ind16-1].strng + ") &emsp; " + sessions[sesNum - 1].arr[ind16-1].trao + "<br>";
+					}
+				};
+
 				document.getElementById("stats").innerHTML = statCon;
 				selectText(document.getElementById("stats"));
+				document.getElementById("stats").scrollTo(0, 0);
 			}
 	};
 };

@@ -687,6 +687,8 @@ function showAo5Stat(start) {
 		statCon += (ind16+1) + ". " + sessions[sesNum - 1].arr[start + ind16].strng + " &emsp; " + sessions[sesNum - 1].arr[start + ind16].trao + "<br>";
 	};
 	document.getElementById("stats").innerHTML = statCon;
+	selectText(document.getElementById("stats"));
+	document.getElementById("stats").scrollTo(0, 0);
 }
 
 function clearStatDiv() {
