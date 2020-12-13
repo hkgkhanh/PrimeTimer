@@ -2,9 +2,9 @@
 Online Timer for Cubing and Puzzle Solving
 
 ## Versions
-Current version (20/11/2020): https://khanhfromvn.github.io/PrimeTimer/
+Current version (20/11/2020): https://hkgkhanh.github.io/PrimeTimer/
 
-Beta (latest) version (20/11/2020): https://khanhfromvn.github.io/PrimeTimer-beta/
+Beta (latest) version (20/11/2020): https://hkgkhanh.github.io/PrimeTimer-beta/
 
 ## Features
 * Timer, inspection time + 8/12 seconds voice alert, import time by timer/typing.
@@ -23,4 +23,4 @@ Scramble source code:
 * [scramble-display](https://github.com/cubing/scramble-display)
 
 ## License
-[GNU General Public License v3.0](https://github.com/khanhfromvn/PrimeTimer/blob/master/LICENSE.md)
+[GNU General Public License v3.0](https://github.com/hkgkhanh/PrimeTimer/blob/master/LICENSE.md)
